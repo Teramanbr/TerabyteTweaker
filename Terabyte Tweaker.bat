@@ -81,6 +81,7 @@ IF /I "%choice%"=="Não" Goto 2
 IF /I "%choice%"=="Nao" Goto 2
 
 :1
+
 cls
 TITLE Aplicando Terabyte Tweaker...
 cls
@@ -118,7 +119,6 @@ netsh int ip set global taskoffload=disabled >nul 2>&1
 netsh int ip set global neighborcachelimit=4096 >nul 2>&1
 netsh int tcp set global dca=enabled >nul 2>&1
 netsh int tcp set global netdma=enabled >nul 2>&1
-
 cls
 echo Carregando...
 echo -------------------------------------
@@ -149,13 +149,13 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: ████░░░░░░░░░░░░░░░░ 20%%
 echo -------------------------------------
-Reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "00000000" /f >nul 2>&1
-Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "UseActionCenterExperience" /t REG_DWORD /d "00000000" /f >nul 2>&1
-Reg Add HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "00000000" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "UseActionCenterExperience" /t REG_DWORD /d "00000000" /f >nul 2>&1
+reg Add HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f >nul 2>&1
 reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects /v
-Reg Add HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f
+reg Add HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f
 reg add HKLM\SOFTWARE\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 2 /f >nul 2>&1
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_SZ /d "ffffffff" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_SZ /d "ffffffff" /f >nul 2>&1
 reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize /v StartupDelayInMSec /t REG_DWORD /d 0 /f >nul 2>&1
 cls
 echo Carregando...
@@ -187,6 +187,7 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: ██████░░░░░░░░░░░░░░ 30%%
 echo -------------------------------------
+::Esse código não é meu, créditos da Hone.
 powercfg -restoredefaultschemes
 powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798652558351794196/798666504190296064/Hone_Power_Plan.pow" -OutFile "C:\Hone\Resources\HoneV2.pow"
 cls

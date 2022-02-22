@@ -13,7 +13,7 @@ echo.
 echo.
 echo.
 echo.
-echo                        Computador tunado com sucesso, aproveite o FPS que seu computador nunca teve
+echo                        Computador tunado com sucesso, aproveite o FPS que seu computador precisava
 echo.                                                           UwU
 echo.
 echo.

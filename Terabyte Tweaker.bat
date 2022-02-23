@@ -90,7 +90,7 @@ echo -------------------------------------
 echo Progresso: ░░░░░░░░░░░░░░░░░░░░ 0%%
 echo -------------------------------------
 Wmic.exe /Namespace:\\root\default Path SystemRestore Call CreateRestorePoint "Ponto de Restauração Terabyte", 100, 12 >nul 2>&1
-powershell.exe -command "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine" >nul 2>&1
+PowerShell -command "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine" >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
@@ -162,26 +162,42 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: █████░░░░░░░░░░░░░░░ 25%%
 echo -------------------------------------
-powershell.exe -command "ps onedrive | Stop-Process -Force" >nul 2>&1
-powershell.exe -command "start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Microsoft.SkypeApp"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Microsoft.Print3D"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Microsoft.windowscommunicationsapps"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Microsoft.WindowsFeedbackHub"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Microsoft.WindowsMaps"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Microsoft.WindowsSoundRecorder"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Microsoft.ZuneMusic"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Microsoft.ZuneVideo"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "EclipseManager"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "ActiproSoftwareLLC"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "AdobeSystemsIncorporated.AdobePhotoshopExpress"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Duolingo-LearnLanguagesforFree"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "PandoraMediaInc"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "CandyCrush"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Wunderlist"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Flipboard"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Twitter"" >nul 2>&1
-powershell.exe -command "Remove-AppxPackage -Package "Facebook"" >nul 2>&1
+PowerShell -command "ps onedrive | Stop-Process -Force" >nul 2>&1
+PowerShell -command "start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.SkypeApp"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.Print3D"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.windowscommunicationsapps"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.WindowsFeedbackHub"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.WindowsMaps"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.WindowsSoundRecorder"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.ZuneMusic"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.ZuneVideo"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "EclipseManager"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "ActiproSoftwareLLC"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "AdobeSystemsIncorporated.AdobePhotoshopExpress"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Duolingo-LearnLanguagesforFree"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "PandoraMediaInc"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "CandyCrush"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Wunderlist"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Flipboard"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Twitter"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Facebook"" >nul 2>&1
+PowerShell -Command "Get-AppxPackage *3DBuilder* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *Getstarted* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *bing* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *MicrosoftOfficeHub* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *OneNote* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *people* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *WindowsPhone* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *solit* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *zune* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *Sway* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *CommsPhone* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *ConnectivityStore* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *Microsoft.Messaging* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *ContentDeliveryManager* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *Microsoft.WindowsStore* | Remove-AppxPackage"
 cls
 echo Carregando...
 echo -------------------------------------
@@ -207,7 +223,7 @@ echo -------------------------------------
 echo Progresso: ███████░░░░░░░░░░░░░ 35%%
 echo -------------------------------------
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-powershell.exe Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/882588947706966046/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
+PowerShell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/882588947706966046/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
 reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
 del %temp%\~Regedit.reg >nul 2>&1
 cls

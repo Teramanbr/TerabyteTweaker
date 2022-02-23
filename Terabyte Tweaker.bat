@@ -383,7 +383,7 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: ███████████████████░ 95%%
 echo -------------------------------------
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/945455243859222608/obrigadoporusar.bat" -OutFile "C:\Hone\Resources\obrigadoporusar.bat"
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/945832218872414258/obrigadoporusar.bat" -OutFile "C:\Hone\Resources\obrigadoporusar.bat"
 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\Hone\Resources\obrigadoporusar.bat /f >nul 2>&1
 cls
 echo Carregando...

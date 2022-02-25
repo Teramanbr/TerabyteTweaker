@@ -165,11 +165,12 @@ echo -------------------------------------
 PowerShell -command "ps onedrive | Stop-Process -Force" >nul 2>&1
 PowerShell -command "start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "Microsoft.SkypeApp"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.Print3D"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.Messaging"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "Microsoft.windowscommunicationsapps"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "Microsoft.WindowsFeedbackHub"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.WindowsMaps"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.WindowsSoundRecorder"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.People"" >nul 2>&1
+PowerShell -command "Remove-AppxPackage -Package "Microsoft.Print3D"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.3DBuilder"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "Microsoft.ZuneMusic"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "Microsoft.ZuneVideo"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "EclipseManager"" >nul 2>&1
@@ -182,22 +183,21 @@ PowerShell -command "Remove-AppxPackage -Package "Wunderlist"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "Flipboard"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "Twitter"" >nul 2>&1
 PowerShell -command "Remove-AppxPackage -Package "Facebook"" >nul 2>&1
-PowerShell -Command "Get-AppxPackage *3DBuilder* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *Getstarted* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *bing* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *MicrosoftOfficeHub* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *OneNote* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *people* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *WindowsPhone* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *solit* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *zune* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *Sway* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *CommsPhone* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *ConnectivityStore* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *Microsoft.Messaging* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *ContentDeliveryManager* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *Microsoft.WindowsStore* | Remove-AppxPackage"
+PowerShell -Command "Remove-AppxPackage -Package "Sway"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.3dBuilder"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingTravel"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingHealthAndFitness"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingNews"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingSports"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingFoodAndDrink"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingWeather"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingFinance"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.Getstarted"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.Office.OneNote"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.MicrosoftOfficeHub"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.MicrosoftSolitaireCollection"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BioEnrollment"" >nul 2>&1
+PowerShell -Command "Remove-AppxPackage -Package "ContentDeliveryManager"" >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
@@ -321,11 +321,6 @@ cd .minecraft >nul 2>&1
 (echo ofTranslucentBlocks:1) >> optionsof.txt
 (echo ofChatBackground:0) >> optionsof.txt
 (echo ofChatShadow:true) >> optionsof.txt
-cls
-echo Carregando...
-echo -------------------------------------
-echo Progresso: ████████████░░░░░░░░ 60%%
-echo -------------------------------------
 (echo renderDistance:2) >> options.txt
 (echo particles:2) >> options.txt
 (echo bobView:false) >> options.txt
@@ -343,20 +338,20 @@ echo -------------------------------------
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: █████████████░░░░░░░ 65%%
+echo Progresso: ████████████░░░░░░░░ 60%%
 echo -------------------------------------
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: ██████████████░░░░░░ 70%%
+echo Progresso: █████████████░░░░░░░ 65%%
 echo -------------------------------------
 Dism.exe /online /Cleanup-Image /StartComponentCleanup >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: ███████████████░░░░░ 75%%
+echo Progresso: ██████████████░░░░░░ 70%%
 echo -------------------------------------
 ::Esse código não é meu, créditos da Hone.
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
@@ -365,7 +360,7 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSpl
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: ████████████████░░░░ 80%%
+echo Progresso: ███████████████░░░░░ 75%%
 echo -------------------------------------
 ::Esse código não é meu, créditos da Hone.
 mkdir C:\Hone >nul 2>&1
@@ -384,16 +379,22 @@ NET START STR >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: █████████████████░░░ 85%%
+echo Progresso: ████████████████░░░░ 80%%
 echo -------------------------------------
 sfc /scannow >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: ██████████████████░░ 90%%
+echo Progresso: █████████████████░░░ 85%%
 echo -------------------------------------
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d 1 /f >nul 2>&1
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d 1 /f >nul 2>&1
+cls
+echo Carregando...
+echo -------------------------------------
+echo Progresso: ██████████████████░░ 90%%
+echo -------------------------------------
+
 cls
 echo Carregando...
 echo -------------------------------------

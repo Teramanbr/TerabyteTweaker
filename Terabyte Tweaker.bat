@@ -96,7 +96,13 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: █░░░░░░░░░░░░░░░░░░░ 5%%
 echo -------------------------------------
+ipconfig /release >nul 2>&1
 ipconfig /renew >nul 2>&1
+arp -d * >nul 2>&1
+nbtstat -R >nul 2>&1
+nbtstat -RR >nul 2>&1
+ipconfig /flushdns >nul 2>&1
+ipconfig /registerdns >nul 2>&1
 netsh int tcp set global autotuninglevel=normal >nul 2>&1
 netsh interface 6to4 set state disabled >nul 2>&1
 netsh int isatap set state disable >nul 2>&1
@@ -164,40 +170,38 @@ echo Progresso: █████░░░░░░░░░░░░░░░ 25%
 echo -------------------------------------
 PowerShell -command "ps onedrive | Stop-Process -Force" >nul 2>&1
 PowerShell -command "start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.SkypeApp"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.Messaging"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.windowscommunicationsapps"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.WindowsFeedbackHub"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.People"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.Print3D"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.3DBuilder"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.ZuneMusic"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Microsoft.ZuneVideo"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "EclipseManager"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "ActiproSoftwareLLC"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "AdobeSystemsIncorporated.AdobePhotoshopExpress"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Duolingo-LearnLanguagesforFree"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "PandoraMediaInc"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "CandyCrush"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Wunderlist"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Flipboard"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Twitter"" >nul 2>&1
-PowerShell -command "Remove-AppxPackage -Package "Facebook"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Sway"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.3dBuilder"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingTravel"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingHealthAndFitness"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingNews"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingSports"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingFoodAndDrink"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingWeather"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BingFinance"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.Getstarted"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.Office.OneNote"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.MicrosoftOfficeHub"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.MicrosoftSolitaireCollection"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "Microsoft.BioEnrollment"" >nul 2>&1
-PowerShell -Command "Remove-AppxPackage -Package "ContentDeliveryManager"" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.Getstarted | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.ZuneVideo | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.GetHelp | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.Messaging | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.WindowsFeedbackHub | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.People | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.3DBuilder | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.Print3D | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage EclipseManager | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage ActiproSoftwareLLC | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage AdobeSystemsIncorporated.AdobePhotoshopExpress | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Duolingo-LearnLanguagesforFree | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage PandoraMediaInc | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage CandyCrush | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage *Wunderlist* | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage *Flipboard* | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage *Twitter* | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage *Facebook* | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage *Sway* | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.BingTravel | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.BingHealthAndFitness | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.BingSports | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.BingFoodAndDrink | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.BingFinance | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.Office.OneNote | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage Microsoft.BioEnrollment | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage ContentDeliveryManager | Remove-AppxPackage" >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------

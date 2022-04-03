@@ -691,23 +691,17 @@ echo Loading...
 echo -------------------------------------
 echo Progress: ████████░░░░░░░░░░░░ 40%%
 echo -------------------------------------
-DISM /Online /Cleanup-Image /ScanHealth >nul 2>&1
+Dism.exe /online /Cleanup-Image /StartComponentCleanup >nul 2>&1
 cls
-echo Loading...
+echo Carregando...
 echo -------------------------------------
-echo Progress: █████████░░░░░░░░░░░ 45%%
-echo -------------------------------------
-Dism.exe /online /Cleanup-Image /SPSuperseded >nul 2>&1
-cls
-echo Loading...
-echo -------------------------------------
-echo Progress: ██████████░░░░░░░░░░ 50%%
+echo Progresso: █████████░░░░░░░░░░░ 45%%
 echo -------------------------------------
 DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
 cls
-echo Loading...
+echo Carregando...
 echo -------------------------------------
-echo Progress: ███████████░░░░░░░░░ 55%%
+echo Progresso: ██████████░░░░░░░░░░ 50%%
 echo -------------------------------------
 cd %appdata% >nul 2>&1
 cd .minecraft >nul 2>&1
@@ -797,31 +791,25 @@ cd .minecraft >nul 2>&1
 (echo ao:0) >> options.txt
 (echo gamma:1.0) > options.txt
 cls
-echo Loading...
+echo Carregando...
 echo -------------------------------------
-echo Progress: ████████████░░░░░░░░ 60%%
+echo Progresso: ███████████░░░░░░░░░ 55%%
 echo -------------------------------------
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 cls
-echo Loading...
+echo Carregando...
 echo -------------------------------------
-echo Progress: █████████████░░░░░░░ 65%%
-echo -------------------------------------
-Dism.exe /online /Cleanup-Image /StartComponentCleanup >nul 2>&1
-cls
-echo Loading...
-echo -------------------------------------
-echo Progress: ██████████████░░░░░░ 70%%
+echo Progresso: ████████████░░░░░░░░ 60%%
 echo -------------------------------------
 ::This code is not mine, credits to Hone.
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
 set /a mem=%mem% + 1024000
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
 cls
-echo Loading...
+echo Carregando...
 echo -------------------------------------
-echo Progress: ███████████████░░░░░ 75%%
+echo Progresso: █████████████░░░░░░░ 65%%
 echo -------------------------------------
 ::This code is not mine, credits to Hone.
 mkdir C:\Hone >nul 2>&1
@@ -838,12 +826,20 @@ cd C:\Hone >nul 2>&1
 sc config "STR" start= auto >nul 2>&1
 NET START STR >nul 2>&1
 cls
-echo Loading...
+echo Carregando...
 echo -------------------------------------
-echo Progress: ████████████████░░░░ 80%%
+echo Progresso: ██████████████░░░░░░ 70%%
 echo -------------------------------------
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d 1 /f >nul 2>&1
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d 1 /f >nul 2>&1
+cls
+echo Carregando...
+echo -------------------------------------
+echo Progresso: ███████████████░░░░░ 75%%
+echo -------------------------------------
+cls
+echo Carregando...
+echo -------------------------------------
+echo Progresso: ████████████████░░░░ 80%%
+echo -------------------------------------
 cls
 echo Loading...
 echo -------------------------------------

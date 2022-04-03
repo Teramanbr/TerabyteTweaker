@@ -1,6 +1,8 @@
 @Echo Off
-::This code was made by a 14 year old brazilian, which did all of this alone, so
-::if the code is actual garbage, i apologise, for i am just a child who likes computers and has poor programming skills.
+@Title Terabyte Tweaker
+::This code was made by a 14 year old brazilian, which did all of this alone, so if the code is actual garbage,
+::i apologise, for i am just a child who likes computers and has poor programming skills.
+
 FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
 IF [%%G] EQU [0416] (
   goto br
@@ -8,9 +10,10 @@ IF [%%G] EQU [0416] (
   goto english
 )
 )
+
 :br
+
 chcp 65001 >nul 2>&1
-TITLE Terabyte Tweaker
 color 6
 net session >nul 2>&1
 if %errorLevel% == 0 (
@@ -29,8 +32,8 @@ echo.
 echo.     
 echo.   
 echo. 
-echo                              acho que alguêm esqueceu de abrir o app como administrador ein...
 echo.
+echo                              acho que alguém esqueceu de abrir o app como Administrador ein...
 echo.                   
 echo.                  
 echo.                 
@@ -78,7 +81,7 @@ echo ###########################################################################
 echo.
 echo.
 echo.
-SET /P choice=Deseja Permanentemente ativar os Tweaks e tunar o PC? eai? S/N?:
+SET /P choice=Deseja ativar os Tweaks e melhorar a Performance do PC? S/N?:
 IF /I "%choice%"=="S" Goto 1
 IF /I "%choice%"=="s" Goto 1
 IF /I "%choice%"=="Sim" Goto 1
@@ -245,23 +248,17 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: ████████░░░░░░░░░░░░ 40%%
 echo -------------------------------------
-DISM /Online /Cleanup-Image /ScanHealth >nul 2>&1
+Dism.exe /online /Cleanup-Image /StartComponentCleanup >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
 echo Progresso: █████████░░░░░░░░░░░ 45%%
 echo -------------------------------------
-Dism.exe /online /Cleanup-Image /SPSuperseded >nul 2>&1
-cls
-echo Carregando...
-echo -------------------------------------
-echo Progresso: ██████████░░░░░░░░░░ 50%%
-echo -------------------------------------
 DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: ███████████░░░░░░░░░ 55%%
+echo Progresso: ██████████░░░░░░░░░░ 50%%
 echo -------------------------------------
 cd %appdata% >nul 2>&1
 cd .minecraft >nul 2>&1
@@ -353,20 +350,14 @@ cd .minecraft >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: ████████████░░░░░░░░ 60%%
+echo Progresso: ███████████░░░░░░░░░ 55%%
 echo -------------------------------------
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: █████████████░░░░░░░ 65%%
-echo -------------------------------------
-Dism.exe /online /Cleanup-Image /StartComponentCleanup >nul 2>&1
-cls
-echo Carregando...
-echo -------------------------------------
-echo Progresso: ██████████████░░░░░░ 70%%
+echo Progresso: ████████████░░░░░░░░ 60%%
 echo -------------------------------------
 ::Esse código não é meu, créditos da Hone.
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
@@ -375,7 +366,7 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSpl
 cls
 echo Carregando...
 echo -------------------------------------
-echo Progresso: ███████████████░░░░░ 75%%
+echo Progresso: █████████████░░░░░░░ 65%%
 echo -------------------------------------
 ::Esse código não é meu, créditos da Hone.
 mkdir C:\Hone >nul 2>&1
@@ -394,10 +385,18 @@ NET START STR >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
+echo Progresso: ██████████████░░░░░░ 70%%
+echo -------------------------------------
+cls
+echo Carregando...
+echo -------------------------------------
+echo Progresso: ███████████████░░░░░ 75%%
+echo -------------------------------------
+cls
+echo Carregando...
+echo -------------------------------------
 echo Progresso: ████████████████░░░░ 80%%
 echo -------------------------------------
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d 1 /f >nul 2>&1
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d 1 /f >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
@@ -477,8 +476,8 @@ echo.
 echo.     
 echo.   
 echo. 
-echo                                i think SOMEBODY forgot to run the app as administator...
 echo.
+echo                                i think SOMEBODY forgot to run the app as administator...
 echo.                   
 echo.                  
 echo.                 

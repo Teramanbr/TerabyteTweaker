@@ -123,7 +123,7 @@ netsh int tcp set global timestamps=disabled >nul 2>&1
 netsh int tcp set heuristics disabled >nul 2>&1
 netsh int tcp set global chimney=disabled >nul 2>&1
 netsh int tcp set global ecncapability=disabled >nul 2>&1
-netsh int tcp set global rsc=disabled >nul 2>&1
+netsh int tcp set global rsc=enabled >nul 2>&1
 netsh int tcp set global nonsackrttresiliency=disabled >nul 2>&1
 netsh int tcp set security mpp=disabled >nul 2>&1
 netsh int tcp set security profiles=disabled >nul 2>&1
@@ -170,12 +170,57 @@ echo Progresso: ████░░░░░░░░░░░░░░░░ 20%
 echo -------------------------------------
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "00000000" /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "UseActionCenterExperience" /t REG_DWORD /d "00000000" /f >nul 2>&1
-reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v
 reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "AutoDownload" /t REG_DWORD /d 2 /f >nul 2>&1
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_SZ /d "ffffffff" /f >nul 2>&1
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "StartupDelayInMSec" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnablePMTUBHDetect" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnablePMTUDiscovery" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "UseDomainNameDevolution" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DeadGWDetectDefault" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DontAddDefaultGatewayDefault" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "QualifyingDestinationThreshold" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableTaskOffload" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableWsd" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableICMPRedirect" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableIPSourceRouting" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "ArpRetryCount" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableDHCPMediaSense" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpFinWait2Delay" /t REG_DWORD /d "2" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "1e" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort" /t REG_DWORD /d "fffe" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableBucketSize" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableSize" /t REG_DWORD /d "180" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheEntryTtlLimit" /t REG_DWORD /d "fa00" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxSOACacheEntryTtlLimit" /t REG_DWORD /d "12d" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUBHDetect" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUDiscovery" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "UseDomainNameDevolution" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DeadGWDetectDefault" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DontAddDefaultGatewayDefault" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "QualifyingDestinationThreshold" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableTaskOffload" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableWsd" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableICMPRedirect" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableIPSourceRouting" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "ArpRetryCount" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableDHCPMediaSense" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TcpFinWait2Delay" /t REG_DWORD /d "2" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "1e" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "IRPStackSize" /t REG_DWORD /d "32" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "MigrateProxy" /t REG_DWORD /d "0" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "ProxyEnable" /t REG_DWORD /d "0" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "ProxyHttp1.1" /t REG_DWORD /d "0" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "ProxyServer" /t REG_DWORD /d "http://ProxyServername:80" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "SizReqBuf" /t REG_DWORD /d "17424" /f
+reg add "HKLM\System\CurrentControlSet\Services\Class\Net\Trans\000n\Ndi" /v "HelpText" /t REG_DWORD /d "000n" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters" /v "MaximumUdpPacketSize" /t REG_DWORD /d "576" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "HttpBatchSize" /t REG_WORD /D "1" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "MaxReceiveInterval" /t REG_WORD /D "50" /f
 cls
 echo Carregando...
 echo -------------------------------------
@@ -195,7 +240,7 @@ PowerShell -command "Get-AppxPackage Microsoft.Print3D | Remove-AppxPackage" >nu
 PowerShell -command "Get-AppxPackage EclipseManager | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage ActiproSoftwareLLC | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage AdobeSystemsIncorporated.AdobePhotoshopExpress | Remove-AppxPackage" >nul 2>&1
-PowerShell -command "Get-AppxPackage Duolingo-LearnLanguagesforFree | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage 'D5EA27B7.Duolingo-LearnLanguagesforFree' | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage PandoraMediaInc | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage CandyCrush | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage *Wunderlist* | Remove-AppxPackage" >nul 2>&1
@@ -203,6 +248,7 @@ PowerShell -command "Get-AppxPackage *Flipboard* | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage *Twitter* | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage *Facebook* | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage *Sway* | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage *disney* | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.BingTravel | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.BingHealthAndFitness | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage" >nul 2>&1
@@ -215,6 +261,7 @@ PowerShell -command "Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxP
 PowerShell -command "Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.BioEnrollment | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage ContentDeliveryManager | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage 'Microsoft.Advertising.Xaml' | Remove-AppxPackage" >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
@@ -240,7 +287,7 @@ echo -------------------------------------
 echo Progresso: ███████░░░░░░░░░░░░░ 35%%
 echo -------------------------------------
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-PowerShell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/882588947706966046/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
+PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
 reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
 del %temp%\~Regedit.reg >nul 2>&1
 cls
@@ -262,91 +309,92 @@ echo Progresso: ██████████░░░░░░░░░░ 50%
 echo -------------------------------------
 cd %appdata% >nul 2>&1
 cd .minecraft >nul 2>&1
-(echo ofFogType:3) > optionsof.txt
-(echo ofFogStart:0.6) >> optionsof.txt
-(echo ofMipmapType:0) >> optionsof.txt
-(echo ofOcclusionFancy:false) >> optionsof.txt
-(echo ofSmoothFps:false) >> optionsof.txt
-(echo ofSmoothWorld:false) >> optionsof.txt
-(echo ofAoLevel:0.0) >> optionsof.txt
-(echo ofClouds:3) >> optionsof.txt
-(echo ofCloudsHeight:0.0) >> optionsof.txt
-(echo ofTrees:1) >> optionsof.txt
-(echo ofDroppedItems:1) >> optionsof.txt
-(echo ofRain:3) >> optionsof.txt
-(echo ofAnimatedWater:0) >> optionsof.txt
-(echo ofAnimatedLava:0) >> optionsof.txt
-(echo ofAnimatedFire:true) >> optionsof.txt
-(echo ofAnimatedPortal:true) >> optionsof.txt
-(echo ofAnimatedRedstone:true) >> optionsof.txt
-(echo ofAnimatedExplosion:true) >> optionsof.txt
-(echo ofAnimatedFlame:true) >> optionsof.txt
-(echo ofAnimatedSmoke:true) >> optionsof.txt
-(echo ofVoidParticles:true) >> optionsof.txt
-(echo ofWaterParticles:true) >> optionsof.txt
-(echo ofPortalParticles:true) >> optionsof.txt
-(echo ofPotionParticles:true) >> optionsof.txt
-(echo ofFireworkParticles:true) >> optionsof.txt
-(echo ofDrippingWaterLava:true) >> optionsof.txt
-(echo ofAnimatedTerrain:true) >> optionsof.txt
-(echo ofAnimatedTextures:true) >> optionsof.txt
-(echo ofRainSplash:false) >> optionsof.txt
-(echo ofLagometer:false) >> optionsof.txt
-(echo ofShowFps:false) >> optionsof.txt
-(echo ofAutoSaveTicks:4000) >> optionsof.txt
-(echo ofBetterGrass:3) >> optionsof.txt
-(echo ofConnectedTextures:1) >> optionsof.txt
-(echo ofWeather:true) >> optionsof.txt
-(echo ofSky:false) >> optionsof.txt
-(echo ofStars:true) >> optionsof.txt
-(echo ofSunMoon:false) >> optionsof.txt
-(echo ofVignette:1) >> optionsof.txt
-(echo ofChunkUpdates:1) >> optionsof.txt
-(echo ofChunkUpdatesDynamic:false) >> optionsof.txt
-(echo ofTime:1) >> optionsof.txt
-(echo ofAaLevel:0) >> optionsof.txt
-(echo ofAfLevel:1) >> optionsof.txt
-(echo ofProfiler:false) >> optionsof.txt
-(echo ofBetterSnow:false) >> optionsof.txt
-(echo ofSwampColors:false) >> optionsof.txt
-(echo ofRandomEntities:false) >> optionsof.txt
-(echo ofCustomFonts:false) >> optionsof.txt
-(echo ofCustomColors:false) >> optionsof.txt
-(echo ofCustomItems:false) >> optionsof.txt
-(echo ofCustomSky:true) >> optionsof.txt
-(echo ofShowCapes:true) >> optionsof.txt
-(echo ofNaturalTextures:false) >> optionsof.txt
-(echo ofEmissiveTextures:true) >> optionsof.txt
-(echo ofLazyChunkLoading:true) >> optionsof.txt
-(echo ofRenderRegions:true) >> optionsof.txt
-(echo ofSmartAnimations:false) >> optionsof.txt
-(echo ofDynamicFov:true) >> optionsof.txt
-(echo ofAlternateBlocks:false) >> optionsof.txt
-(echo ofDynamicLights:3) >> optionsof.txt
-(echo ofScreenshotSize:1) >> optionsof.txt
-(echo ofCustomEntityModels:false) >> optionsof.txt
-(echo ofCustomGuis:false) >> optionsof.txt
-(echo ofShowGlErrors:true) >> optionsof.txt
-(echo ofFastMath:true) >> optionsof.txt
-(echo ofFastRender:true) >> optionsof.txt
-(echo ofTranslucentBlocks:1) >> optionsof.txt
-(echo ofChatBackground:0) >> optionsof.txt
-(echo ofChatShadow:true) >> optionsof.txt
-(echo renderDistance:2) >> options.txt
-(echo particles:2) >> options.txt
-(echo bobView:false) >> options.txt
-(echo anaglyph3d:false) >> options.txt
-(echo maxFps:9999) >> options.txt
-(echo fboEnable:true) >> options.txt
-(echo fancyGraphics:false) >> options.txt
-(echo renderClouds:false) >> options.txt
-(echo snooperEnabled:true) >> options.txt
-(echo enableVsync:false) >> options.txt
-(echo useVbo:true) >> options.txt
-(echo advancedItemTooltips:true) >> options.txt
-(echo heldItemTooltips:true) >> options.txt
-(echo ao:0) >> options.txt
-(echo gamma:1.0) > options.txt
+::Minecraft Options
+powershell -Command "(Get-Content options.txt) -replace 'gamma:\d+', 'gamma:10' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'renderDistance:\d+', 'renderDistance:2' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'particles:\d+', 'particles:2' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'anaglyph3d:true', 'anaglyph3d:false' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'maxFps:\d+', 'maxFps:9999' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'anaglyph3d:true', 'anaglyph3d:false' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'fboEnable:false', 'fboEnable:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'fancyGraphics:true', 'fancyGraphics:false' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'renderClouds:true', 'renderClouds:false' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'snooperEnabled:false', 'snooperEnabled:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'useVbo:false', 'useVbo:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'advancedItemTooltips:false', 'advancedItemTooltips:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'heldItemTooltips:false', 'advancedItemTooltips:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'ao:\d+', 'ao:0' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'soundCategory_music:\d+', 'soundCategory_music:0' | Out-File -encoding ASCII options.txt"
+::Optifine Options
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFogType:\d+', 'ofFogType:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFogStart:\d+', 'ofFogStart:0.6' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofMipmapType:\d+', 'ofMipmapType:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofOcclusionFancy:true', 'ofOcclusionFancy:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSmoothFps:true', 'ofSmoothFps:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSmoothWorld:true', 'ofOcclusionFancy:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAoLevel:\d+', 'ofAoLevel:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofClouds:\d+', 'ofClouds:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCloudsHeight:\d+', 'ofCloudsHeight:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofTrees:\d+', 'ofTrees:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofDroppedItems:\d+', 'ofDroppedItems:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofRain:\d+', 'ofRain:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedWater:\d+', 'ofAnimatedWater:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedLava:\d+', 'ofAnimatedLava:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedFire:false', 'ofAnimatedFire:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedPortal:false', 'ofAnimatedPortal:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedRedstone:false', 'ofAnimatedRedstone:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedExplosion:false', 'ofAnimatedExplosion:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedFlame:false', 'ofAnimatedFlame:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedSmoke:false', 'ofAnimatedSmoke:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofVoidParticles:false', 'ofVoidParticles:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofWaterParticles:false', 'ofWaterParticles:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofPotionParticles:false', 'ofPotionParticles:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFireworkParticles:false', 'ofFireworkParticles:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofDrippingWaterLava:false', 'ofDrippingWaterLava:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedTerrain:false', 'ofAnimatedTerrain:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedTextures:false', 'ofAnimatedTextures:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofRainSplash:true', 'ofRainSplash:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofLagometer:true', 'ofLagometer:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofShowFps:true', 'ofShowFps:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAutoSaveTicks:\d+', 'ofAutoSaveTicks:4000' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofBetterGrass:\d+', 'ofBetterGrass:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofConnectedTextures:\d+', 'ofConnectedTextures:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofWeather:false', 'ofWeather:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSky:true', 'ofSky:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofStars:true', 'ofStars:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSunMoon:true', 'ofSunMoon:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofVignette:\d+', 'ofVignette:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofChunkUpdates:\d+', 'ofChunkUpdates:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofChunkUpdatesDynamic:true', 'ofChunkUpdatesDynamic:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofTime:\d+', 'ofTime:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAaLevel:\d+', 'ofAaLevel:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAfLevel:\d+', 'ofAfLevel:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofProfiler:true', 'ofProfiler:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofBetterSnow:true', 'ofBetterSnow:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSwampColors:true', 'ofSwampColors:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofRandomEntities:true', 'ofRandomEntities:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomFonts:false', 'ofCustomFonts:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomColors:false', 'ofCustomColors:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomItems:false', 'ofCustomItems:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomSky:false', 'ofCustomSky:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofShowCapes:false', 'ofShowCapes:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofNaturalTextures:true', 'ofNaturalTextures:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofEmissiveTextures:false', 'ofEmissiveTextures:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofLazyChunkLoading:false', 'ofLazyChunkLoading:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofRenderRegions:false', 'ofRenderRegions:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSmartAnimations:true', 'ofSmartAnimations:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofDynamicFov:false', 'ofDynamicFov:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAlternateBlocks:true', 'ofAlternateBlocks:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofDynamicLights:\d+', 'ofDynamicLights:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofScreenshotSize:\d+', 'ofScreenshotSize:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomEntityModels:false', 'ofCustomEntityModels:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomGuis:false', 'ofCustomGuis:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofShowGlErrors:false', 'ofShowGlErrors:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFastMath:false', 'ofFastMath:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFastRender:false', 'ofFastRender:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofTranslucentBlocks:\d+', 'ofTranslucentBlocks:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatBackground:\d+', 'ofChatBackground:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatShadow:false', 'ofChatShadow:true' | Out-File -encoding ASCII optionsof.txt"
 cls
 echo Carregando...
 echo -------------------------------------
@@ -362,7 +410,7 @@ echo -------------------------------------
 ::Esse código não é meu, créditos da Hone.
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
 set /a mem=%mem% + 1024000
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
@@ -412,14 +460,14 @@ echo Carregando...
 echo -------------------------------------
 echo Progresso: ███████████████████░ 95%%
 echo -------------------------------------
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/945832218872414258/obrigadoporusar.bat" -OutFile "C:\Hone\Resources\obrigadoporusar.bat"
-Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\Hone\Resources\obrigadoporusar.bat /f >nul 2>&1
+powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\Hone\Resources\obrigadoporusar.bat"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\Hone\Resources\obrigadoporusar.bat /f >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ████████████████████ 100%%
 echo -------------------------------------
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/959611962331918336/desligar.ps1" -OutFile "C:\desligar.ps1" >nul 2>&1
+powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/desligar.ps1" -OutFile "C:\desligar.ps1" >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\desligar.ps1'" >nul 2>&1
 del C:\desligar.ps1 >nul 2>&1
 echo.
@@ -566,7 +614,7 @@ netsh int tcp set global timestamps=disabled >nul 2>&1
 netsh int tcp set heuristics disabled >nul 2>&1
 netsh int tcp set global chimney=disabled >nul 2>&1
 netsh int tcp set global ecncapability=disabled >nul 2>&1
-netsh int tcp set global rsc=disabled >nul 2>&1
+netsh int tcp set global rsc=enabled >nul 2>&1
 netsh int tcp set global nonsackrttresiliency=disabled >nul 2>&1
 netsh int tcp set security mpp=disabled >nul 2>&1
 netsh int tcp set security profiles=disabled >nul 2>&1
@@ -613,12 +661,57 @@ echo Progress: ████░░░░░░░░░░░░░░░░ 20%%
 echo -------------------------------------
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "00000000" /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "UseActionCenterExperience" /t REG_DWORD /d "00000000" /f >nul 2>&1
-reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v
 reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "AutoDownload" /t REG_DWORD /d 2 /f >nul 2>&1
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_SZ /d "ffffffff" /f >nul 2>&1
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "StartupDelayInMSec" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnablePMTUBHDetect" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnablePMTUDiscovery" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "UseDomainNameDevolution" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DeadGWDetectDefault" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DontAddDefaultGatewayDefault" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "QualifyingDestinationThreshold" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableTaskOffload" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableWsd" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableICMPRedirect" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableIPSourceRouting" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "ArpRetryCount" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableDHCPMediaSense" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpFinWait2Delay" /t REG_DWORD /d "2" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "1e" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort" /t REG_DWORD /d "fffe" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableBucketSize" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableSize" /t REG_DWORD /d "180" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheEntryTtlLimit" /t REG_DWORD /d "fa00" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxSOACacheEntryTtlLimit" /t REG_DWORD /d "12d" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUBHDetect" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUDiscovery" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "UseDomainNameDevolution" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DeadGWDetectDefault" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DontAddDefaultGatewayDefault" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "QualifyingDestinationThreshold" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableTaskOffload" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableWsd" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableICMPRedirect" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableIPSourceRouting" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "ArpRetryCount" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableDHCPMediaSense" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TcpFinWait2Delay" /t REG_DWORD /d "2" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "1e" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "IRPStackSize" /t REG_DWORD /d "32" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "MigrateProxy" /t REG_DWORD /d "0" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "ProxyEnable" /t REG_DWORD /d "0" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "ProxyHttp1.1" /t REG_DWORD /d "0" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "ProxyServer" /t REG_DWORD /d "http://ProxyServername:80" /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "SizReqBuf" /t REG_DWORD /d "17424" /f
+reg add "HKLM\System\CurrentControlSet\Services\Class\Net\Trans\000n\Ndi" /v "HelpText" /t REG_DWORD /d "000n" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters" /v "MaximumUdpPacketSize" /t REG_DWORD /d "576" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "HttpBatchSize" /t REG_WORD /D "1" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "MaxReceiveInterval" /t REG_WORD /D "50" /f
 cls
 echo Loading...
 echo -------------------------------------
@@ -638,7 +731,7 @@ PowerShell -command "Get-AppxPackage Microsoft.Print3D | Remove-AppxPackage" >nu
 PowerShell -command "Get-AppxPackage EclipseManager | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage ActiproSoftwareLLC | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage AdobeSystemsIncorporated.AdobePhotoshopExpress | Remove-AppxPackage" >nul 2>&1
-PowerShell -command "Get-AppxPackage Duolingo-LearnLanguagesforFree | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage 'D5EA27B7.Duolingo-LearnLanguagesforFree' | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage PandoraMediaInc | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage CandyCrush | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage *Wunderlist* | Remove-AppxPackage" >nul 2>&1
@@ -646,6 +739,7 @@ PowerShell -command "Get-AppxPackage *Flipboard* | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage *Twitter* | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage *Facebook* | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage *Sway* | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage *disney* | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.BingTravel | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.BingHealthAndFitness | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage" >nul 2>&1
@@ -658,6 +752,7 @@ PowerShell -command "Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxP
 PowerShell -command "Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.BioEnrollment | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage ContentDeliveryManager | Remove-AppxPackage" >nul 2>&1
+PowerShell -command "Get-AppxPackage 'Microsoft.Advertising.Xaml' | Remove-AppxPackage" >nul 2>&1
 cls
 echo Loading...
 echo -------------------------------------
@@ -683,7 +778,7 @@ echo -------------------------------------
 echo Progress: ███████░░░░░░░░░░░░░ 35%%
 echo -------------------------------------
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-PowerShell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/882588947706966046/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
+PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
 reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
 del %temp%\~Regedit.reg >nul 2>&1
 cls
@@ -705,91 +800,92 @@ echo Progresso: ██████████░░░░░░░░░░ 50%
 echo -------------------------------------
 cd %appdata% >nul 2>&1
 cd .minecraft >nul 2>&1
-(echo ofFogType:3) > optionsof.txt
-(echo ofFogStart:0.6) >> optionsof.txt
-(echo ofMipmapType:0) >> optionsof.txt
-(echo ofOcclusionFancy:false) >> optionsof.txt
-(echo ofSmoothFps:false) >> optionsof.txt
-(echo ofSmoothWorld:false) >> optionsof.txt
-(echo ofAoLevel:0.0) >> optionsof.txt
-(echo ofClouds:3) >> optionsof.txt
-(echo ofCloudsHeight:0.0) >> optionsof.txt
-(echo ofTrees:1) >> optionsof.txt
-(echo ofDroppedItems:1) >> optionsof.txt
-(echo ofRain:3) >> optionsof.txt
-(echo ofAnimatedWater:0) >> optionsof.txt
-(echo ofAnimatedLava:0) >> optionsof.txt
-(echo ofAnimatedFire:true) >> optionsof.txt
-(echo ofAnimatedPortal:true) >> optionsof.txt
-(echo ofAnimatedRedstone:true) >> optionsof.txt
-(echo ofAnimatedExplosion:true) >> optionsof.txt
-(echo ofAnimatedFlame:true) >> optionsof.txt
-(echo ofAnimatedSmoke:true) >> optionsof.txt
-(echo ofVoidParticles:true) >> optionsof.txt
-(echo ofWaterParticles:true) >> optionsof.txt
-(echo ofPortalParticles:true) >> optionsof.txt
-(echo ofPotionParticles:true) >> optionsof.txt
-(echo ofFireworkParticles:true) >> optionsof.txt
-(echo ofDrippingWaterLava:true) >> optionsof.txt
-(echo ofAnimatedTerrain:true) >> optionsof.txt
-(echo ofAnimatedTextures:true) >> optionsof.txt
-(echo ofRainSplash:false) >> optionsof.txt
-(echo ofLagometer:false) >> optionsof.txt
-(echo ofShowFps:false) >> optionsof.txt
-(echo ofAutoSaveTicks:4000) >> optionsof.txt
-(echo ofBetterGrass:3) >> optionsof.txt
-(echo ofConnectedTextures:1) >> optionsof.txt
-(echo ofWeather:true) >> optionsof.txt
-(echo ofSky:false) >> optionsof.txt
-(echo ofStars:true) >> optionsof.txt
-(echo ofSunMoon:false) >> optionsof.txt
-(echo ofVignette:1) >> optionsof.txt
-(echo ofChunkUpdates:1) >> optionsof.txt
-(echo ofChunkUpdatesDynamic:false) >> optionsof.txt
-(echo ofTime:1) >> optionsof.txt
-(echo ofAaLevel:0) >> optionsof.txt
-(echo ofAfLevel:1) >> optionsof.txt
-(echo ofProfiler:false) >> optionsof.txt
-(echo ofBetterSnow:false) >> optionsof.txt
-(echo ofSwampColors:false) >> optionsof.txt
-(echo ofRandomEntities:false) >> optionsof.txt
-(echo ofCustomFonts:false) >> optionsof.txt
-(echo ofCustomColors:false) >> optionsof.txt
-(echo ofCustomItems:false) >> optionsof.txt
-(echo ofCustomSky:true) >> optionsof.txt
-(echo ofShowCapes:true) >> optionsof.txt
-(echo ofNaturalTextures:false) >> optionsof.txt
-(echo ofEmissiveTextures:true) >> optionsof.txt
-(echo ofLazyChunkLoading:true) >> optionsof.txt
-(echo ofRenderRegions:true) >> optionsof.txt
-(echo ofSmartAnimations:false) >> optionsof.txt
-(echo ofDynamicFov:true) >> optionsof.txt
-(echo ofAlternateBlocks:false) >> optionsof.txt
-(echo ofDynamicLights:3) >> optionsof.txt
-(echo ofScreenshotSize:1) >> optionsof.txt
-(echo ofCustomEntityModels:false) >> optionsof.txt
-(echo ofCustomGuis:false) >> optionsof.txt
-(echo ofShowGlErrors:true) >> optionsof.txt
-(echo ofFastMath:true) >> optionsof.txt
-(echo ofFastRender:true) >> optionsof.txt
-(echo ofTranslucentBlocks:1) >> optionsof.txt
-(echo ofChatBackground:0) >> optionsof.txt
-(echo ofChatShadow:true) >> optionsof.txt
-(echo renderDistance:2) >> options.txt
-(echo particles:2) >> options.txt
-(echo bobView:false) >> options.txt
-(echo anaglyph3d:false) >> options.txt
-(echo maxFps:9999) >> options.txt
-(echo fboEnable:true) >> options.txt
-(echo fancyGraphics:false) >> options.txt
-(echo renderClouds:false) >> options.txt
-(echo snooperEnabled:true) >> options.txt
-(echo enableVsync:false) >> options.txt
-(echo useVbo:true) >> options.txt
-(echo advancedItemTooltips:true) >> options.txt
-(echo heldItemTooltips:true) >> options.txt
-(echo ao:0) >> options.txt
-(echo gamma:1.0) > options.txt
+::Minecraft Options
+powershell -Command "(Get-Content options.txt) -replace 'gamma:\d+', 'gamma:10' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'renderDistance:\d+', 'renderDistance:2' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'particles:\d+', 'particles:2' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'anaglyph3d:true', 'anaglyph3d:false' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'maxFps:\d+', 'maxFps:9999' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'anaglyph3d:true', 'anaglyph3d:false' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'fboEnable:false', 'fboEnable:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'fancyGraphics:true', 'fancyGraphics:false' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'renderClouds:true', 'renderClouds:false' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'snooperEnabled:false', 'snooperEnabled:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'useVbo:false', 'useVbo:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'advancedItemTooltips:false', 'advancedItemTooltips:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'heldItemTooltips:false', 'advancedItemTooltips:true' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'ao:\d+', 'ao:0' | Out-File -encoding ASCII options.txt"
+powershell -Command "(Get-Content options.txt) -replace 'soundCategory_music:\d+', 'soundCategory_music:0' | Out-File -encoding ASCII options.txt"
+::Optifine Options
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFogType:\d+', 'ofFogType:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFogStart:\d+', 'ofFogStart:0.6' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofMipmapType:\d+', 'ofMipmapType:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofOcclusionFancy:true', 'ofOcclusionFancy:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSmoothFps:true', 'ofSmoothFps:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSmoothWorld:true', 'ofOcclusionFancy:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAoLevel:\d+', 'ofAoLevel:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofClouds:\d+', 'ofClouds:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCloudsHeight:\d+', 'ofCloudsHeight:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofTrees:\d+', 'ofTrees:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofDroppedItems:\d+', 'ofDroppedItems:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofRain:\d+', 'ofRain:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedWater:\d+', 'ofAnimatedWater:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedLava:\d+', 'ofAnimatedLava:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedFire:false', 'ofAnimatedFire:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedPortal:false', 'ofAnimatedPortal:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedRedstone:false', 'ofAnimatedRedstone:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedExplosion:false', 'ofAnimatedExplosion:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedFlame:false', 'ofAnimatedFlame:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedSmoke:false', 'ofAnimatedSmoke:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofVoidParticles:false', 'ofVoidParticles:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofWaterParticles:false', 'ofWaterParticles:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofPotionParticles:false', 'ofPotionParticles:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFireworkParticles:false', 'ofFireworkParticles:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofDrippingWaterLava:false', 'ofDrippingWaterLava:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedTerrain:false', 'ofAnimatedTerrain:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAnimatedTextures:false', 'ofAnimatedTextures:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofRainSplash:true', 'ofRainSplash:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofLagometer:true', 'ofLagometer:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofShowFps:true', 'ofShowFps:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAutoSaveTicks:\d+', 'ofAutoSaveTicks:4000' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofBetterGrass:\d+', 'ofBetterGrass:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofConnectedTextures:\d+', 'ofConnectedTextures:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofWeather:false', 'ofWeather:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSky:true', 'ofSky:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofStars:true', 'ofStars:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSunMoon:true', 'ofSunMoon:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofVignette:\d+', 'ofVignette:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofChunkUpdates:\d+', 'ofChunkUpdates:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofChunkUpdatesDynamic:true', 'ofChunkUpdatesDynamic:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofTime:\d+', 'ofTime:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAaLevel:\d+', 'ofAaLevel:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAfLevel:\d+', 'ofAfLevel:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofProfiler:true', 'ofProfiler:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofBetterSnow:true', 'ofBetterSnow:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSwampColors:true', 'ofSwampColors:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofRandomEntities:true', 'ofRandomEntities:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomFonts:false', 'ofCustomFonts:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomColors:false', 'ofCustomColors:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomItems:false', 'ofCustomItems:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomSky:false', 'ofCustomSky:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofShowCapes:false', 'ofShowCapes:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofNaturalTextures:true', 'ofNaturalTextures:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofEmissiveTextures:false', 'ofEmissiveTextures:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofLazyChunkLoading:false', 'ofLazyChunkLoading:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofRenderRegions:false', 'ofRenderRegions:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofSmartAnimations:true', 'ofSmartAnimations:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofDynamicFov:false', 'ofDynamicFov:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofAlternateBlocks:true', 'ofAlternateBlocks:false' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofDynamicLights:\d+', 'ofDynamicLights:3' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofScreenshotSize:\d+', 'ofScreenshotSize:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomEntityModels:false', 'ofCustomEntityModels:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofCustomGuis:false', 'ofCustomGuis:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofShowGlErrors:false', 'ofShowGlErrors:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFastMath:false', 'ofFastMath:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofFastRender:false', 'ofFastRender:true' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofTranslucentBlocks:\d+', 'ofTranslucentBlocks:1' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatBackground:\d+', 'ofChatBackground:0' | Out-File -encoding ASCII optionsof.txt"
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatShadow:false', 'ofChatShadow:true' | Out-File -encoding ASCII optionsof.txt"
 cls
 echo Carregando...
 echo -------------------------------------
@@ -805,7 +901,7 @@ echo -------------------------------------
 ::This code is not mine, credits to Hone.
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
 set /a mem=%mem% + 1024000
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
 cls
 echo Carregando...
 echo -------------------------------------
@@ -855,14 +951,14 @@ echo Loading...
 echo -------------------------------------
 echo Progress: ███████████████████░ 95%%
 echo -------------------------------------
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/959611871047082014/thanksforusing.bat" -OutFile "C:\Hone\Resources\obrigadoporusar.bat"
-Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\Hone\Resources\obrigadoporusar.bat /f >nul 2>&1
+powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/thanksforusing.bat" -OutFile "C:\Hone\Resources\obrigadoporusar.bat"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\Hone\Resources\obrigadoporusar.bat /f >nul 2>&1
 cls
 echo Loading...
 echo -------------------------------------
 echo Progress: ████████████████████ 100%%
 echo -------------------------------------
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/633652458090135552/959611920179163166/shutdown.ps1" -OutFile "C:\shutdown.ps1" >nul 2>&1
+powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/shutdown.ps1" -OutFile "C:\shutdown.ps1" >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\shutdown.ps1'" >nul 2>&1
 del C:\shutdown.ps1 >nul 2>&1
 echo.

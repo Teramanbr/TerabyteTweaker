@@ -333,7 +333,6 @@ echo.
 echo.
 echo.
 echo.
-timeout -t 300 >nul 2>&1 && shutdown -r -t 00
 pause
 
 ::=========================================================================================================================================== ::
@@ -499,7 +498,6 @@ echo.
 echo.
 echo.
 echo.
-timeout -t 300 >nul 2>&1 && shutdown -r -t 00
 pause
 
 ::=========================================================================================================================================== ::
@@ -780,6 +778,7 @@ powershell -Command "(Get-Content options.txt) -replace 'renderDistance:\d+', 'r
 powershell -Command "(Get-Content options.txt) -replace 'particles:\d+', 'particles:2' | Out-File -encoding default options.txt" >nul 2>&1
 powershell -Command "(Get-Content options.txt) -replace 'anaglyph3d:true', 'anaglyph3d:false' | Out-File -encoding default options.txt" >nul 2>&1
 powershell -Command "(Get-Content options.txt) -replace 'maxFps:\d+', 'maxFps:9999' | Out-File -encoding default options.txt" >nul 2>&1
+powershell -Command "(Get-Content options.txt) -replace 'graphicsMode:\d+', 'graphicsMode:0' | Out-File -encoding default options.txt" >nul 2>&1
 powershell -Command "(Get-Content options.txt) -replace 'anaglyph3d:true', 'anaglyph3d:false' | Out-File -encoding default options.txt" >nul 2>&1
 powershell -Command "(Get-Content options.txt) -replace 'fboEnable:false', 'fboEnable:true' | Out-File -encoding default options.txt" >nul 2>&1
 powershell -Command "(Get-Content options.txt) -replace 'fancyGraphics:true', 'fancyGraphics:false' | Out-File -encoding default options.txt" >nul 2>&1
@@ -990,6 +989,19 @@ IF [%%G] EQU [0416] (
   goto 19PT
 ) ELSE (
   goto 19EN
+)
+)
+
+::=========================================================================================================================================== ::
+
+:95
+
+cls
+FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
+IF [%%G] EQU [0416] (
+  goto 20PT
+) ELSE (
+  goto 20EN
 )
 )
 

@@ -1,10 +1,10 @@
 <h1 align="center">Terabyte Tweaker</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.6.0-blue" />
+  <img alt="Version" src="https://img.shields.io/badge/Version:-1.6.0-blue" />
   <a href="#" target="_blank">
     <img alt="License: GPL" src="https://img.shields.io/badge/License-GPL%203.0%20License-purple.svg" />
   </a>
-  <a><img alt="Downloads:" src="https://img.shields.io/github/downloads/Teramanbr/TerabyteTweaker/total.svg" />
+  <a><img alt="Downloads:" src="https://img.shields.io/github/Downloads:/Teramanbr/TerabyteTweaker/total.svg" />
   </a>
   <a><img alt="Is Mantained?" src="https://img.shields.io/badge/Mantained:-yes-green.svg" />
   </a>
@@ -28,13 +28,15 @@ I strongly recommend you to use this app in your desktop computer, as it will gi
 This application works on both Windows 10 and 11, i have not tested it in lower versions, and i do **NOT** recommend using it on them, as it may cause damage to the system when tweaking Regedit.
 Even though all my regedit tweaks are harmless, i do not want any chance of damage to your system, so don't come crying to me if your Windows Vista got problems after using it.
 
-## ⚠️ Warnings
+## ⚠️ Microsoft SmartScreen
 
-**Warning: For the app to run correctly, you need to have a connection to internet.**
 Running downloaded Batch files triggers a Microsoft SmartScreen prompt, even if the Batch file is not a security threat.
+To proof even more that my program is not a virus, here is the [VirusTotal](https://www.virustotal.com/gui/file/94a84cf4cea2ed8d8a39a6d568379f63729a00a2a1119427c848cd68cdcbe601?nocache=1) report:
+![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/VirusTotal.png?raw=true)
 
 ## 🔨 Installation
 
+**Warning: For the app to run correctly, you need to have a connection to internet.**
 - Download the [Application](https://github.com/Teramanbr/TerabyteTweaker/releases/download/v1.1.0/Terabyte.Tweaker.bat).
 - Run it in Administrator mode.
 - Type: Y or Yes and press enter to install the application.

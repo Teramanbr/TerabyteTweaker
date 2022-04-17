@@ -4,10 +4,10 @@
 ::This code was made by a 14 year old brazilian, which did all of this alone, so if the code is actual garbage,
 ::i apologise, for i am just a child who likes computers and has poor programming skills.
 
-chcp 65001 >nul 2>&1
+chcp 437 >nul 2>&1
 color 6
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto br
 ) ELSE (
   goto en
@@ -16,6 +16,7 @@ IF [%%G] EQU [0416] (
 
 :br
 
+chcp 65001 >nul 2>&1
 net session >nul 2>&1
 if %errorLevel% == 0 (
     cls
@@ -95,6 +96,8 @@ IF /I "%choice%"=="Não" Goto quit
 IF /I "%choice%"=="Nao" Goto quit
 
 :en
+
+chcp 65001 >nul 2>&1
 net session >nul 2>&1
 if %errorLevel% == 0 (
     cls
@@ -173,6 +176,7 @@ IF /I "%choice%"=="No" Goto quit
 IF /I "%choice%"=="no" Goto quit
 
 :runbr
+chcp 65001 >nul 2>&1
 cls
 TITLE Aplicando Terabyte Tweaker...
 cls
@@ -183,126 +187,148 @@ echo -------------------------------------
 goto 0
 :0PT
 :1PT
+chcp 65001 >nul 2>&1
+cls
 echo Carregando...
 echo -------------------------------------
 echo Progresso: █░░░░░░░░░░░░░░░░░░░ 5%%
 echo -------------------------------------
 goto 5
 :2PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ██░░░░░░░░░░░░░░░░░░ 10%%
 echo -------------------------------------
 goto 10
 :3PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ███░░░░░░░░░░░░░░░░░ 15%%
 echo -------------------------------------
 goto 15
 :4PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ████░░░░░░░░░░░░░░░░ 20%%
 echo -------------------------------------
 goto 20
 :5PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: █████░░░░░░░░░░░░░░░ 25%%
 echo -------------------------------------
 goto 25
 :6PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ██████░░░░░░░░░░░░░░ 30%%
 echo -------------------------------------
 goto 30
 :7PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo ------------------------------------- 
 echo Progresso: ███████░░░░░░░░░░░░░ 35%%
 echo -------------------------------------
 goto 35
 :8PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ████████░░░░░░░░░░░░ 40%%
 echo -------------------------------------
 goto 40
 :9PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: █████████░░░░░░░░░░░ 45%%
 echo -------------------------------------
 goto 45
 :10PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ██████████░░░░░░░░░░ 50%%
 echo -------------------------------------
 goto 50
 :11PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ███████████░░░░░░░░░ 55%%
 echo -------------------------------------
 goto 55
 :12PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ████████████░░░░░░░░ 60%%
 echo -------------------------------------
 goto 60
 :13PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: █████████████░░░░░░░ 65%%
 echo -------------------------------------
 goto 65
 :14PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ██████████████░░░░░░ 70%%
 echo -------------------------------------
 goto 70
 :15PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ███████████████░░░░░ 75%%
 echo -------------------------------------
 goto 75
 :16PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ████████████████░░░░ 80%%
 echo -------------------------------------
 goto 80
 :17PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: █████████████████░░░ 85%%
 echo -------------------------------------
 goto 85
 :18PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ██████████████████░░ 90%%
 echo -------------------------------------
 goto 90
 :19PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ███████████████████░ 95%%
 echo -------------------------------------
 goto 95
 :20PT
+chcp 65001 >nul 2>&1
 echo Carregando...
 echo -------------------------------------
 echo Progresso: ████████████████████ 100%%
 echo -------------------------------------
 goto 100
 :EndPT
+chcp 65001 >nul 2>&1
 cls
 echo.
 echo.
@@ -339,6 +365,7 @@ pause
 
 ::Inglês
 :run
+chcp 65001 >nul 2>&1
 cls
 TITLE Applying Terabyte Tweaker...
 cls
@@ -349,126 +376,147 @@ echo -------------------------------------
 goto 0
 :0EN
 :1EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: █░░░░░░░░░░░░░░░░░░░ 5%%
 echo -------------------------------------
 goto 5
 :2EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ██░░░░░░░░░░░░░░░░░░ 10%%
 echo -------------------------------------
 goto 10
 :3EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ███░░░░░░░░░░░░░░░░░ 15%%
 echo -------------------------------------	
 goto 15
 :4EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ████░░░░░░░░░░░░░░░░ 20%%
 echo -------------------------------------
 goto 20
 :5EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: █████░░░░░░░░░░░░░░░ 25%%
 echo -------------------------------------
 goto 25
 :6EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ██████░░░░░░░░░░░░░░ 30%%
 echo -------------------------------------
 goto 30
 :7EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo ------------------------------------- 
 echo Progress: ███████░░░░░░░░░░░░░ 35%%
 echo -------------------------------------
 goto 35
 :8EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ████████░░░░░░░░░░░░ 40%%
 echo -------------------------------------
 goto 40
 :9EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: █████████░░░░░░░░░░░ 45%%
 echo -------------------------------------
 goto 45
 :10EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ██████████░░░░░░░░░░ 50%%
 echo -------------------------------------
 goto 50
 :11EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ███████████░░░░░░░░░ 55%%
 echo -------------------------------------
 goto 55
 :12EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ████████████░░░░░░░░ 60%%
 echo -------------------------------------
 goto 60
 :13EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: █████████████░░░░░░░ 65%%
 echo -------------------------------------
 goto 65
 :14EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ██████████████░░░░░░ 70%%
 echo -------------------------------------
 goto 70
 :15EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ███████████████░░░░░ 75%%
 echo -------------------------------------
 goto 75
 :16EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ████████████████░░░░ 80%%
 echo -------------------------------------
 goto 80
 :17EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: █████████████████░░░ 85%%
 echo -------------------------------------
 goto 85
 :18EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ██████████████████░░ 90%%
 echo -------------------------------------
 goto 90
 :19EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ███████████████████░ 95%%
 echo -------------------------------------
 goto 95
 :20EN
+chcp 65001 >nul 2>&1
 echo Loading...
 echo -------------------------------------
 echo Progress: ████████████████████ 100%%
 echo -------------------------------------
 goto 100
 :EndEN
+chcp 65001 >nul 2>&1
 echo.
 echo.
 echo.
@@ -504,11 +552,12 @@ pause
 
 :0
 
+chcp 437 >nul 2>&1
 powershell Enable-ComputerRestore -Drive 'C:\', 'D:\', 'E:\', 'F:\', 'G:\' >nul 2>&1
 powershell Checkpoint-Computer -Description 'Ponto de Restauração Terabyte' >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 1PT
 ) ELSE (
   goto 1EN
@@ -519,6 +568,7 @@ IF [%%G] EQU [0416] (
 
 :5
 
+chcp 437 >nul 2>&1
 ipconfig /release >nul 2>&1
 ipconfig /renew >nul 2>&1
 arp -d * >nul 2>&1
@@ -549,8 +599,8 @@ netsh int ip set global neighborcachelimit=4096 >nul 2>&1
 netsh int tcp set global dca=enabled >nul 2>&1
 netsh int tcp set global netdma=enabled >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 2PT
 ) ELSE (
   goto 2EN
@@ -562,12 +612,13 @@ IF [%%G] EQU [0416] (
 
 :10
 
+chcp 437 >nul 2>&1
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 3PT
 ) ELSE (
   goto 3EN
@@ -578,7 +629,7 @@ IF [%%G] EQU [0416] (
 
 :15
 
-
+chcp 437 >nul 2>&1
 md c:\windows\temp >nul 2>&1
 del c:\windows\logs\cbs\*.log >nul 2>&1
 del C:\Windows\Logs\MoSetup\*.log >nul 2>&1
@@ -592,8 +643,8 @@ del C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\SettingSync\*.log /s /q 
 del C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\Explorer\ThumbCacheToDelete\*.tmp /s /q >nul 2>&1
 del C:\Users\%USERNAME%\AppData\Local\Microsoft\"Terminal Server Client"\Cache\*.bin /s /q >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 4PT
 ) ELSE (
   goto 4EN
@@ -604,6 +655,7 @@ IF [%%G] EQU [0416] (
 
 :20
 
+chcp 437 >nul 2>&1
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "00000000" /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "UseActionCenterExperience" /t REG_DWORD /d "00000000" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f >nul 2>&1
@@ -637,8 +689,8 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Mem
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "HttpBatchSize" /t REG_WORD /D "1" /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "MaxReceiveInterval" /t REG_WORD /D "50" /f >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 5PT
 ) ELSE (
   goto 5EN
@@ -649,6 +701,7 @@ IF [%%G] EQU [0416] (
 
 :25
 
+chcp 437 >nul 2>&1
 PowerShell -command "ps onedrive | Stop-Process -Force" >nul 2>&1
 PowerShell -command "start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.Getstarted | Remove-AppxPackage" >nul 2>&1
@@ -686,8 +739,8 @@ PowerShell -command "Get-AppxPackage Microsoft.BioEnrollment | Remove-AppxPackag
 PowerShell -command "Get-AppxPackage ContentDeliveryManager | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage 'Microsoft.Advertising.Xaml' | Remove-AppxPackage" >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 6PT
 ) ELSE (
   goto 6EN
@@ -698,6 +751,7 @@ IF [%%G] EQU [0416] (
 
 :30
 
+chcp 437 >nul 2>&1
 ::Esse código não é meu, créditos da Hone.
 powercfg -restoredefaultschemes
 powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798652558351794196/798666504190296064/Hone_Power_Plan.pow" -OutFile "C:\Hone\Resources\HoneV2.pow"
@@ -713,8 +767,8 @@ powercfg /d 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c >nul 2>&1
 ::Power Saving Plan
 powercfg /d a1841308-3541-4fab-bc81-f71556f20b4a >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 7PT
 ) ELSE (
   goto 7EN
@@ -725,13 +779,14 @@ IF [%%G] EQU [0416] (
 
 :35
 
+chcp 437 >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
 reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
 del %temp%\~Regedit.reg >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 8PT
 ) ELSE (
   goto 8EN
@@ -742,10 +797,11 @@ IF [%%G] EQU [0416] (
 
 :40
 
+chcp 437 >nul 2>&1
 DISM /Online /Cleanup-Image /StartComponentCleanup >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 9PT
 ) ELSE (
   goto 9EN
@@ -756,10 +812,11 @@ IF [%%G] EQU [0416] (
 
 :45
 
+chcp 437 >nul 2>&1
 DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 10PT
 ) ELSE (
   goto 10EN
@@ -770,6 +827,7 @@ IF [%%G] EQU [0416] (
 
 :50
 
+chcp 437 >nul 2>&1
 cd %appdata% >nul 2>&1
 cd .minecraft >nul 2>&1
 ::Minecraft Options
@@ -860,8 +918,8 @@ powershell -Command "(Get-Content optionsof.txt) -replace 'ofTranslucentBlocks:\
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatBackground:\d+', 'ofChatBackground:0' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatShadow:false', 'ofChatShadow:true' | Out-File -encoding default optionsof.txt" >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 11PT
 ) ELSE (
   goto 11EN
@@ -872,11 +930,12 @@ IF [%%G] EQU [0416] (
 
 :55
 
+chcp 437 >nul 2>&1
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 12PT
 ) ELSE (
   goto 12EN
@@ -887,13 +946,14 @@ IF [%%G] EQU [0416] (
 
 :60
 
+chcp 437 >nul 2>&1
 ::Esse código não é meu, créditos da Hone.
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
 set /a mem=%mem% + 1024000
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 13PT
 ) ELSE (
   goto 13EN
@@ -904,6 +964,7 @@ IF [%%G] EQU [0416] (
 
 :65
 
+chcp 437 >nul 2>&1
 ::Esse código não é meu, créditos da Hone.
 mkdir C:\Hone >nul 2>&1
 cd C:\Hone 
@@ -919,8 +980,8 @@ cd C:\Hone >nul 2>&1
 sc config "STR" start= auto >nul 2>&1
 NET START STR >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 14PT
 ) ELSE (
   goto 14EN
@@ -931,9 +992,10 @@ IF [%%G] EQU [0416] (
 
 :70
 
+chcp 437 >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 15PT
 ) ELSE (
   goto 15EN
@@ -944,9 +1006,10 @@ IF [%%G] EQU [0416] (
 
 :75
 
+chcp 437 >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 16PT
 ) ELSE (
   goto 16EN
@@ -957,9 +1020,10 @@ IF [%%G] EQU [0416] (
 
 :80
 
+chcp 437 >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 17PT
 ) ELSE (
   goto 17EN
@@ -970,9 +1034,10 @@ IF [%%G] EQU [0416] (
 
 :85
 
+chcp 437 >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 18PT
 ) ELSE (
   goto 18EN
@@ -983,9 +1048,10 @@ IF [%%G] EQU [0416] (
 
 :90
 
+chcp 437 >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 19PT
 ) ELSE (
   goto 19EN
@@ -996,9 +1062,10 @@ IF [%%G] EQU [0416] (
 
 :95
 
+chcp 437 >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto 20PT
 ) ELSE (
   goto 20EN
@@ -1009,14 +1076,15 @@ IF [%%G] EQU [0416] (
 
 :100
 
+chcp 437 >nul 2>&1
 powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\Hone\Resources\obrigadoporusar.bat"
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\Hone\Resources\obrigadoporusar.bat /f >nul 2>&1
 powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/desligar.ps1" -OutFile "C:\desligar.ps1" >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\desligar.ps1'" >nul 2>&1
 del C:\desligar.ps1 >nul 2>&1
 cls
-FOR /F "tokens=3 delims= " %%G in ('reg query "hklm\system\controlset001\control\nls\language" /v Installlanguage') DO (
-IF [%%G] EQU [0416] (
+FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   goto EndPT
 ) ELSE (
   goto EndEN

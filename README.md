@@ -1,10 +1,12 @@
 <h1 align="center">Terabyte Tweaker</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.5.0-orange" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.5.0-blue" />
   <a href="#" target="_blank">
-    <img alt="License: GPL" src="https://img.shields.io/badge/License-GPL-yellow.svg" />
+    <img alt="License: GPL" src="https://img.shields.io/badge/License-GPL%203.0%20License-purple.svg" />
   </a>
-  <a><img alt="License: GPL" src="https://img.shields.io/github/downloads/Teramanbr/TerabyteTweaker/total.svg" />
+  <a><img alt="Downloads:" src="https://img.shields.io/github/downloads/Teramanbr/TerabyteTweaker/total.svg" />
+  </a>
+  <a><img alt="Is Mantained?" src="https://img.shields.io/badge/Mantained-yes-green.svg" />
   </a>
 </p>
 <h3 align="center">Terabyte Tweaker is an program that optimizes your Windows PC, allowing it to run faster and smoother by using:</h3>

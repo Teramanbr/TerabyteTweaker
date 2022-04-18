@@ -597,7 +597,7 @@ echo Progress: ████████████████████ 100%
 echo -------------------------------------
 goto 100
 :EndEN
-chcp 65001 >nul 2>&1
+cls
 echo.
 echo.
 echo.
@@ -1172,9 +1172,8 @@ IF [%%G] EQU [1046] (
 chcp 437 >nul 2>&1
 powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\TT\obrigadoporusar.bat"
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\TT\obrigadoporusar.bat /f >nul 2>&1
-PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/shutdown.ps1" -OutFile "%temp%\shutdown.ps1" >nul 2>&1
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%temp%\shutdown.ps1'" >nul 2>&1
-cls
+PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/shutdown.ps1" -OutFile "C:\TT\shutdown.ps1" >nul 2>&1
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\shutdown.ps1'" >nul 2>&1
 FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
   goto EndPT

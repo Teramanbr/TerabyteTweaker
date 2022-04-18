@@ -1,7 +1,9 @@
 <h1 align="center">
 Terabyte Tweaker
-![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/logo.png?raw=true)
 </h1>
+<p>
+![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/logo.png?raw=true)
+</p>
 <p>
   <img alt="Version" src="https://img.shields.io/github/v/tag/Teramanbr/TerabyteTweaker?label=Version%3A" />
   <a href="#" target="_blank">

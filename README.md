@@ -17,7 +17,7 @@ Terabyte Tweaker
 </p>
 
 
-<h3 align="center">Terabyte Tweaker is an program that optimizes your Windows PC, allowing it to run faster and smoother by using:</h3>
+<h3 align="center">Terabyte Tweaker is an program that optimizes your Windows PC, allowing it to run faster and smoother.</h3>
 
 ## ✨ Features
 - Regedits

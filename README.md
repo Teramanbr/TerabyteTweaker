@@ -1,9 +1,3 @@
-<h1 align="center">
-Terabyte Tweaker
-</h1>
-
-![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/logo.png?raw=true)
-
 <p>
   <img alt="Version" src="https://img.shields.io/github/v/tag/Teramanbr/TerabyteTweaker?label=Version%3A" />
   <a href="#" target="_blank">
@@ -14,6 +8,15 @@ Terabyte Tweaker
   <a><img alt="Is Mantained?" src="https://img.shields.io/badge/Mantained:-yes-green.svg" />
   </a>
 </p>
+<h1 align="center">
+Terabyte Tweaker
+</h1>
+
+<p align="center">
+ <img src="https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/logo.png?raw=true" width="200">
+</p>
+
+
 <h3 align="center">Terabyte Tweaker is an program that optimizes your Windows PC, allowing it to run faster and smoother by using:</h3>
 
 ## ✨ Features

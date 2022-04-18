@@ -1,22 +1,13 @@
 @Echo Off
 @Title Terabyte Tweaker
 SETLOCAL ENABLEDELAYEDEXPANSION
+mkdir C:\TT\ >nul 2>&1
 
 ::This code was made by a 14 year old brazilian, which did all of this alone, so if the code is actual garbage,
 ::i apologise, for i am just a child who likes computers and has poor programming skills.
 
 ping -n 1 -w 700 google.com >nul 2>&1
-IF %ERRORLEVEL% EQU 0 (
-    chcp 437 >nul 2>&1
-    color 6
-    FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
-    IF [%%G] EQU [1046] (
-      goto br
-    ) ELSE (
-      goto en
-    )
-    )
-) ELSE (
+IF %ERRORLEVEL% EQU 1 (
     chcp 437 >nul 2>&1
     color 4
     FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
@@ -24,6 +15,16 @@ IF %ERRORLEVEL% EQU 0 (
       goto SemNet
     ) ELSE (
       goto NoNet
+    )
+    )
+) ELSE (
+    chcp 437 >nul 2>&1
+    color 6
+    FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+    IF [%%G] EQU [1046] (
+      goto br
+    ) ELSE (
+      goto en
     )
     )
 )
@@ -172,7 +173,7 @@ echo.
 echo.
 echo.
 echo.
-    pause & exit
+pause & exit
 
 :en
 
@@ -839,7 +840,7 @@ cls
 powercfg /d 44444444-4444-4444-4444-444444444449 >nul 2>&1 
 powercfg -import "C:\Hone\Resources\HoneV2.pow" 44444444-4444-4444-4444-444444444449 >nul 2>&1 
 powercfg -SETACTIVE "44444444-4444-4444-4444-444444444449" >nul 2>&1 
-powercfg /changename 44444444-4444-4444-4444-444444444449 "Hone Ultimate Power Plan V2" "The Ultimate Power Plan to increase FPS, improve latency and reduce input lag. (Adicionado pelo Terabyte Tweaker)" >nul 2>&1 
+powercfg /changename 44444444-4444-4444-4444-444444444449 "Hone Ultimate Power Plan V2" "The Ultimate Power Plan to increase FPS, improve latency and reduce input lag. (Added by Terabyte Tweaker)" >nul 2>&1 
 ::Balanced Plan
 powercfg /d 381b4222-f694-41f0-9685-ff5bb260df2e >nul 2>&1 
 ::High Performance Plan
@@ -859,8 +860,8 @@ IF [%%G] EQU [1046] (
 
 :35
 
-::Regedit
 chcp 437 >nul 2>&1
+::Regedit
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
 reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
@@ -1007,8 +1008,8 @@ FOR /F "tokens=*" %%@ in ('DIR "%filepath%" /A:D /B') DO (
 SET /A "rand=(%RANDOM% * %count%)/(32768 + 1)"
 cd "%filepath%\!folder[%rand%]!\config"
 ::Brawlhalla
-powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Brawlhalla.ps1" -OutFile "C:\TerabyteTweaker\Brawlhalla.ps1" >nul 2>&1
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TerabyteTweaker\Brawlhalla.ps1'" >nul 2>&1
+powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/Brawlhalla.ps1" -OutFile "C:\TT\Brawlhalla.ps1" >nul 2>&1
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\Brawlhalla.ps1'" >nul 2>&1
 cd C:\Windows\System32 >nul 2>&1
 cls
 FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
@@ -1058,17 +1059,16 @@ IF [%%G] EQU [1046] (
 :65
 
 chcp 437 >nul 2>&1
-::Esse código não é meu, créditos da Hone.
-mkdir C:\Hone >nul 2>&1
-cd C:\Hone 
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239120367673434/CLOCKRES.exe" -OutFile "C:\TerabyteTweaker\CLOCKRES.exe" >nul 2>&1
+::This code is half mine, credits to Hone for the other half.
+cd C:\TT\ 
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239120367673434/CLOCKRES.exe" -OutFile "C:\TT\CLOCKRES.exe" >nul 2>&1
 FOR /F "tokens=*" %%g IN ('CLOCKRES.exe ^| find "Current"') do set "currenttimer=%%g"
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239064738627594/SetTimerResolutionService.exe" -OutFile "C:\TerabyteTweaker\SetTimerResolutionService.exe"  >nul 2>&1
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239064738627594/SetTimerResolutionService.exe" -OutFile "C:\TT\SetTimerResolutionService.exe"  >nul 2>&1
 sc config "STR" start= auto >nul 2>&1
 NET START STR >nul 2>&1
 bcdedit /set useplatformtick yes >nul 2>&1  
 bcdedit /set disabledynamictick yes >nul 2>&1
-cd C:\Hone >nul 2>&1
+cd C:\TT\ >nul 2>&1
 %windir%\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /i SetTimerResolutionService.exe >nul 2>&1
 sc config "STR" start= auto >nul 2>&1
 NET START STR >nul 2>&1
@@ -1170,11 +1170,10 @@ IF [%%G] EQU [1046] (
 :100
 
 chcp 437 >nul 2>&1
-powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\TerabyteTweaker\Resources\obrigadoporusar.bat"
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\Hone\Resources\obrigadoporusar.bat /f >nul 2>&1
-powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/desligar.ps1" -OutFile "C:\TerabyteTweaker\desligar.ps1" >nul 2>&1
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TerabyteTweaker\desligar.ps1'" >nul 2>&1
-del C:\desligar.ps1 >nul 2>&1
+powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\TT\obrigadoporusar.bat"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\TT\obrigadoporusar.bat /f >nul 2>&1
+PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/shutdown.ps1" -OutFile "%temp%\shutdown.ps1" >nul 2>&1
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%temp%\shutdown.ps1'" >nul 2>&1
 cls
 FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (

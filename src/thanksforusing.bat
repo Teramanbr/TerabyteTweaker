@@ -1,5 +1,6 @@
 @echo off
-color 6 
+rmdir C:\TT\ >nul 2>&1
+color 6
 echo. 
 echo. 
 echo.

@@ -1,4 +1,3 @@
-Set-Location "C:\Program Files (x86)\Steam\userdata\991312408\config"
 (Get-Content localconfig.vdf) -replace '"291550"
 {
     "LastPlayed"		"\d+"

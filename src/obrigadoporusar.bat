@@ -1,4 +1,5 @@
 @echo off
+mkdir C:\TT\ >nul 2>&1
 color 6 
 echo. 
 echo. 

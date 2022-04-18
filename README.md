@@ -1,6 +1,6 @@
 <h1 align="center">Terabyte Tweaker</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/Version:-1.6.0-blue" />
+  <img alt="Version" src="https://img.shields.io/github/v/tag/Teramanbr/TerabyteTweaker?label=Version%3A" />
   <a href="#" target="_blank">
     <img alt="License: GPL" src="https://img.shields.io/badge/License-GPL%203.0%20License-purple.svg" />
   </a>

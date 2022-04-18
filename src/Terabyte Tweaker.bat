@@ -1,5 +1,6 @@
 @Echo Off
 @Title Terabyte Tweaker
+SETLOCAL ENABLEDELAYEDEXPANSION
 
 ::This code was made by a 14 year old brazilian, which did all of this alone, so if the code is actual garbage,
 ::i apologise, for i am just a child who likes computers and has poor programming skills.
@@ -156,7 +157,7 @@ echo.
 echo.   
 echo. 
 echo.
-echo                              Você aparenta estar sem internet, tente novamente mais tarde.
+echo                            You appear to have no internet connection, try again later.
 echo.                   
 echo.                  
 echo.                 
@@ -858,6 +859,7 @@ IF [%%G] EQU [1046] (
 
 :35
 
+::Regedit
 chcp 437 >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
@@ -996,6 +998,18 @@ powershell -Command "(Get-Content optionsof.txt) -replace 'ofFastRender:false', 
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofTranslucentBlocks:\d+', 'ofTranslucentBlocks:1' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatBackground:\d+', 'ofChatBackground:0' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatShadow:false', 'ofChatShadow:true' | Out-File -encoding default optionsof.txt" >nul 2>&1
+::Steam Game Tweaks
+SET "filepath=C:\Program Files (x86)\Steam\userdata"
+FOR /F "tokens=*" %%@ in ('DIR "%filepath%" /A:D /B') DO (
+    SET /A "rand=(%RANDOM% * %count%)/(32768 + 1)""
+    SET "folder[!count!]=%%@""
+)
+SET /A "rand=(%RANDOM% * %count%)/(32768 + 1)"
+cd "%filepath%\!folder[%rand%]!\config"
+::Brawlhalla
+powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Brawlhalla.ps1" -OutFile "C:\TerabyteTweaker\Brawlhalla.ps1" >nul 2>&1
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TerabyteTweaker\Brawlhalla.ps1'" >nul 2>&1
+cd C:\Windows\System32 >nul 2>&1
 cls
 FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
@@ -1047,9 +1061,9 @@ chcp 437 >nul 2>&1
 ::Esse código não é meu, créditos da Hone.
 mkdir C:\Hone >nul 2>&1
 cd C:\Hone 
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239120367673434/CLOCKRES.exe" -OutFile "C:\Hone\CLOCKRES.exe" >nul 2>&1
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239120367673434/CLOCKRES.exe" -OutFile "C:\TerabyteTweaker\CLOCKRES.exe" >nul 2>&1
 FOR /F "tokens=*" %%g IN ('CLOCKRES.exe ^| find "Current"') do set "currenttimer=%%g"
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239064738627594/SetTimerResolutionService.exe" -OutFile "C:\Hone\SetTimerResolutionService.exe"  >nul 2>&1
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239064738627594/SetTimerResolutionService.exe" -OutFile "C:\TerabyteTweaker\SetTimerResolutionService.exe"  >nul 2>&1
 sc config "STR" start= auto >nul 2>&1
 NET START STR >nul 2>&1
 bcdedit /set useplatformtick yes >nul 2>&1  
@@ -1156,10 +1170,10 @@ IF [%%G] EQU [1046] (
 :100
 
 chcp 437 >nul 2>&1
-powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\Hone\Resources\obrigadoporusar.bat"
+powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\TerabyteTweaker\Resources\obrigadoporusar.bat"
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\Hone\Resources\obrigadoporusar.bat /f >nul 2>&1
-powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/desligar.ps1" -OutFile "C:\desligar.ps1" >nul 2>&1
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\desligar.ps1'" >nul 2>&1
+powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/desligar.ps1" -OutFile "C:\TerabyteTweaker\desligar.ps1" >nul 2>&1
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TerabyteTweaker\desligar.ps1'" >nul 2>&1
 del C:\desligar.ps1 >nul 2>&1
 cls
 FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (

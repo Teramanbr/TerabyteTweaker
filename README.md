@@ -1,4 +1,4 @@
-<p>
+<p align="center">
   <img alt="Version" src="https://img.shields.io/github/v/tag/Teramanbr/TerabyteTweaker?label=Version%3A" />
   <a href="#" target="_blank">
     <img alt="License: GPL" src="https://img.shields.io/badge/License-GPL%203.0%20License-purple.svg" />

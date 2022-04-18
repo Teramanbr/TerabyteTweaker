@@ -30,13 +30,13 @@ Even though all my regedit tweaks are harmless, i do not want any chance of dama
 
 ## ⚠️ Microsoft SmartScreen
 
-Running downloaded Batch files triggers a Microsoft SmartScreen prompt, even if the Batch file is not a security threat.
-To proof even more that my program is not a virus, here is the [VirusTotal](https://www.virustotal.com/gui/file/94a84cf4cea2ed8d8a39a6d568379f63729a00a2a1119427c848cd68cdcbe601?nocache=1) report:
+Running downloaded Batch files triggers a [Microsoft SmartScreen](https://docs.microsoft.com/pt-br/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview) prompt, even if the Batch file is not a security threat.
+To proof even more that my program is not a virus, [here](https://www.virustotal.com/gui/file/94a84cf4cea2ed8d8a39a6d568379f63729a00a2a1119427c848cd68cdcbe601?nocache=1) is the VirusTotal report:
 ![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/VirusTotal.png?raw=true)
 
 ## 🔨 Installation
 
-**Warning: For the app to run correctly, you need to have a connection to internet.**
+**Warning: For the app to run, you NEED to have a connection to internet.**
 - Download the [Application](https://github.com/Teramanbr/TerabyteTweaker/releases/download/v1.1.0/Terabyte.Tweaker.bat).
 - Run it in Administrator mode.
 - Type: Y or Yes and press enter to install the application.
@@ -50,4 +50,4 @@ To proof even more that my program is not a virus, here is the [VirusTotal](http
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Teramanbr/TerabyteTweaker/issues). 
 To contact me directly, send me a message on my discord: Teraman_br#5060
 I plan to remake this app in another programming language, but im still studying rust, so it will take a while.
-I tested this app **FULLY** on my computers, and i hadn't use any VMs a single time, so i can say that this app is 100% safe to use.
+I tested this app **piece by piece** on my computers and didn't need to use VMs, beacuse none of the features are able to damage your system.

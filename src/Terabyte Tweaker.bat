@@ -4,23 +4,30 @@
 ::This code was made by a 14 year old brazilian, which did all of this alone, so if the code is actual garbage,
 ::i apologise, for i am just a child who likes computers and has poor programming skills.
 
-chcp 437 >nul 2>&1
-color 6
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
-IF [%%G] EQU [1046] (
-  goto br
+ping -n 1 -w 700 google.com >nul 2>&1
+IF %ERRORLEVEL% EQU 0 (
+    chcp 437 >nul 2>&1
+    color 6
+    FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+    IF [%%G] EQU [1046] (
+      goto br
+    ) ELSE (
+      goto en
+    )
+    )
 ) ELSE (
-  goto en
-)
+    chcp 437 >nul 2>&1
+    color 4
+    FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+    IF [%%G] EQU [1046] (
+      goto SemNet
+    ) ELSE (
+      goto NoNet
+    )
+    )
 )
 
-:br
-
-chcp 65001 >nul 2>&1
-net session >nul 2>&1
-if %errorLevel% == 0 (
-    cls
-) else (
+:SemNet
 echo.
 echo.
 echo.
@@ -35,7 +42,46 @@ echo.
 echo.   
 echo. 
 echo.
-echo                              acho que alguém esqueceu de abrir o app como Administrador ein...
+echo                              Você aparenta estar sem internet, tente novamente mais tarde.
+echo.                   
+echo.                  
+echo.                 
+echo.                      
+echo.      
+echo. 
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+    pause & exit
+
+:br
+
+chcp 65001 >nul 2>&1
+net session >nul 2>&1
+if %errorLevel% == 0 (
+    cls
+) else (
+color 4
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.    
+echo.          
+echo.    
+echo.     
+echo.   
+echo. 
+echo.
+echo                                 acho que ALGUÉM esqueceu de abrir o app como Administrador...
 echo.                   
 echo.                  
 echo.                 
@@ -95,6 +141,38 @@ IF /I "%choice%"=="nao" Goto quit
 IF /I "%choice%"=="Não" Goto quit
 IF /I "%choice%"=="Nao" Goto quit
 
+:NoNet
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.    
+echo.          
+echo.    
+echo.     
+echo.   
+echo. 
+echo.
+echo                              Você aparenta estar sem internet, tente novamente mais tarde.
+echo.                   
+echo.                  
+echo.                 
+echo.                      
+echo.      
+echo. 
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+    pause & exit
+
 :en
 
 chcp 65001 >nul 2>&1
@@ -102,6 +180,7 @@ net session >nul 2>&1
 if %errorLevel% == 0 (
     cls
 ) else (
+color 4
 echo.
 echo.
 echo.

@@ -4,5 +4,3 @@ $notify = new-object system.windows.forms.notifyicon
 $notify.icon = [System.Drawing.SystemIcons]::Information
 $notify.visible = $true
 $notify.showballoontip(10,"Sucesso!","Terabyte Tweaker acabou de terminar de turbinar seu computador, que vai reiniciar em 5 minutos!",[system.windows.forms.tooltipicon]::None)
-Start-Sleep -s 500
-Restart-Computer

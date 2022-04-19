@@ -55,7 +55,10 @@ To proof even more that my program is not a virus, [here](https://www.virustotal
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Teramanbr/TerabyteTweaker/issues). 
+Contributions, issues and feature requests are welcome!<br />Feel free to check the [issues page](https://github.com/Teramanbr/TerabyteTweaker/issues). 
+If you can't contribute to the app by sending bug reports, forks or feature requests, you can contribute to me instead, by subscribing to my [Youtube channel](https://www.youtube.com/channel/UCIj-jcplOl9RqTfjXQ30JXA?sub_confirmation=1&via=tb).
+
 To contact me directly, send me a message on my discord: Teraman_br#5060
+
 I plan to remake this app in another programming language, but im still studying rust, so it will take a while.
 I tested this app **piece by piece** on my computers and didn't need to use VMs, beacuse none of the features are able to damage your system.

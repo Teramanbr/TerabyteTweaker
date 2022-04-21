@@ -13,7 +13,7 @@ Terabyte Tweaker
 </h1>
 
 <p align="center">
- <img src="https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/logo.png?raw=true" width="200">
+ <img src="https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/favicon.png?raw=true" width="200">
 </p>
 
 

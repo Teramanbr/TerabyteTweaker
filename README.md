@@ -63,4 +63,4 @@ To contact me directly, send me a message on my discord: Teraman_br#5060
 I plan to remake this app in another programming language, but im still studying rust, so it will take a while.
 I tested this app **piece by piece** on my computers and didn't need to use VMs, beacuse none of the features are able to damage your system.
 
-The app's site was made using the OriginSix tutorial.
+The app's site was made using the OriginSix tutorial and is not fully functional yet.

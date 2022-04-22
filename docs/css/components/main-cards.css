@@ -9,7 +9,8 @@
     border-bottom: 0.25rem solid var(--base-color);
     box-shadow: #dbdbdb;
     background-color: #423D33;
-    border-radius: 25px;
+    border-radius: 10px;
+    box-shadow: 6px 12px 10px 5px black;
 }
 
 .card i {

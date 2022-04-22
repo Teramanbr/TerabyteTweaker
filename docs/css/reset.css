@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+}
+
+body {
+    font: 400 1rem var(--body-font);
+    color: var(--text-color);
+    background: var(--body-color);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+main {
+    margin-top: var(--height-header);
+}
+
+nav {
+    height: var(--height-header);
+}
+
+ul {
+    list-style: none;
+}

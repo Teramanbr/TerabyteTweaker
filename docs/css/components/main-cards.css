@@ -1,0 +1,25 @@
+.main-cards {
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+
+.card { 
+    text-align: center;
+    padding: 3.62rem 2rem;
+    border-bottom: 0.25rem solid var(--base-color);
+    box-shadow: #dbdbdb;
+    background-color: #423D33;
+    border-radius: 25px;
+}
+
+.card i {
+    display: block;
+    font-size: 5rem;
+    color: var(--base-color);
+}
+
+.card .main-subtitle {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+

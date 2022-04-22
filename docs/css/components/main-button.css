@@ -1,0 +1,16 @@
+.main-button {
+    background-color: var(--base-color);
+    color: var(--text-color-light);
+    height: 3.5rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 2rem;
+    border-radius: 0.25rem;
+    font: 500 1rem var(--body-font);
+    transition: background 0.3s ease-in-out;
+    margin-top: 2rem;
+}
+
+.main-button:hover {
+    background-color: var(--base-color-alt);
+}

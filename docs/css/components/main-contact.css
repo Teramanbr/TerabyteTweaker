@@ -1,0 +1,41 @@
+.main-contact.section{
+    overflow: hidden;
+    background-color: #423D33;
+}
+
+.main-contact {
+    border-radius: 25px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    text-align: left;
+}
+
+.main-contact .main-title {
+    margin-right: 5.375rem;
+    margin-bottom: 1rem;
+}
+
+.main-contact .icon-message-circle,
+.main-contact ul li::before {
+    font-size: 1.5rem;
+    margin-right: 0.625rem;
+}
+
+.main-contact .-grid {
+    gap: 4rem;
+}
+
+.main-contact .list.-grid {
+    gap: 2rem;
+}
+
+.main-contact ul li {
+    display: flex;
+    align-items: center;
+}
+
+.main-contact ul li::before {
+    color: var(--base-color);
+}

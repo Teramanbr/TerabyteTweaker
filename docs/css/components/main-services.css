@@ -1,0 +1,12 @@
+.main-services .wrapper-text p {
+    color: #E4E4E4;
+    font-size: var(--subtitle-font-size);
+}
+
+.main-services p span {
+    color: var(--base-color);
+}
+
+.main-services header {
+    margin-left: 0;
+}

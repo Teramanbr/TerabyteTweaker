@@ -1,0 +1,147 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?j8l91w');
+  src:  url('fonts/icomoon.eot?j8l91w#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?j8l91w') format('truetype'),
+    url('fonts/icomoon.woff?j8l91w') format('woff'),
+    url('fonts/icomoon.svg?j8l91w#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-message-circle:before {
+  content: "\e913";
+}
+.icon-memory:before {
+  content: "\e911";
+}
+.icon-network_check:before {
+  content: "\e912";
+}
+.icon-cleaning_services:before {
+  content: "\e910";
+}
+.icon-arrow-up:before {
+  content: "\e901";
+}
+.icon-phone:before {
+  content: "\e900";
+}
+.icon-close:before {
+  content: "\e902";
+}
+.icon-cosmetic:before {
+  content: "\e903";
+}
+.icon-facebook:before {
+  content: "\e904";
+}
+.icon-hair-icon:before {
+  content: "\e905";
+}
+.icon-instagram:before {
+  content: "\e906";
+}
+.icon-mail:before {
+  content: "\e907";
+}
+.icon-map-pin:before {
+  content: "\e908";
+}
+.icon-menu:before {
+  content: "\e909";
+}
+.icon-scissors-icon:before {
+  content: "\e90a";
+}
+.icon-shampoo-icon:before {
+  content: "\e90b";
+}
+.icon-trim:before {
+  content: "\e90c";
+}
+.icon-whatsapp:before {
+  content: "\e90d";
+}
+.icon-woman-hair:before {
+  content: "\e90e";
+}
+.icon-lightning:before {
+  content: "\e90f";
+}
+.icon-network_check:before {
+  content: "\e912";
+}
+.icon-cleaning_services:before {
+  content: "\e910";
+}
+.icon-arrow-up:before {
+  content: "\e901";
+}
+.icon-phone:before {
+  content: "\e900";
+}
+.icon-close:before {
+  content: "\e902";
+}
+.icon-cosmetic:before {
+  content: "\e903";
+}
+.icon-facebook:before {
+  content: "\e904";
+}
+.icon-hair-icon:before {
+  content: "\e905";
+}
+.icon-instagram:before {
+  content: "\e906";
+}
+.icon-mail:before {
+  content: "\e907";
+}
+.icon-map-pin:before {
+  content: "\e908";
+}
+.icon-menu:before {
+  content: "\e909";
+}
+.icon-scissors-icon:before {
+  content: "\e90a";
+}
+.icon-shampoo-icon:before {
+  content: "\e90b";
+}
+.icon-trim:before {
+  content: "\e90c";
+}
+.icon-whatsapp:before {
+  content: "\e90d";
+}
+.icon-woman-hair:before {
+  content: "\e90e";
+}
+.icon-bubble2:before {
+  content: "\e96e";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.icon-github:before {
+  content: "\eab0";
+}

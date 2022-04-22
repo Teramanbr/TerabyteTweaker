@@ -1,0 +1,7 @@
+.second-title {
+    font: 700 1.5rem var(--title-font);
+    color: var(--title-color);
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+}
+

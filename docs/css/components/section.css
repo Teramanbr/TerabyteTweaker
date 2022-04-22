@@ -1,0 +1,5 @@
+.section {
+    padding: calc(3rem + var(--height-header)) 0;
+
+}
+

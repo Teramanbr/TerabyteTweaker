@@ -1,0 +1,36 @@
+.main-about.section{
+    overflow: hidden;
+    background-color: #423D33;
+}
+
+.main-about {
+    border-radius: 25px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.main-about .image {
+    position: relative;
+}
+
+.main-about .image::before { 
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: var(--base-color-second);
+    position: absolute;
+    top: -8.39%; /* 21,35 * 100 / 254,26 */ 
+    right: 33.04%; /* 120,71 * 100 / 365,29 */
+    z-index: 0;
+}
+
+.main-about .image img {
+    position: relative;
+}
+
+.main-about .image img,
+.main-about .image::before {
+    border-radius: 0.25rem;
+}

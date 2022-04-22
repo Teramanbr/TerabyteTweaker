@@ -1,0 +1,7 @@
+/* Large devices: > 992px */ 
+@media screen and (min-width: 992px) {
+    :root {
+        --title-font-size: 2.25rem;
+        --subtitle-font-size: 1.125rem;
+    }
+} 

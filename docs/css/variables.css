@@ -1,0 +1,18 @@
+:root {
+    --height-header: 4.5rem;
+    /* colors */
+    --hue: 390;
+    /* HSL color mode */
+    --base-color: hsl(var(--hue) 80% 50%); 
+    --base-color-second: hsl(var(--hue) 65% 50%);
+    --base-color-alt: hsl(var(--hue) 57% 53%);
+    --title-color: #FFFFFF;
+    --text-color: #dbdbdb;
+    --text-color-light: #fafafa;
+    --body-color: #27241D;
+    /* Fonts */
+    --title-font-size: 1.875rem;
+    --subtitle-font-size: 1rem;
+    --title-font: 'Poppins', sans-serif;
+    --body-font: 'DM Sans', sans-serif;
+}

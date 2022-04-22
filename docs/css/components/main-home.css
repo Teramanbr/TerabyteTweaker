@@ -1,0 +1,36 @@
+.main-home {
+    text-align: center;
+    padding-bottom: 5.31rem;
+    padding-top: calc(var(--height-header) + 2rem);
+    overflow: hidden;
+}
+
+.main-home .image {
+    position: relative;
+}
+
+.main-home .image::before { 
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: var(--base-color-second);
+    position: absolute;
+    top: -16.8%;
+    left: 10%;
+    z-index: 0;
+}
+
+.main-home .image img {
+    position: relative;
+    right: 2.93rem;
+}
+
+.main-home .image img,
+.main-home .image::before {
+    border-radius: 0.25rem;
+} 
+
+.main-home .main-title {
+    margin-bottom: 1rem;
+    
+}

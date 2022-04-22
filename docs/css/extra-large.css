@@ -1,0 +1,145 @@
+/* EXTRA LARGE */
+@media screen and (min-width: 1200px) {
+    main {
+        margin-top: var(--height-header);
+    }
+
+    /* ================== REUSABLE ================== */
+    .container {
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section {
+        padding: calc(6rem + var(--height-header)) 0;
+    }
+
+    .section .-header {
+        max-width: 32.7rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .main-button {
+        height: 3.125rem;
+    }
+
+    /* ================== NAVIGATION / MENU ================== */
+    #main-nav {
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #main-nav .main-menu {
+        opacity: 1;
+        visibility: visible;
+        top: 0;
+    } 
+
+    #main-nav .main-menu .list {
+        display: flex;
+        gap: 2rem;
+    }
+
+    #main-nav .main-menu .list .main-title {
+        font: 500 1rem var(--body-font) ;
+    }
+    
+    #main-nav .icon-menu {
+        display: none;
+    }
+
+    /* ================== HOME ==================*/
+    .main-home .image {
+        order: 1; /* ordem / funciona apenas em grid*/
+    }
+
+    .main-home .wrapper-text {
+        order: 0;
+        max-width: 24rem;
+        text-align: left;
+    }
+
+    .main-home .container {
+        grid-auto-flow: column;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* ================== ABOUT ==================*/
+    .main-about .container {
+        grid-auto-flow: column;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ================== SERVICES ==================*/
+    .main-services .wrapper-text  {
+        margin-bottom: 2rem;
+    }
+
+    .main-services .main-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .main-services .card {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .main-services .-grid {
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ================== TESTIMONIAL ==================*/
+
+    .main-testimonial header,
+    #testimonials header {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #testimonials blockquote {
+        padding: 3.25rem;
+    }
+
+    /* ================== CONTACTS ==================*/
+
+    .main-contact .container {
+        grid-auto-flow: column;
+        align-items: center;
+    }
+
+    .main-contact .text {
+        max-width: 25rem;
+    }
+
+     /* ================== FOOTER ==================*/
+
+     .main-footer {
+         padding: 3.75rem 7.68rem;
+     }
+
+     .main-footer .container {
+         grid-auto-flow: column;
+         align-items: center;
+         justify-content: space-between;
+     }
+
+     .main-footer .brand {
+         margin-top: 0;
+     }
+
+     .main-footer .logo {
+         font-size: 2rem;
+     }
+}

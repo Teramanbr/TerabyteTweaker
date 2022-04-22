@@ -1,0 +1,20 @@
+.wrapper-text, .-header {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.wrapper-text.-left {
+    text-align: left;
+    display: grid;
+    gap: 1rem;
+}
+
+.wrapper-text.-left p {
+    margin-bottom: 0;
+}
+
+.-left {
+    text-align: left;
+}

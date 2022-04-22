@@ -1,0 +1,40 @@
+.main-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+
+    top: -20rem;
+}
+
+.main-menu a {
+    transition: color 0.3s;
+    position: relative;
+}
+.main-menu a:hover,
+#main-nav .main-menu .list .main-title.active {
+    color: var(--base-color);
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+}
+
+.main-menu ul li a::after {
+    content: '';
+    width: 0%;
+    background-color: var(--base-color);
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -1.6rem;
+    transition: width 0.2s;
+}
+
+.main-menu ul li a:hover::after,
+.main-menu ul li a.active::after {
+    width: 100%;
+}
+
+.toggle {
+    color: var(--base-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}

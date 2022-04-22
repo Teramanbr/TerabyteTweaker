@@ -11,8 +11,8 @@
 
 .main-home .image::before { 
     content: '';
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
     background-color: var(--base-color-second);
     position: absolute;
     top: -16.8%;
@@ -23,11 +23,13 @@
 .main-home .image img {
     position: relative;
     right: 2.93rem;
+    height: 90%;
+    width: 90%;
 }
 
 .main-home .image img,
 .main-home .image::before {
-    border-radius: 0.25rem;
+    border-radius: 20px;
 } 
 
 .main-home .main-title {

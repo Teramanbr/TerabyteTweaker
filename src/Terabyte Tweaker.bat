@@ -6,11 +6,11 @@ mkdir C:\TT\ >nul 2>&1
 ::This code was made by a 14 year old brazilian, which did all of this alone, so if the code is actual garbage,
 ::i apologise, for i am just a child who likes computers and has poor programming skills.
 
-ping -n 1 -w 700 google.com >nul 2>&1
+ping -n 2 -w 700 google.com >nul 2>&1
 IF %ERRORLEVEL% EQU 1 (
     chcp 437 >nul 2>&1
     color 4
-    FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+    FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
     IF [%%G] EQU [1046] (
       goto SemNet
     ) ELSE (
@@ -20,7 +20,7 @@ IF %ERRORLEVEL% EQU 1 (
 ) ELSE (
     chcp 437 >nul 2>&1
     color 6
-    FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+    FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
     IF [%%G] EQU [1046] (
       goto br
     ) ELSE (
@@ -599,6 +599,7 @@ echo Progress: ████████████████████ 100%
 echo -------------------------------------
 goto 100
 :EndEN
+chcp 65001 >nul 2>&1
 cls
 echo.
 echo.
@@ -631,7 +632,7 @@ echo.
 echo.
 shutdown /r /t 500 -c " "
 pause
-shutdown /s /r 
+shutdown /r /t 0
 
 
 ::=========================================================================================================================================== ::
@@ -639,13 +640,27 @@ shutdown /s /r
 :0
 
 chcp 437 >nul 2>&1
-powershell Enable-ComputerRestore -Drive 'C:\', 'D:\', 'E:\', 'F:\', 'G:\' >nul 2>&1
-powershell Checkpoint-Computer -Description 'Ponto de Restauração Terabyte' >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  echo Criando Ponto de Restauração...
+) ELSE (
+  echo Creating a Restore Point...
+)
+)
+powershell Enable-ComputerRestore -Drive 'C:\', 'D:\', 'E:\', 'F:\', 'G:\' >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  powershell Checkpoint-Computer -Description 'Ponto de Restauração Terabyte' >nul 2>&1
+) ELSE (
+  powershell Checkpoint-Computer -Description 'Terabyte Restore Point' >nul 2>&1
+)
+)
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  cls
   goto 1PT
 ) ELSE (
+  cls
   goto 1EN
 )
 )
@@ -655,6 +670,13 @@ IF [%%G] EQU [1046] (
 :5
 
 chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  echo Aplicando Tweaks de Internet...
+) ELSE (
+  echo Applying Internet Tweaks...
+)
+)
 ipconfig /release >nul 2>&1
 ipconfig /renew >nul 2>&1
 arp -d * >nul 2>&1
@@ -684,11 +706,15 @@ netsh int ip set global taskoffload=disabled >nul 2>&1
 netsh int ip set global neighborcachelimit=4096 >nul 2>&1
 netsh int tcp set global dca=enabled >nul 2>&1
 netsh int tcp set global netdma=enabled >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
+powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
+powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  cls
   goto 2PT
 ) ELSE (
+  cls
   goto 2EN
 )
 )
@@ -699,23 +725,13 @@ IF [%%G] EQU [1046] (
 :10
 
 chcp 437 >nul 2>&1
-PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
-powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  goto 3PT
+  echo Limpando Cache e Logs...
 ) ELSE (
-  goto 3EN
+  echo Cleaning Cache and Logs...
 )
 )
-
-::=========================================================================================================================================== ::
-
-:15
-
-chcp 437 >nul 2>&1
 md c:\windows\temp >nul 2>&1
 del c:\windows\logs\cbs\*.log >nul 2>&1
 del C:\Windows\Logs\MoSetup\*.log >nul 2>&1
@@ -728,20 +744,28 @@ del C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\WebCache\*.log /s /q >nu
 del C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\SettingSync\*.log /s /q >nul 2>&1
 del C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\Explorer\ThumbCacheToDelete\*.tmp /s /q >nul 2>&1
 del C:\Users\%USERNAME%\AppData\Local\Microsoft\"Terminal Server Client"\Cache\*.bin /s /q >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  goto 4PT
+  cls
+  goto 3PT
 ) ELSE (
-  goto 4EN
+  cls
+  goto 3EN
 )
 )
 
 ::=========================================================================================================================================== ::
 
-:20
+:15
 
 chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  echo Aplicando Regedits...
+) ELSE (
+  echo Applying Regedits...
+)
+)
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "00000000" /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "UseActionCenterExperience" /t REG_DWORD /d "00000000" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f >nul 2>&1
@@ -774,20 +798,33 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters" /v "MaximumUdpPa
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "0" /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "HttpBatchSize" /t REG_WORD /D "1" /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "MaxReceiveInterval" /t REG_WORD /D "50" /f >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+::Haxshw Regedit
+powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
+PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
+reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
+del %temp%\~Regedit.reg >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  goto 5PT
+  cls
+  goto 4PT
 ) ELSE (
-  goto 5EN
+  cls
+  goto 4EN
 )
 )
 
 ::=========================================================================================================================================== ::
 
-:25
+:20
 
 chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  echo Removendo Aplicativos Inúteis...
+) ELSE (
+  echo Debloating...
+)
+)
 PowerShell -command "ps onedrive | Stop-Process -Force" >nul 2>&1
 PowerShell -command "start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"" >nul 2>&1
 PowerShell -command "Get-AppxPackage Microsoft.Getstarted | Remove-AppxPackage" >nul 2>&1
@@ -824,11 +861,47 @@ PowerShell -command "Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Re
 PowerShell -command "Get-AppxPackage Microsoft.BioEnrollment | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage ContentDeliveryManager | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage 'Microsoft.Advertising.Xaml' | Remove-AppxPackage" >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  cls
+  goto 5PT
+) ELSE (
+  cls
+  goto 5EN
+)
+)
+
+::=========================================================================================================================================== ::
+
+:25
+
+chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  echo Aplicando Plano de Energia...
+) ELSE (
+  echo Applying Power Plan...
+)
+)
+powercfg -restoredefaultschemes
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798652558351794196/798666504190296064/Hone_Power_Plan.pow" -OutFile "C:\Hone\Resources\HoneV2.pow"
+cls
+powercfg /d 44444444-4444-4444-4444-444444444449 >nul 2>&1 
+powercfg -import "C:\Hone\Resources\HoneV2.pow" 44444444-4444-4444-4444-444444444449 >nul 2>&1 
+powercfg -SETACTIVE "44444444-4444-4444-4444-444444444449" >nul 2>&1 
+powercfg /changename 44444444-4444-4444-4444-444444444449 "Hone Ultimate Power Plan V2" "The Ultimate Power Plan to increase FPS, improve latency and reduce input lag. (Added by Terabyte Tweaker)" >nul 2>&1 
+::Delete Balanced Plan
+powercfg /d 381b4222-f694-41f0-9685-ff5bb260df2e >nul 2>&1 
+::Delete High Performance Plan
+powercfg /d 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c >nul 2>&1 
+::Delete Power Saving Plan
+powercfg /d a1841308-3541-4fab-bc81-f71556f20b4a >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  cls
   goto 6PT
 ) ELSE (
+  cls
   goto 6EN
 )
 )
@@ -838,25 +911,21 @@ IF [%%G] EQU [1046] (
 :30
 
 chcp 437 >nul 2>&1
-::Esse código não é meu, créditos da Hone.
-powercfg -restoredefaultschemes
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798652558351794196/798666504190296064/Hone_Power_Plan.pow" -OutFile "C:\Hone\Resources\HoneV2.pow"
-cls
-powercfg /d 44444444-4444-4444-4444-444444444449 >nul 2>&1 
-powercfg -import "C:\Hone\Resources\HoneV2.pow" 44444444-4444-4444-4444-444444444449 >nul 2>&1 
-powercfg -SETACTIVE "44444444-4444-4444-4444-444444444449" >nul 2>&1 
-powercfg /changename 44444444-4444-4444-4444-444444444449 "Hone Ultimate Power Plan V2" "The Ultimate Power Plan to increase FPS, improve latency and reduce input lag. (Added by Terabyte Tweaker)" >nul 2>&1 
-::Balanced Plan
-powercfg /d 381b4222-f694-41f0-9685-ff5bb260df2e >nul 2>&1 
-::High Performance Plan
-powercfg /d 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c >nul 2>&1 
-::Power Saving Plan
-powercfg /d a1841308-3541-4fab-bc81-f71556f20b4a >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  echo Consertando Bugs do Sistema, pode levar algum tempo... 
+) ELSE (
+  echo Fixing system bugs, may take a while... 
+)
+)
+DISM /Online /Cleanup-Image /StartComponentCleanup >nul 2>&1
+DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  cls
   goto 7PT
 ) ELSE (
+  cls
   goto 7EN
 )
 )
@@ -866,55 +935,13 @@ IF [%%G] EQU [1046] (
 :35
 
 chcp 437 >nul 2>&1
-::Regedit
-powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
-reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
-del %temp%\~Regedit.reg >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  goto 8PT
+  echo Aplicando Tweaks de Jogos...
 ) ELSE (
-  goto 8EN
+  echo Applying Game Specific Tweaks...
 )
 )
-
-::=========================================================================================================================================== ::
-
-:40
-
-chcp 437 >nul 2>&1
-DISM /Online /Cleanup-Image /StartComponentCleanup >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
-IF [%%G] EQU [1046] (
-  goto 9PT
-) ELSE (
-  goto 9EN
-)
-)
-
-::=========================================================================================================================================== ::
-
-:45
-
-chcp 437 >nul 2>&1
-DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
-IF [%%G] EQU [1046] (
-  goto 10PT
-) ELSE (
-  goto 10EN
-)
-)
-
-::=========================================================================================================================================== ::
-
-:50
-
-chcp 437 >nul 2>&1
 cd %appdata% >nul 2>&1
 cd .minecraft >nul 2>&1
 ::Minecraft Options
@@ -1016,54 +1043,53 @@ cd "%filepath%\!folder[%rand%]!\config"
 powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/Brawlhalla.ps1" -OutFile "C:\TT\Brawlhalla.ps1" >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\Brawlhalla.ps1'" >nul 2>&1
 cd C:\Windows\System32 >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  goto 11PT
+  cls
+  goto 8PT
 ) ELSE (
-  goto 11EN
+  cls
+  goto 8EN
 )
 )
 
 ::=========================================================================================================================================== ::
 
-:55
+:40
 
 chcp 437 >nul 2>&1
-PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
-powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  goto 12PT
+  echo Aplicando Tweaks para RAM e CPU...
 ) ELSE (
-  goto 12EN
+  echo Applying RAM and CPU Tweaks...
 )
 )
-
-::=========================================================================================================================================== ::
-
-:60
-
-chcp 437 >nul 2>&1
-::Esse código não é meu, créditos da Hone.
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
 set /a mem=%mem% + 1024000
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  goto 13PT
+  cls
+  goto 9PT
 ) ELSE (
-  goto 13EN
+  cls
+  goto 9EN
 )
 )
 
 ::=========================================================================================================================================== ::
 
-:65
+:45
 
 chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  echo Ativando Clock Resolution Services...
+) ELSE (
+  echo Activating Clock Resolution Services...
+)
+)
 ::This code is half mine, credits to Hone for the other half.
 cd C:\TT\ 
 powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239120367673434/CLOCKRES.exe" -OutFile "C:\TT\CLOCKRES.exe" >nul 2>&1
@@ -1077,12 +1103,73 @@ cd C:\TT\ >nul 2>&1
 %windir%\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /i SetTimerResolutionService.exe >nul 2>&1
 sc config "STR" start= auto >nul 2>&1
 NET START STR >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  cls
+  goto 10PT
+) ELSE (
+  cls
+  goto 10EN
+)
+)
+
+::=========================================================================================================================================== ::
+
+:50
+
+chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  cls
+  goto 11PT
+) ELSE (
+  cls
+  goto 11EN
+)
+)
+
+::=========================================================================================================================================== ::
+
+:55
+
+chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  cls
+  goto 12PT
+) ELSE (
+  cls
+  goto 12EN
+)
+)
+
+::=========================================================================================================================================== ::
+
+:60
+
+chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  cls
+  goto 13PT
+) ELSE (
+  cls
+  goto 13EN
+)
+)
+
+::=========================================================================================================================================== ::
+
+:65
+
+chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  cls
   goto 14PT
 ) ELSE (
   goto 14EN
+  cls
 )
 )
 
@@ -1091,11 +1178,12 @@ IF [%%G] EQU [1046] (
 :70
 
 chcp 437 >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  cls
   goto 15PT
 ) ELSE (
+  cls
   goto 15EN
 )
 )
@@ -1105,11 +1193,12 @@ IF [%%G] EQU [1046] (
 :75
 
 chcp 437 >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  cls
   goto 16PT
 ) ELSE (
+  cls
   goto 16EN
 )
 )
@@ -1119,11 +1208,12 @@ IF [%%G] EQU [1046] (
 :80
 
 chcp 437 >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  cls
   goto 17PT
 ) ELSE (
+  cls
   goto 17EN
 )
 )
@@ -1133,11 +1223,12 @@ IF [%%G] EQU [1046] (
 :85
 
 chcp 437 >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
   goto 18PT
+  cls
 ) ELSE (
+  cls
   goto 18EN
 )
 )
@@ -1147,11 +1238,12 @@ IF [%%G] EQU [1046] (
 :90
 
 chcp 437 >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  cls
   goto 19PT
 ) ELSE (
+  cls
   goto 19EN
 )
 )
@@ -1161,11 +1253,12 @@ IF [%%G] EQU [1046] (
 :95
 
 chcp 437 >nul 2>&1
-cls
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  cls
   goto 20PT
 ) ELSE (
+  cls
   goto 20EN
 )
 )
@@ -1175,14 +1268,32 @@ IF [%%G] EQU [1046] (
 :100
 
 chcp 437 >nul 2>&1
-powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\TT\obrigadoporusar.bat"
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\TT\obrigadoporusar.bat /f >nul 2>&1
-PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/shutdown.ps1" -OutFile "C:\TT\shutdown.ps1" >nul 2>&1
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\shutdown.ps1'" >nul 2>&1
-FOR /F "tokens=3 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  echo Preparando para terminar operações...
+) ELSE (
+  echo Preparing to finish operations...
+)
+)
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/obrigadoporusar.bat" -OutFile "C:\TT\obrigadoporusar.bat"
+  reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ObrigadoPorUsar" /t REG_SZ /d C:\TT\obrigadoporusar.bat /f >nul 2>&1
+  PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/desligar.ps1" -OutFile "C:\TT\desligar.ps1" >nul 2>&1
+  PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\desligar.ps1'" >nul 2>&1
+) ELSE (
+  powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/thanksforusing.bat" -OutFile "C:\TT\thanksforusing.bat"
+  reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ThanksForUsing" /t REG_SZ /d C:\TT\thanksforusing.bat /f >nul 2>&1
+  PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/shutdown.ps1" -OutFile "C:\TT\shutdown.ps1" >nul 2>&1
+  PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\shutdown.ps1'" >nul 2>&1
+)
+)
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  cls
   goto EndPT
 ) ELSE (
+  cls
   goto EndEN
 )
 )

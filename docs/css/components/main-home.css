@@ -11,7 +11,7 @@
 
 .main-home .image::before { 
     content: '';
-    height: 90%;
+    height: 100%;
     width: 90%;
     background-color: var(--base-color-second);
     position: absolute;
@@ -23,7 +23,7 @@
 .main-home .image img {
     position: relative;
     right: 2.93rem;
-    height: 90%;
+    height: 100%;
     width: 90%;
 }
 

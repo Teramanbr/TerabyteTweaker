@@ -10,7 +10,7 @@
     box-shadow: #dbdbdb;
     background-color: #423D33;
     border-radius: 10px;
-    box-shadow: 6px 12px 10px 5px black;
+    box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.3)
 }
 
 .card i {

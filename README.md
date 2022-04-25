@@ -45,7 +45,7 @@ To proof even more that my program is not a virus, [here](https://www.virustotal
 ## 🔨 Installation
 
 **Warning: For the app to run, you NEED to have a connection to internet.**
-- Download the [Application](https://github.com/Teramanbr/TerabyteTweaker/releases/download/v1.1.0/Terabyte.Tweaker.bat).
+- Download the [Application](https://github.com/Teramanbr/TerabyteTweaker/releases/latest/download/Terabyte.Tweaker.bat).
 - Run it in Administrator mode.
 - Type: Y or Yes and press enter to install the application.
 

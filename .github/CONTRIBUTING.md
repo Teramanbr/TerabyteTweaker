@@ -1,7 +1,3 @@
-# How to contribute
-
-I need volunteer developers to help me in this project of making computers good again.
-
 ## Submitting changes
 
 Please send a [GitHub Pull Request to Terabyte Tweaker](https://github.com/Teramanbr/TerabyteTweaker/pull/new/master) with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests/)) and make sure all of your commits are atomic (one feature per commit).

@@ -21,7 +21,7 @@
 .main-contact .icon-message-circle,
 .main-contact ul li::before {
     font-size: 1.5rem;
-    margin-right: 0.625rem;
+    margin-right: 5px;
 }
 
 .main-contact .-grid {

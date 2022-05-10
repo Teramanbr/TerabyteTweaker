@@ -672,9 +672,9 @@ IF [%%G] EQU [1046] (
 chcp 437 >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  echo Aplicando Tweaks de Internet...
+  echo Aplicando Tweaks de Internet... (Limpeza de cache da internet + MTU + DNS)
 ) ELSE (
-  echo Applying Internet Tweaks...
+  echo Applying Internet Tweaks... (Internet Cache Cleaning + MTU + DNS)
 )
 )
 ipconfig /release >nul 2>&1
@@ -707,6 +707,38 @@ netsh int ip set global neighborcachelimit=4096 >nul 2>&1
 netsh int tcp set global dca=enabled >nul 2>&1
 netsh int tcp set global netdma=enabled >nul 2>&1
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
+wmic nicconfig where (IPEnabled=TRUE) call SetDNSServerSearchOrder ("1.1.1.1", "1.0.0.1")
+set MTU=1473
+set LASTGOOD=0
+set LASTBAD=65536
+set PACKETSIZE=28
+set SERVER=www.google.com
+::Check server reachability.
+ping -n 1 -l 0 -f -4 !SERVER! 1>nul
+if !ERRORLEVEL! NEQ 0 (
+  echo Error: cannot ping !SERVER!. Run "ping -n 1 -l 0 -f -4 !SERVER!" to see details.
+  goto :error
+)
+::Start looking for the maximum MTU.
+:seek
+ping -n 1 -l !MTU! -f -4 !SERVER! 1>nul
+if !ERRORLEVEL! EQU 0 (
+  set /A LASTGOOD=!MTU!
+  set /A "MTU=(!MTU! + !LASTBAD!) / 2"
+  if !MTU! NEQ !LASTGOOD! goto :seek
+) else (
+  set /A LASTBAD=!MTU!  
+  set /A "MTU=(!MTU! + !LASTGOOD!) / 2"
+  if !MTU! NEQ !LASTBAD! goto :seek
+)
+rem Print the result.
+set /A "MAXMTU=!LASTGOOD! + !PACKETSIZE!"
+rem Export %MAXMTU% variable.
+EndLocal & set MAXMTU=%MAXMTU%
+pause
+:error
+rem When something unexpected occurs.
+EndLocal & set MAXMTU=-1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
@@ -964,7 +996,7 @@ powershell -Command "(Get-Content options.txt) -replace 'soundCategory_music:\d+
 ::Optifine Options
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofFogType:\d+', 'ofFogType:3' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofFogStart:\d+', 'ofFogStart:0.6' | Out-File -encoding default optionsof.txt" >nul 2>&1
-powershell -Command "(Get-Content optionsof.txt) -replace 'ofMipmapType:\d+', 'ofMipmapType:0' | Out-File -encoding default optionsof.txt" >nul 2>&1
+powershell -Command "(Get-Content optionsof.txt) -replace 'ofMipmapType:\d+', 'ofMipmapType:3' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofOcclusionFancy:true', 'ofOcclusionFancy:false' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofSmoothFps:true', 'ofSmoothFps:false' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofSmoothWorld:true', 'ofSmoothWorld:false' | Out-File -encoding default optionsof.txt" >nul 2>&1

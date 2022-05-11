@@ -1086,23 +1086,21 @@ FOR /F "tokens=*" %%@ in ('DIR "%valorant%" /A:D /B') DO (
     SET /A "count+=1"
     SET "folder[!count!]=%%@"
 )
-cd "%valorant%\!folder[%rand%]!\Windows"
+cd "%valorant%\!folder!\Windows"
 PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/VALORANT.ps1" -OutFile "C:\TT\VALORANT.ps1" >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\VALORANT.ps1'" >nul 2>&1
 
-::Steam Game Tweaks
-SET "filepath=C:\Program Files (x86)\Steam\userdata"
-FOR /F "tokens=*" %%@ in ('DIR "%filepath%" /A:D /B') DO (
-    SET /A "rand=(%RANDOM% * %count%)/(32768 + 1)""
-    SET "folder[!count!]=%%@""
+::Steam Game Initialization Tweaks
+
+SET "steam=C:\Program Files (x86)\Steam\userdata"
+FOR /F "tokens=*" %%@ in ('DIR "%steam%" /A:D /B') DO (
+    SET /A "count+=1"
+    SET "folder[!count!]=%%@"
 )
-SET /A "rand=(%RANDOM% * %count%)/(32768 + 1)"
-cd "%filepath%\!folder[%rand%]!\config"
+cd "%steam%\!folder!\config"
+powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/SteamInit.ps1" -OutFile "C:\TT\SteamInit.ps1" >nul 2>&1
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\SteamInit.ps1'" >nul 2>&1
 
-::Brawlhalla
-
-powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/Brawlhalla.ps1" -OutFile "C:\TT\Brawlhalla.ps1" >nul 2>&1
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\Brawlhalla.ps1'" >nul 2>&1
 ::back to windows folder
 cd C:\Windows\System32 >nul 2>&1
 

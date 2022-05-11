@@ -5,3 +5,6 @@
 (Get-Content GameUserSettings.ini) -replace 'sg.ShadowQuality=\d+', 'sg.ShadowQuality=0' | Out-File -encoding default GameUserSettings.ini
 (Get-Content GameUserSettings.ini) -replace 'sg.AntiAliasingQuality=\d+', 'sg.AntiAliasingQuality=0' | Out-File -encoding default GameUserSettings.ini
 (Get-Content GameUserSettings.ini) -replace 'sg.ViewDistanceQuality=\d+', 'sg.ViewDistanceQuality=1' | Out-File -encoding default GameUserSettings.ini
+(Get-Content RiotUserSettings.ini) -replace 'EAresBoolSettingName::ShowBlood=\d+', 'EAresBoolSettingName::ShowBlood=False' | Out-File -encoding default RiotUserSettings.ini
+(Get-Content RiotUserSettings.ini) -replace 'EAresBoolSettingName::ShowCorpses=\d+', 'EAresBoolSettingName::ShowCorpses=False' | Out-File -encoding default RiotUserSettings.ini
+(Get-Content RiotUserSettings.ini) -replace 'EAresBoolSettingName::LimitFramerateOnBattery=\d+', 'EAresBoolSettingName::LimitFramerateOnBattery=False' | Out-File -encoding default RiotUserSettings.ini

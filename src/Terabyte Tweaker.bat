@@ -1,6 +1,6 @@
 @Echo Off
 @Title Terabyte Tweaker
-SETLOCAL ENABLEDELAYEDEXPANSION
+SetLocal EnableDelayedExpansion
 mkdir C:\TT\ >nul 2>&1
 
 ::This code was made by a 14 year old brazilian, which did all of this alone, so if the code is actual garbage,
@@ -672,11 +672,12 @@ IF [%%G] EQU [1046] (
 chcp 437 >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  echo Aplicando Tweaks de Internet... (Limpeza de cache da internet + MTU + DNS)
+  echo Aplicando Limpeza de cache da internet + MTU + DNS + Tweaks... 
 ) ELSE (
-  echo Applying Internet Tweaks... (Internet Cache Cleaning + MTU + DNS)
+  echo Applying Internet Cache Cleaning + MTU + DNS + Tweaks... 
 )
 )
+::Internet Cache Cleaning
 ipconfig /release >nul 2>&1
 ipconfig /renew >nul 2>&1
 arp -d * >nul 2>&1
@@ -707,18 +708,17 @@ netsh int ip set global neighborcachelimit=4096 >nul 2>&1
 netsh int tcp set global dca=enabled >nul 2>&1
 netsh int tcp set global netdma=enabled >nul 2>&1
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
-wmic nicconfig where (IPEnabled=TRUE) call SetDNSServerSearchOrder ("1.1.1.1", "1.0.0.1")
-
-
+::DNS
+wmic nicconfig where (IPEnabled=TRUE) call SetDNSServerSearchOrder ("1.1.1.1", "1.0.0.1") >nul 2>&1
+::MTU Calculator
 set MTU=1473
 set LASTGOOD=0
 set LASTBAD=65536
 set PACKETSIZE=28
-set SERVER=www.google.com
+set SERVER=google.com
 ::Check server reachability.
-ping -n 1 -l 0 -f -4 !SERVER! 1>nul
+ping -n 1 -l 0 -f -4 google.com >nul 2>&1
 if !ERRORLEVEL! NEQ 0 (
-  echo Error: cannot ping !SERVER!. Run "ping -n 1 -l 0 -f -4 !SERVER!" to see details.
   goto :error
 )
 ::Start looking for the maximum MTU.
@@ -737,15 +737,14 @@ rem Print the result.
 set /A "MAXMTU=!LASTGOOD! + !PACKETSIZE!"
 rem Export %MAXMTU% variable.
 EndLocal & set MAXMTU=%MAXMTU%
-pause
+goto MTUWorks
 :error
 rem When something unexpected occurs.
 EndLocal & set MAXMTU=-1
-
-
+:MTUworks
+::better network management regedits
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-::better network management regedits
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUBHDetect" /t REG_DWORD /d "0" /f >nul 2>&1
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUDiscovery" /t REG_DWORD /d "1" /f >nul 2>&1
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "UseDomainNameDevolution" /t REG_DWORD /d "1" /f >nul 2>&1
@@ -1083,12 +1082,11 @@ powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatShadow:false', 
 ::Valorant (not tested code)
 
 SET "valorant=C:\Users\%USERNAME%\AppData\Local\VALORANT\Saved\Config"
-FOR /F "tokens=*" %%G IN ('dir /b "%valorant%" /A:D /B') DO (
-    SET /A "rand=(RANDOM * %count%)/(32768 + 1)""
-    SET "folder[!count!]=%%@""
+FOR /F "tokens=*" %%@ in ('DIR "%valorant%" /A:D /B') DO (
+    SET /A "count+=1"
+    SET "folder[!count!]=%%@"
 )
-SET /A "rand=(%RANDOM% * %count%)/(32768 + 1)"
-cd "%filepath%\!folder[%rand%]!\Windows" >nul 2>&1
+cd "%valorant%\!folder[%rand%]!\Windows"
 PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/VALORANT.ps1" -OutFile "C:\TT\VALORANT.ps1" >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\VALORANT.ps1'" >nul 2>&1
 

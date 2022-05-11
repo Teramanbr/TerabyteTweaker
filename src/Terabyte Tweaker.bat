@@ -1229,8 +1229,8 @@ IF [%%G] EQU [1046] (
   cls
   goto 14PT
 ) ELSE (
-  goto 14EN
   cls
+  goto 14EN
 )
 )
 

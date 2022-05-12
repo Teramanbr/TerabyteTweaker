@@ -20,14 +20,15 @@ Terabyte Tweaker
 <h3 align="center">Terabyte Tweaker is an program that optimizes your Windows PC, allowing it to run faster and smoother.</h3>
 
 ## ✨ Features
-- Regedits
 - RAM Optimization
 - Cache + Log Cleaning
 - Power Plan Tweak
-- Internet Tweaks (Low your latency down on games)
-- Windows Debloat (to remove unwanted programs)
+- Regedits
+- DNS Tweaks (Low your latency down on games)
+- MTU Tweaks (Allow faster internet connections + Lower Ping)
+- Windows Debloat (Remove unwanted programs)
 - Timer Resolution Services (To make your PC run faster)
-- Game Specific Tweaks (only Minecraft in the moment, give me tips on how to make other games faster)
+- Game Specific Tweaks (only Minecraft, Brawlhalla and VALORANT to the moment)
 
 ![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/ingles.png?raw=true)
 
@@ -39,7 +40,7 @@ Even though all my regedit tweaks are harmless, i do not want any chance of dama
 ## ⚠️ Microsoft SmartScreen
 
 Running downloaded Batch files triggers a [Microsoft SmartScreen](https://docs.microsoft.com/pt-br/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview) prompt, even if the Batch file is not a security threat.
-To proof even more that my program is not a virus, [here](https://www.virustotal.com/gui/file/94a84cf4cea2ed8d8a39a6d568379f63729a00a2a1119427c848cd68cdcbe601?nocache=1) is the VirusTotal report:
+To proof even more that my program is not a virus, [here](https://www.virustotal.com/gui/file/7f4f7c7795bb42ec597b923903d1f309fdbce3add8fc31a03257224e507e9bcb?nocache=1) is the VirusTotal report:
 ![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/VirusTotal.png?raw=true)
 
 ## 🔨 Installation

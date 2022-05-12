@@ -3,8 +3,8 @@
 SetLocal EnableDelayedExpansion
 mkdir C:\TT\ >nul 2>&1
 
-::This code was made by a 14 year old brazilian, which did all of this alone, so if the code is actual garbage,
-::i apologise, for i am just a child who likes computers and has poor programming skills.
+::This code was first created by a 12 year old brazilian, which did all of this alone, so if the code is actual garbage,
+::he apologises, for he is just a child who likes computers and has poor programming skills.
 
 ping -n 2 -w 700 google.com >nul 2>&1
 IF %ERRORLEVEL% EQU 1 (

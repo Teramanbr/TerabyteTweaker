@@ -1127,6 +1127,7 @@ IF [%%G] EQU [1046] (
   echo Applying RAM and CPU Tweaks...
 )
 )
+::VRAM Tweaks
 set "mem="
     for /f "tokens=2 delims==" %%a in (
       'wmic computersystem get totalphysicalmemory /value'
@@ -1145,7 +1146,8 @@ set "mem="
 
     echo This computer has %mem% MiB RAM
     set /a "pfile=((%mem%) + (%mem% / 2))"
-    reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "PagingFiles" /t REG_MULTI_SZ /D "c:\pagefile.sys %pfile% %pfile%" /f
+    reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "PagingFiles" /t REG_MULTI_SZ /D "c:\pagefile.sys %pfile% %pfile%" /f >nul 2>&1
+    reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "SystemPages" /t REG_DWORD /D "0" /f >nul 2>&1
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
 set /a mem=%mem% + 1024000
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1

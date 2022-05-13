@@ -21,6 +21,7 @@ Terabyte Tweaker
 
 ## ✨ Features
 - RAM Optimization
+- VRAM Creation
 - Cache + Log Cleaning
 - Power Plan Tweak
 - Regedits

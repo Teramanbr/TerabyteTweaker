@@ -827,10 +827,12 @@ IF [%%G] EQU [1046] (
   echo Applying Regedits...
 )
 )
+::Remove Windows Ads
+reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
 ::Priority
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games " /v "GPU Priority" /t REG_DWORD /d "8" /f >nul 2>&1
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games " /v "Priority" /t REG_DWORD /d "6" /f >nul 2>&1
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games " /v "Scheduling Category" /t REG_SZ /d "High" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "GPU Priority" /t REG_DWORD /d "8" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority" /t REG_DWORD /d "6" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Scheduling Category" /t REG_SZ /d "High" /f >nul 2>&1
 ::System responsiveness
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "0" /f >nul 2>&1
 ::Activate Game Mode
@@ -843,7 +845,7 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Application
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d "2" /f >nul 2>&1
 ::Disable transparency
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "00000000" /f >nul 2>&1
-::Stop Updates/Better Privacy
+::Better Privacy
 reg add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "AutoDownload" /t REG_DWORD /d 2 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "UseActionCenterExperience" /t REG_DWORD /d "00000000" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f >nul 2>&1
@@ -854,6 +856,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHa
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableSize" /t REG_DWORD /d "180" /f >nul 2>&1
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheEntryTtlLimit" /t REG_DWORD /d "fa00" /f >nul 2>&1
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxSOACacheEntryTtlLimit" /t REG_DWORD /d "12d" /f >nul 2>&1
+::Disable Background Apps
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t REG_DWORD /d "2" /f >nul 2>&1
 ::Ultra Regedit Compilation
 powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
 PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/Regedit.reg" -OutFile "%temp%\Regedit.reg" >nul 2>&1
@@ -974,7 +978,7 @@ IF [%%G] EQU [1046] (
   echo Fixing system bugs, may take a while... 
 )
 )
-DISM /Online /Cleanup-Image /StartComponentCleanup >nul 2>&1
+sfc /scannow >nul 2>&1
 DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
@@ -998,12 +1002,14 @@ IF [%%G] EQU [1046] (
   echo Applying Game Specific Tweaks...
 )
 )
-cd %appdata% >nul 2>&1
-cd .minecraft >nul 2>&1
 ::Non-Steam Game Tweaks
-
+:: =========================================================================================================================================== ::
 ::Minecraft Options
-taskkill Javaw.exe
+TaskKill /F /IM javaw.exe >nul 2>&1 
+cd %appdata%\.minecraft >nul 2>&1
+if %errorlevel% == 1 (
+  goto nomine
+)
 powershell -Command "(Get-Content options.txt) -replace 'gamma:\d+.\d+', 'gamma:10.0' | Out-File -encoding default options.txt" >nul 2>&1
 powershell -Command "(Get-Content options.txt) -replace 'renderDistance:\d+', 'renderDistance:2' | Out-File -encoding default options.txt" >nul 2>&1
 powershell -Command "(Get-Content options.txt) -replace 'particles:\d+', 'particles:2' | Out-File -encoding default options.txt" >nul 2>&1
@@ -1090,9 +1096,12 @@ powershell -Command "(Get-Content optionsof.txt) -replace 'ofFastRender:false', 
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofTranslucentBlocks:\d+', 'ofTranslucentBlocks:1' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatBackground:\d+', 'ofChatBackground:0' | Out-File -encoding default optionsof.txt" >nul 2>&1
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatShadow:false', 'ofChatShadow:true' | Out-File -encoding default optionsof.txt" >nul 2>&1
-
+:nomine
 ::Valorant (not tested code)
-
+cd C:\Users\%USERNAME%\AppData\Local\VALORANT\Saved\Config
+if %errorlevel% == 1 (
+  goto noval
+)
 SET "valorant=C:\Users\%USERNAME%\AppData\Local\VALORANT\Saved\Config"
 FOR /F "tokens=*" %%@ in ('DIR "%valorant%" /A:D /B') DO (
     SET /A "count+=1"
@@ -1101,9 +1110,13 @@ FOR /F "tokens=*" %%@ in ('DIR "%valorant%" /A:D /B') DO (
 cd "%valorant%\!folder!\Windows"
 PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/VALORANT.ps1" -OutFile "C:\TT\VALORANT.ps1" >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\VALORANT.ps1'" >nul 2>&1
-
-::Steam Game Initialization Tweaks
-
+:noval
+::Steam Game Tweaks
+:: =========================================================================================================================================== ::
+cd "C:\Program Files (x86)\Steam\userdata"
+if %errorlevel% == 1 (
+  goto nosteam
+)
 SET "steam=C:\Program Files (x86)\Steam\userdata"
 FOR /F "tokens=*" %%@ in ('DIR "%steam%" /A:D /B') DO (
     SET /A "count+=1"
@@ -1112,6 +1125,7 @@ FOR /F "tokens=*" %%@ in ('DIR "%steam%" /A:D /B') DO (
 cd "%steam%\!folder!\config"
 powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/SteamInit.ps1" -OutFile "C:\TT\SteamInit.ps1" >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\SteamInit.ps1'" >nul 2>&1
+:nosteam
 
 ::back to windows folder
 cd C:\Windows\System32 >nul 2>&1

@@ -2,6 +2,8 @@
 @Title Terabyte Tweaker
 SetLocal EnableDelayedExpansion
 mkdir C:\TT\ >nul 2>&1
+set load=
+set/a loadnum=1
 
 ::This code was first created by a 12 year old brazilian, which did all of this alone, so if the code is actual garbage,
 ::he apologises, for he is just a child who likes computers and has poor programming skills.

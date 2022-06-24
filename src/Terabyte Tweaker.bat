@@ -674,112 +674,13 @@ IF [%%G] EQU [1046] (
 chcp 437 >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  echo Aplicando Limpeza de cache da internet + MTU + DNS + Tweaks... 
+echo Consertando Bugs do Sistema, pode levar algum tempo... 
 ) ELSE (
-  echo Applying Internet Cache Cleaning + MTU + DNS + Tweaks... 
+  echo Fixing system bugs, may take a while... 
 )
 )
-::Internet Cache Cleaning
-ipconfig /release >nul 2>&1
-ipconfig /renew >nul 2>&1
-arp -d * >nul 2>&1
-nbtstat -R >nul 2>&1
-nbtstat -RR >nul 2>&1
-ipconfig /flushdns >nul 2>&1
-ipconfig /registerdns >nul 2>&1
-netsh int tcp set global autotuninglevel=normal >nul 2>&1
-netsh interface 6to4 set state disabled >nul 2>&1
-netsh int isatap set state disable >nul 2>&1
-netsh int tcp set global timestamps=disabled >nul 2>&1
-netsh int tcp set heuristics disabled >nul 2>&1
-netsh int tcp set global chimney=disabled >nul 2>&1
-netsh int tcp set global ecncapability=disabled >nul 2>&1
-netsh int tcp set global rsc=enabled >nul 2>&1
-netsh int tcp set global nonsackrttresiliency=disabled >nul 2>&1
-netsh int tcp set security mpp=disabled >nul 2>&1
-netsh int tcp set security profiles=disabled >nul 2>&1
-netsh int ip set global icmpredirects=disabled >nul 2>&1
-netsh int tcp set security mpp=disabled profiles=disabled >nul 2>&1
-netsh int ip set global multicastforwarding=disabled >nul 2>&1
-netsh int tcp set supplemental internet congestionprovider=ctcp >nul 2>&1
-netsh interface teredo set state disabled >nul 2>&1
-netsh winsock reset >nul 2>&1
-netsh int isatap set state disable >nul 2>&1
-netsh int ip set global taskoffload=disabled >nul 2>&1
-netsh int ip set global neighborcachelimit=4096 >nul 2>&1
-netsh int tcp set global dca=enabled >nul 2>&1
-netsh int tcp set global netdma=enabled >nul 2>&1
-PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
-::DNS
-wmic nicconfig where (IPEnabled=TRUE) call SetDNSServerSearchOrder ("8.8.8.8", "8.8.4.4") >nul 2>&1
-::MTU Calculator
-set MTU=1473
-set LASTGOOD=0
-set LASTBAD=65536
-set PACKETSIZE=28
-set SERVER=google.com
-::Check server reachability.
-ping -n 1 -l 0 -f -4 google.com >nul 2>&1
-if !ERRORLEVEL! NEQ 0 (
-  goto :error
-)
-::Start looking for the maximum MTU.
-:seek
-ping -n 1 -l !MTU! -f -4 !SERVER! 1>nul
-if !ERRORLEVEL! EQU 0 (
-  set /A LASTGOOD=!MTU!
-  set /A "MTU=(!MTU! + !LASTBAD!) / 2"
-  if !MTU! NEQ !LASTGOOD! goto :seek
-) else (
-  set /A LASTBAD=!MTU!  
-  set /A "MTU=(!MTU! + !LASTGOOD!) / 2"
-  if !MTU! NEQ !LASTBAD! goto :seek
-)
-rem Print the result.
-set /A "MAXMTU=!LASTGOOD! + !PACKETSIZE!"
-rem Export %MAXMTU% variable.
-EndLocal & set MAXMTU=%MAXMTU%
-goto MTUWorks
-:error
-rem When something unexpected occurs.
-EndLocal & set MAXMTU=-1
-:MTUworks
-::better network management regedits
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d "fffffff" /f >nul 2>&1
-powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUBHDetect" /t REG_DWORD /d "0" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUDiscovery" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "UseDomainNameDevolution" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DeadGWDetectDefault" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DontAddDefaultGatewayDefault" /t REG_DWORD /d "0" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "QualifyingDestinationThreshold" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableTaskOffload" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableWsd" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableICMPRedirect" /t REG_DWORD /d "0" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableIPSourceRouting" /t REG_DWORD /d "0" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "ArpRetryCount" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableDHCPMediaSense" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TcpFinWait2Delay" /t REG_DWORD /d "2" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "1e" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "IRPStackSize" /t REG_DWORD /d "32" /f >nul 2>&1
-reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "SizReqBuf" /t REG_DWORD /d "17424" /f >nul 2>&1
-reg add "HKLM\System\CurrentControlSet\Services\Class\Net\Trans\000n\Ndi" /v "HelpText" /t REG_DWORD /d "000n" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters" /v "MaximumUdpPacketSize" /t REG_DWORD /d "576" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "0" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "HttpBatchSize" /t REG_WORD /D "1" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "MaxReceiveInterval" /t REG_WORD /D "50" /f >nul 2>&1
-::Change microsoft server to google server
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveDnsProbeContent" /t REG_SZ /D "8.8.4.4" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveDnsProbeContentV6" /t REG_SZ /D "2001:4860:4860::8844" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveDnsProbeHost" /t REG_SZ /D "dns.google" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveDnsProbeHostV6" /t REG_SZ /D "dns.google" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbeHost" /t REG_SZ /D "www.msftconnecttest.com" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbeHostV6" /t REG_SZ /D "www.msftconnecttest.com" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbePath" /t REG_SZ /D "connecttest.txt" /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbePathV6" /t REG_SZ /D "connecttest.txt" /f >nul 2>&1
-
+sfc /scannow >nul 2>&1
+DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
   cls
@@ -983,13 +884,112 @@ IF [%%G] EQU [1046] (
 chcp 437 >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  echo Consertando Bugs do Sistema, pode levar algum tempo... 
+echo Aplicando Limpeza de cache da internet + MTU + DNS + Tweaks... 
 ) ELSE (
-  echo Fixing system bugs, may take a while... 
+  echo Applying Internet Cache Cleaning + MTU + DNS + Tweaks... 
 )
 )
-sfc /scannow >nul 2>&1
-DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
+::Internet Cache Cleaning
+ipconfig /release >nul 2>&1
+ipconfig /renew >nul 2>&1
+arp -d * >nul 2>&1
+nbtstat -R >nul 2>&1
+nbtstat -RR >nul 2>&1
+ipconfig /flushdns >nul 2>&1
+ipconfig /registerdns >nul 2>&1
+netsh int tcp set global autotuninglevel=normal >nul 2>&1
+netsh interface 6to4 set state disabled >nul 2>&1
+netsh int isatap set state disable >nul 2>&1
+netsh int tcp set global timestamps=disabled >nul 2>&1
+netsh int tcp set heuristics disabled >nul 2>&1
+netsh int tcp set global chimney=disabled >nul 2>&1
+netsh int tcp set global ecncapability=disabled >nul 2>&1
+netsh int tcp set global rsc=enabled >nul 2>&1
+netsh int tcp set global nonsackrttresiliency=disabled >nul 2>&1
+netsh int tcp set security mpp=disabled >nul 2>&1
+netsh int tcp set security profiles=disabled >nul 2>&1
+netsh int ip set global icmpredirects=disabled >nul 2>&1
+netsh int tcp set security mpp=disabled profiles=disabled >nul 2>&1
+netsh int ip set global multicastforwarding=disabled >nul 2>&1
+netsh int tcp set supplemental internet congestionprovider=ctcp >nul 2>&1
+netsh interface teredo set state disabled >nul 2>&1
+netsh winsock reset >nul 2>&1
+netsh int isatap set state disable >nul 2>&1
+netsh int ip set global taskoffload=disabled >nul 2>&1
+netsh int ip set global neighborcachelimit=4096 >nul 2>&1
+netsh int tcp set global dca=enabled >nul 2>&1
+netsh int tcp set global netdma=enabled >nul 2>&1
+PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
+::DNS
+wmic nicconfig where (IPEnabled=TRUE) call SetDNSServerSearchOrder ("8.8.8.8", "8.8.4.4") >nul 2>&1
+::MTU Calculator
+set MTU=1473
+set LASTGOOD=0
+set LASTBAD=65536
+set PACKETSIZE=28
+set SERVER=google.com
+::Check server reachability.
+ping -n 1 -l 0 -f -4 google.com >nul 2>&1
+if !ERRORLEVEL! NEQ 0 (
+  goto :error
+)
+::Start looking for the maximum MTU.
+:seek
+ping -n 1 -l !MTU! -f -4 !SERVER! 1>nul
+if !ERRORLEVEL! EQU 0 (
+  set /A LASTGOOD=!MTU!
+  set /A "MTU=(!MTU! + !LASTBAD!) / 2"
+  if !MTU! NEQ !LASTGOOD! goto :seek
+) else (
+  set /A LASTBAD=!MTU!  
+  set /A "MTU=(!MTU! + !LASTGOOD!) / 2"
+  if !MTU! NEQ !LASTBAD! goto :seek
+)
+rem Print the result.
+set /A "MAXMTU=!LASTGOOD! + !PACKETSIZE!"
+rem Export %MAXMTU% variable.
+EndLocal & set MAXMTU=%MAXMTU%
+goto MTUWorks
+:error
+rem When something unexpected occurs.
+EndLocal & set MAXMTU=-1
+:MTUworks
+::better network management regedits
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d "fffffff" /f >nul 2>&1
+powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterPowerManagement -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
+powershell "ForEach($adapter In Get-NetAdapter){Disable-NetAdapterLso -Name $adapter.Name -ErrorAction SilentlyContinue}" >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUBHDetect" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnablePMTUDiscovery" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "UseDomainNameDevolution" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DeadGWDetectDefault" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DontAddDefaultGatewayDefault" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "QualifyingDestinationThreshold" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableTaskOffload" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableWsd" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableICMPRedirect" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableIPSourceRouting" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "ArpRetryCount" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableDHCPMediaSense" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TcpFinWait2Delay" /t REG_DWORD /d "2" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "1e" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "IRPStackSize" /t REG_DWORD /d "32" /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "SizReqBuf" /t REG_DWORD /d "17424" /f >nul 2>&1
+reg add "HKLM\System\CurrentControlSet\Services\Class\Net\Trans\000n\Ndi" /v "HelpText" /t REG_DWORD /d "000n" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters" /v "MaximumUdpPacketSize" /t REG_DWORD /d "576" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "HttpBatchSize" /t REG_DWORD /D "1" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTSSvc.3.0\HttpReceive" /v "MaxReceiveInterval" /t REG_DWORD /D "50" /f >nul 2>&1
+::Change microsoft server to google server
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveDnsProbeContent" /t REG_SZ /D "8.8.4.4" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveDnsProbeContentV6" /t REG_SZ /D "2001:4860:4860::8844" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveDnsProbeHost" /t REG_SZ /D "dns.google" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveDnsProbeHostV6" /t REG_SZ /D "dns.google" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbeHost" /t REG_SZ /D "www.msftconnecttest.com" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbeHostV6" /t REG_SZ /D "www.msftconnecttest.com" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbePath" /t REG_SZ /D "connecttest.txt" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbePathV6" /t REG_SZ /D "connecttest.txt" /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "EnableActiveProbing" /t REG_DWORD /D "1" /f >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
   cls

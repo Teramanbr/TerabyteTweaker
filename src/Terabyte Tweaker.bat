@@ -680,6 +680,13 @@ echo Consertando Bugs do Sistema, pode levar algum tempo...
 )
 )
 sfc /scannow >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+echo Quase lá... 
+) ELSE (
+  echo Almost there... 
+)
+)
 DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
@@ -1108,18 +1115,12 @@ powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatBackground:\d+'
 powershell -Command "(Get-Content optionsof.txt) -replace 'ofChatShadow:false', 'ofChatShadow:true' | Out-File -encoding default optionsof.txt" >nul 2>&1
 :nomine
 ::Valorant (not tested code)
-cd C:\Users\%USERNAME%\AppData\Local\VALORANT\Saved\Config
+cd C:\Users\%USERNAME%\AppData\Local\VALORANT\Saved\Config >nul 2>&1
 if %errorlevel% == 1 (
   goto noval
 )
-SET "valorant=C:\Users\%USERNAME%\AppData\Local\VALORANT\Saved\Config"
-FOR /F "tokens=*" %%@ in ('DIR "%valorant%" /A:D /B') DO (
-    SET /A "count+=1"
-    SET "folder[!count!]=%%@"
-)
-cd "%valorant%\!folder!\Windows"
-PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/VALORANT.ps1" -OutFile "C:\TT\VALORANT.ps1" >nul 2>&1
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\VALORANT.ps1'" >nul 2>&1
+PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/VALORANT.ps1" -OutFile "C:\TT\VALORANT.ps1" >nul 2>&1
+for /d %%a in (*) do cd "C:\Users\%USERNAME%\AppData\Local\VALORANT\Saved\Config\%%~a" &&PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\VALORANT.ps1'" /b >nul 2>&1
 :noval
 ::Steam Game Tweaks
 :: =========================================================================================================================================== ::
@@ -1127,14 +1128,8 @@ cd "C:\Program Files (x86)\Steam\userdata"
 if %errorlevel% == 1 (
   goto nosteam
 )
-SET "steam=C:\Program Files (x86)\Steam\userdata"
-FOR /F "tokens=*" %%@ in ('DIR "%steam%" /A:D /B') DO (
-    SET /A "count+=1"
-    SET "folder[!count!]=%%@"
-)
-cd "%steam%\!folder!\config"
-powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker//main/src/SteamInit.ps1" -OutFile "C:\TT\SteamInit.ps1" >nul 2>&1
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\SteamInit.ps1'" >nul 2>&1
+powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/SteamInit.ps1" -OutFile "C:\TT\SteamInit.ps1" >nul 2>&1
+for /d %%a in (*) do cd "C:\Program Files (x86)\Steam\userdata\%%~a\config" &&PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\SteamInit.ps1'" &&cd ..\.. >nul 2>&1
 :nosteam
 
 ::back to windows folder

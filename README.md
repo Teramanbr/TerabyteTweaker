@@ -66,7 +66,7 @@ Also, [here](https://www.virustotal.com/gui/file/7f4f7c7795bb42ec597b923903d1f30
 
 - Terabyte Tweaker will automatically create a restore point so you can restore your system to its original state, if desired.
 
-### 🤝 Contributing <a name = "contribuiting"></a>
+### 🤝 Contributing <a name = "contributing"></a>
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check the [issues page](https://github.com/Teramanbr/TerabyteTweaker/issues). 
 If you can't contribute to the app by sending bug reports, forks or feature requests, you can contribute to me instead, by subscribing to my [Youtube channel](https://www.youtube.com/channel/UCIj-jcplOl9RqTfjXQ30JXA?sub_confirmation=1&via=tb).

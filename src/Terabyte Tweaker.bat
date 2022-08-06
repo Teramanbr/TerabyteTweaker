@@ -4,13 +4,13 @@ SetLocal EnableDelayedExpansion
 mkdir C:\TT\ >nul 2>&1
 set load=
 set/a loadnum=1
+chcp 437 >nul 2>&1
 
 ::This code was first created by a 12 year old brazilian, which did all of this alone, so if the code is actual garbage,
 ::he apologises, for he is just a child who likes computers and has poor programming skills.
 
 ping -n 2 -w 700 google.com >nul 2>&1
 IF %ERRORLEVEL% EQU 1 (
-    chcp 437 >nul 2>&1
     color 4
     FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
     IF [%%G] EQU [1046] (
@@ -20,7 +20,6 @@ IF %ERRORLEVEL% EQU 1 (
     )
     )
 ) ELSE (
-    chcp 437 >nul 2>&1
     color 6
     FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
     IF [%%G] EQU [1046] (
@@ -64,11 +63,9 @@ echo.
     pause & exit
 
 :br
-
-chcp 65001 >nul 2>&1
 net session >nul 2>&1
 if %errorLevel% == 0 (
-    cls
+    goto startbr
 ) else (
 color 4
 echo.
@@ -102,35 +99,37 @@ echo.
 echo.
     pause & exit
 )
+:startbr
 cd %systemroot%\system32
+chcp 65001 >nul 2>&1
 cls
 echo.
 echo.
-echo.
-echo ########################################################################################################################
-echo                                                    Terabyte Tweaker                                          
-echo ########################################################################################################################
-echo              ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                               ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-echo             ▄████████████████████████████████                             ▄████████████████████████████████         
-echo            ▐█████████████████████████████████▌                           ▐█████████████████████████████████▌
-echo            ███████████████████████████████████▄                          ███████████████████████████████████▌
-echo           ▀▀▀▀▀▀▀▀▀▀▀▀▀▀█████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀                         ▀▀▀▀▀▀▀▀▀▀▀▀▀▀█████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-echo                        █████████▌                                                    █████████▌
-echo                       ██████████                                                    ██████████
-echo                      ██████████                                                    ▄█████████ 
-echo                     ▄████████████████████▀                                        ▐████████████████████▀
-echo                     ███████████████████▀                                          ████████████████████
-echo                    ███████████████████                                           ███████████████████▀
-echo                              ███████▀                                                      ███████▀
-echo                             ▐██████                                                        ██████
-echo                             █████▀                                                        █████▀
-echo                            ▐███▀                                                          ███▀
-echo                            ███                                                           ███
-echo                            █▀                                                            █▀   
-echo ########################################################################################################################
-echo                                                  Por Teraman_br#5060                                         
-echo ########################################################################################################################
-echo.
+echo                                ▄▄▄▄▄▄                                     ##############################
+echo                               ████████                                           Terabyte Tweaker
+echo                               ████████                                          por Teraman_br#5060
+echo                  ▄███▄       ▄████████▄       ▄███▄                       ##############################
+echo                ▄███████▄▄▄████████████████▄▄▄███████▄   
+echo                ██████████████████████████████████████                     * Debloater
+echo                 ▀██████████████████████████████████▀                      * Otimização de RAM 
+echo                   ████████████████████████████████                        * Criação de VRAM Melhorada
+echo                  ▄██████████▀▀        ▀▀██████████▄                       * Limpeza de Cache + Log
+echo                 ▄█████████▀        █    ▀██████████▄                      * Tweaks no Plano de Energia
+echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Tweaks no Regedit
+echo           ███████████████       ▄██        ███████████████                * Tweaks naInternet 
+echo           ███████████████      ██████      ███████████████                * Timer Resolution Services
+echo           ███████████████         ██▀      ███████████████                * Tweaks de Jogos
+echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Mudança de Servidor
+echo                 ▀█████████▄     █▀       ▄█████████▀                      * Bugfixes do Sistema
+echo                   ██████████▄▄        ▄▄██████████                        * Tweaks de CPU 
+echo                  ▄████████████████████████████████▄                       * Tweaks de GPU
+echo                 ▄██████████████████████████████████▄                      * Tweaks do Mouse
+echo                ██████████████████████████████████████                     * Otimização de Serviços
+echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Instalação automática
+echo                  ▀███▀       ▀████████▀       ▀███▀                       * E muito mais...
+echo                               ████████                     
+echo                               ████████                    
+echo                                ▀▀▀▀▀▀                    
 echo.
 echo.
 SET /P choice=Deseja ativar os Tweaks e melhorar a Performance do PC? S/N?:
@@ -138,12 +137,12 @@ IF /I "%choice%"=="S" Goto runbr
 IF /I "%choice%"=="s" Goto runbr
 IF /I "%choice%"=="Sim" Goto runbr
 IF /I "%choice%"=="sim" Goto runbr
-IF /I "%choice%"=="N" Goto quit
-IF /I "%choice%"=="n" Goto quit
-IF /I "%choice%"=="não" Goto quit
-IF /I "%choice%"=="nao" Goto quit
-IF /I "%choice%"=="Não" Goto quit
-IF /I "%choice%"=="Nao" Goto quit
+IF /I "%choice%"=="N" exit
+IF /I "%choice%"=="n" exit
+IF /I "%choice%"=="não" exit
+IF /I "%choice%"=="nao" exit
+IF /I "%choice%"=="Não" exit
+IF /I "%choice%"=="Nao" exit
 
 :NoNet
 echo.
@@ -178,11 +177,9 @@ echo.
 pause & exit
 
 :en
-
-chcp 65001 >nul 2>&1
 net session >nul 2>&1
 if %errorLevel% == 0 (
-    cls
+    goto starten
 ) else (
 color 4
 echo.
@@ -216,35 +213,37 @@ echo.
 echo.
     pause & exit
 )
+:starten
 cd %systemroot%\system32
+chcp 65001 >nul 2>&1
 cls
 echo.
 echo.
-echo.
-echo ########################################################################################################################
-echo                                                    Terabyte Tweaker                                          
-echo ########################################################################################################################
-echo              ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                               ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-echo             ▄████████████████████████████████                             ▄████████████████████████████████         
-echo            ▐█████████████████████████████████▌                           ▐█████████████████████████████████▌
-echo            ███████████████████████████████████▄                          ███████████████████████████████████▌
-echo           ▀▀▀▀▀▀▀▀▀▀▀▀▀▀█████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀                         ▀▀▀▀▀▀▀▀▀▀▀▀▀▀█████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-echo                        █████████▌                                                    █████████▌
-echo                       ██████████                                                    ██████████
-echo                      ██████████                                                    ▄█████████ 
-echo                     ▄████████████████████▀                                        ▐████████████████████▀
-echo                     ███████████████████▀                                          ████████████████████
-echo                    ███████████████████                                           ███████████████████▀
-echo                              ███████▀                                                      ███████▀
-echo                             ▐██████                                                        ██████
-echo                             █████▀                                                        █████▀
-echo                            ▐███▀                                                          ███▀
-echo                            ███                                                           ███
-echo                            █▀                                                            █▀   
-echo ########################################################################################################################
-echo                                                   by Teraman_br#5060                                         
-echo ########################################################################################################################
-echo.
+echo                                ▄▄▄▄▄▄                                     ##############################
+echo                               ████████                                           Terabyte Tweaker
+echo                               ████████                                          by Teraman_br#5060
+echo                  ▄███▄       ▄████████▄       ▄███▄                       ##############################
+echo                ▄███████▄▄▄████████████████▄▄▄███████▄   
+echo                ██████████████████████████████████████                     * Debloater
+echo                 ▀██████████████████████████████████▀                      * RAM Optimization
+echo                   ████████████████████████████████                        * Better VRAM Creation
+echo                  ▄██████████▀▀        ▀▀██████████▄                       * Cache + Log Cleaning
+echo                 ▄█████████▀        █    ▀██████████▄                      * Power Plan Tweak
+echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Regedit Tweaks
+echo           ███████████████       ▄██        ███████████████                * Internet Tweaks
+echo           ███████████████      ██████      ███████████████                * Timer Resolution Services
+echo           ███████████████         ██▀      ███████████████                * Game Specific Tweaks
+echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Server Changer
+echo                 ▀█████████▄     █▀       ▄█████████▀                      * System Bugfixes
+echo                   ██████████▄▄        ▄▄██████████                        * CPU Tweaks
+echo                  ▄████████████████████████████████▄                       * GPU Tweaks
+echo                 ▄██████████████████████████████████▄                      * Mouse Tweaks
+echo                ██████████████████████████████████████                     * Services Optimization
+echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Automatic Installation
+echo                  ▀███▀       ▀████████▀       ▀███▀                       * And much more...
+echo                               ████████                     
+echo                               ████████                    
+echo                                ▀▀▀▀▀▀                    
 echo.
 echo.
 SET /P choice=Do you wish to install the Tweaks? (Y/N):
@@ -253,10 +252,10 @@ IF /I "%choice%"=="y" Goto run
 IF /I "%choice%"=="yeah" Goto run
 IF /I "%choice%"=="Yes" Goto run
 IF /I "%choice%"=="yes" Goto run
-IF /I "%choice%"=="N" Goto quit
-IF /I "%choice%"=="n" Goto quit
-IF /I "%choice%"=="No" Goto quit
-IF /I "%choice%"=="no" Goto quit
+IF /I "%choice%"=="N" exit
+IF /I "%choice%"=="n" exit
+IF /I "%choice%"=="No" exit
+IF /I "%choice%"=="no" exit
 
 :runbr
 chcp 65001 >nul 2>&1
@@ -867,7 +866,7 @@ cls
 powercfg /d 44444444-4444-4444-4444-444444444449 >nul 2>&1 
 powercfg -import "C:\Hone\Resources\HoneV2.pow" 44444444-4444-4444-4444-444444444449 >nul 2>&1 
 powercfg -SETACTIVE "44444444-4444-4444-4444-444444444449" >nul 2>&1 
-powercfg /changename 44444444-4444-4444-4444-444444444449 "Terabyte Power Plan" "The Ultimate Power Plan to increase FPS, improve latency and reduce input lag. (Added by Terabyte Tweaker)" >nul 2>&1 
+powercfg /changename 44444444-4444-4444-4444-444444444449 "HoneCtrl's Power Plan" "The Ultimate Power Plan to increase FPS, improve latency and reduce input lag. (Added by Terabyte Tweaker)" >nul 2>&1 
 ::Delete Balanced Plan
 powercfg /d 381b4222-f694-41f0-9685-ff5bb260df2e >nul 2>&1 
 ::Delete High Performance Plan
@@ -1181,6 +1180,57 @@ set "mem="
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
 set /a mem=%mem% + 1024000
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
+::Disable FTH
+Reg add "HKLM\Software\Microsoft\FTH" /v "Enabled" /t Reg_DWORD /d "0" /f
+::Disable Desktop Composition
+Reg add "HKCU\Software\Microsoft\Windows\DWM" /v "Composition" /t REG_DWORD /d "0" /f
+::Disable Background apps
+Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f
+Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f
+Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t Reg_DWORD /d "0" /f
+::Disallow drivers to get paged into virtual memory
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t Reg_DWORD /d "1" /f
+::Disable Page Combining and Memory Compression
+powershell -NoProfile -Command "Disable-MMAgent -PagingCombining -mc"
+Reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePageCombining" /t REG_DWORD /d "1" /f
+::Use Large System Cache to improve microstuttering
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t Reg_DWORD /d "1" /f
+::Free unused ram
+Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f
+::Auto restart Powershell on error
+Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "AutoRestartShell" /t REG_DWORD /d "1" /f
+::Disk Optimizations
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "DontVerifyRandomDrivers" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "LongPathsEnabled" /t REG_DWORD /d "0" /f
+::Disable Prefetch and Superfetch
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t Reg_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t Reg_DWORD /d "0" /f
+::Disable Hibernation + Fast Startup
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f
+::Wait time to kill app during shutdown
+Reg add "HKCU\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t Reg_SZ /d "1000" /f
+::Wait to end service at shutdown
+Reg add "HKLM\System\CurrentControlSet\Control" /v "WaitToKillServiceTimeout" /t Reg_SZ /d "1000" /f
+::Wait to kill non-responding app
+Reg add "HKCU\Control Panel\Desktop" /v "HungAppTimeout" /t Reg_SZ /d "1000" /f
+::fsutil
+if exist "%windir%\System32\fsutil.exe" (
+	::Raise the limit of paged pool memory
+	fsutil behavior set memoryusage 2
+	::https://www.serverbrain.org/solutions-2003/the-mft-zone-can-be-optimized.html
+	fsutil behavior set mftzone 2
+	::Disable Last Access information on directories, performance/privacy
+	fsutil behavior set disablelastaccess 1
+	::Disable Virtual Memory Pagefile Encryption
+	fsutil behavior set encryptpagingfile 0
+	::Disables the creation of legacy 8.3 character-length file names on FAT- and NTFS-formatted volumes.
+	fsutil behavior set disable8dot3 1
+	::Disable NTFS compression
+	fsutil behavior set disablecompression 1
+	::Enable Trim
+	fsutil behavior set disabledeletenotify 0
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
   cls
@@ -1198,24 +1248,98 @@ IF [%%G] EQU [1046] (
 chcp 437 >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
-  echo Ativando Clock Resolution Services...
+  echo Aplicando tweaks de CPU...
 ) ELSE (
-  echo Activating Clock Resolution Services...
+  echo Applying CPU tweaks...
 )
 )
-::This code is half mine, credits to Hone for the other half.
-cd C:\TT\ 
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239120367673434/CLOCKRES.exe" -OutFile "C:\TT\CLOCKRES.exe" >nul 2>&1
-FOR /F "tokens=*" %%g IN ('CLOCKRES.exe ^| find "Current"') do set "currenttimer=%%g"
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239064738627594/SetTimerResolutionService.exe" -OutFile "C:\TT\SetTimerResolutionService.exe"  >nul 2>&1
-sc config "STR" start= auto >nul 2>&1
-NET START STR >nul 2>&1
-bcdedit /set useplatformtick yes >nul 2>&1  
-bcdedit /set disabledynamictick yes >nul 2>&1
-cd C:\TT\ >nul 2>&1
-%windir%\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /quiet /s /i SetTimerResolutionService.exe >nul 2>&1
-sc config "STR" start= auto >nul 2>&1
-NET START STR >nul 2>&1
+::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
+for /f "tokens=*" %%f in ('wmic cpu get NumberOfCores /value ^| find "="') do set %%f
+for /f "tokens=*" %%f in ('wmic cpu get NumberOfLogicalProcessors /value ^| find "="') do set %%f
+for /f "tokens=3*" %%a in ('Reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\NetworkCards" /k /v /f "Description" /s /e ^| findstr /ri "REG_SZ"') do (
+
+if "%NumberOfCores%"=="2" ( goto skipcpu )
+
+if %NumberOfCores% gtr 4 (
+	for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "3" /f >nul 2>&1
+		Reg delete "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /f >nul 2>&1
+	)
+	for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "5" /f >nul 2>&1
+		Reg delete "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /f >nul 2>&1
+	)
+	goto Tweaks
+)
+
+if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
+::HyperThreading Enabled
+	for /f %%i in ('wmic path Win32_USBController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "4" /f >nul 2>&1
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "C0" >nul 2>&1
+	)
+	for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "4" /f >nul 2>&1
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "C0" /f >nul 2>&1
+	)
+	for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "4" /f >nul 2>&1
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "30" /f >nul 2>&1
+	)
+) else (
+::HyperThreading Disabled
+	for /f %%i in ('wmic path Win32_USBController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "4" /f >nul 2>&1
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "08" /f >nul 2>&1
+	)
+	for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "4" /f >nul 2>&1
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "02" /f >nul 2>&1
+	)
+	for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "4" /f >nul 2>&1
+		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "04" /f >nul 2>&1
+	)
+)
+for /f %%c in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /s /f "%%b" /d ^| findstr /C:"HKEY"') do (
+Reg export "%%c" "%SystemDrive%\Hone\HoneRevert\ognic.reg" /y
+Reg add "%%c" /v "MIMOPowerSaveMode" /t REG_SZ /d "3" /f
+Reg add "%%c" /v "PowerSavingMode" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "EnableGreenEthernet" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*EEE" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*IPSecOffloadV1IPv4" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*IPSecOffloadV2IPv4" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*IPSecOffloadV2" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*RscIPv4" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*RscIPv6" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*PMNSOffload" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*PMARPOffload" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*JumboPacket" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "EnableConnectedPowerGating" /t REG_DWORD /d "0" /f
+Reg add "%%c" /v "EnableDynamicPowerGating" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "EnableSavePowerNow" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "*FlowControl" /t REG_SZ /d "0" /f
+Rem more powersaving options
+Reg add "%%c" /v "*NicAutoPowerSaver" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "ULPMode" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "EnablePME" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "AlternateSemaphoreDelay" /t REG_SZ /d "0" /f
+Reg add "%%c" /v "AutoPowerSaveModeEnabled" /t REG_SZ /d "0" /f
+rem RSS
+Reg add "%%c" /v "*NumRssQueues" /t REG_SZ /d "2" /f
+if %NumberOfCores% geq 6 (
+Reg add "%%c" /v "*RssBaseProcNumber" /t REG_SZ /d "4" /f
+Reg add "%%c" /v "*RssMaxProcNumber" /t REG_SZ /d "5" /f
+) else if %NumberOfCores% geq 4 (
+Reg add "%%c" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
+Reg add "%%c" /v "*RssMaxProcNumber" /t REG_SZ /d "3" /f
+) else (
+Reg delete "%%c" /v "*RssBaseProcNumber" /f
+Reg delete "%%c" /v "*RssMaxProcNumber" /f
+)
+) >nul 2>&1
+)
+:skipcpu
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
   cls
@@ -1233,6 +1357,26 @@ IF [%%G] EQU [1046] (
 chcp 437 >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  echo Ativando Clock Resolution Services...
+) ELSE (
+  echo Activating Clock Resolution Services...
+)
+)
+::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
+cd C:\TT\ 
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239120367673434/CLOCKRES.exe" -OutFile "C:\TT\CLOCKRES.exe" >nul 2>&1
+FOR /F "tokens=*" %%g IN ('CLOCKRES.exe ^| find "Current"') do set "currenttimer=%%g"
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239064738627594/SetTimerResolutionService.exe" -OutFile "C:\TT\SetTimerResolutionService.exe"  >nul 2>&1
+sc config "STR" start= auto >nul 2>&1
+NET START STR >nul 2>&1
+bcdedit /set useplatformtick yes >nul 2>&1  
+bcdedit /set disabledynamictick yes >nul 2>&1
+cd C:\TT\ >nul 2>&1
+%windir%\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /quiet /s /i SetTimerResolutionService.exe >nul 2>&1
+sc config "STR" start= auto >nul 2>&1
+NET START STR >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   cls
   goto 11PT
 ) ELSE (
@@ -1248,6 +1392,55 @@ IF [%%G] EQU [1046] (
 chcp 437 >nul 2>&1
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
+  echo Ativando Tweaks de GPU...
+) ELSE (
+  echo Activating GPU Tweaks...
+)
+)
+::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
+Reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "2" /f
+::Enable gdi hardware acceleration
+for /f %%a in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaCompatible" /s ^| findstr "HKEY"') do Reg add "%%a" /v "KMD_EnableGDIAcceleration" /t Reg_DWORD /d "1" /f
+::Enable GameMode
+Reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t Reg_DWORD /d "1" /f
+Reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t Reg_DWORD /d "1" /f
+::FSO
+reg add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /t REG_DWORD /d "0" /f
+reg add "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehaviorMode" /t REG_DWORD /d "2" /f
+reg add "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehavior" /t REG_DWORD /d "2" /f
+reg add "HKCU\System\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode" /t REG_DWORD /d "1" /f
+reg add "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
+reg add "HKCU\System\GameConfigStore" /v "GameDVR_EFSEFeatureFlags" /t REG_DWORD /d "0" /f
+reg add "HKCU\System\GameConfigStore" /v "GameDVR_DSEBehavior" /t REG_DWORD /d "2" /f
+::Disable GpuEnergyDrv
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDrv" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDr" /v "Start" /t Reg_DWORD /d "4" /f
+::Disable Preemption
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t Reg_DWORD /d "0" /f
+)>nul 2>&1 else (
+Reg delete "HKCU\Software\Hone" /v "AllGPUTweaks" /f
+::Enable Hardware Accelerated Scheduling
+reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "1" /f
+::Disable gdi hardware acceleration
+for /f %%a in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaCompatible" /s ^| findstr "HKEY"') do Reg delete "%%a" /v "KMD_EnableGDIAcceleration" /f
+::Enable GameMode
+Reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t Reg_DWORD /d "1" /f
+Reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t Reg_DWORD /d "1" /f
+::FSO
+reg delete "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /f
+reg delete "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehaviorMode" /f
+reg delete "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehavior" /f
+reg delete "HKCU\System\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode" /f
+reg delete "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /f
+reg delete "HKCU\System\GameConfigStore" /v "GameDVR_EFSEFeatureFlags" /f
+reg delete "HKCU\System\GameConfigStore" /v "GameDVR_DSEBehavior" /f
+::Disable GpuEnergyDrv
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDrv" /v "Start" /t Reg_DWORD /d "2" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDr" /v "Start" /t Reg_DWORD /d "2" /f
+::Disable Preemption
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t Reg_DWORD /d "1" /f
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
   cls
   goto 12PT
 ) ELSE (
@@ -1261,6 +1454,58 @@ IF [%%G] EQU [1046] (
 :60
 
 chcp 437 >nul 2>&1
+FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
+IF [%%G] EQU [1046] (
+  echo Ativando Tweaks de Serviços...
+) ELSE (
+  echo Activating Service Tweaks...
+)
+)
+::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
+
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xbgm" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v "Start" /t REG_DWORD /d "4" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\spectrum" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wcncsvc" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient" /v "Start" /t REG_DWORD /d "4" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NcaSvc" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagsvc" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UserDataSvc" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\stisvc" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AdobeFlashPlayerUpdateSvc" /v "Start" /t REG_DWORD /d "4" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrkWks" /v "Start" /t REG_DWORD /d "4" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dmwappushservice" /v "Start" /t REG_DWORD /d "4" /f   
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PimIndexMaintenanceSvc" /v "Start" /t REG_DWORD /d "4" /f   
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack" /v "Start" /t REG_DWORD /d "4" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GoogleChromeElevationService" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\OneSyncSvc" /v "Start" /t REG_DWORD /d "4" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ibtsiva" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMPTRAP" /v "Start" /t REG_DWORD /d "4" /f   	
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\pla" /v "Start" /t REG_DWORD /d "4" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ssh-agent" /v "Start" /t REG_DWORD /d "4" /f   
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sshd" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DoSvc" /v "Start" /t REG_DWORD /d "4" /f    
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WbioSrvc" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PcaSvc" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetTcpPortSharing" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wersvc" /v "Start" /t REG_DWORD /d "4" /f   
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdate" /v "Start" /t REG_DWORD /d "4" /f   
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdatem" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MSiSCSI" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CDPUserSvc" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation" /v "Start" /t REG_DWORD /d "4" /f   
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UnistoreSvc" /v "Start" /t REG_DWORD /d "4" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MapsBroker" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\debugregsvc" /v "Start" /t REG_DWORD /d "4" /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Ndu" /v "Start" /d "2" /t REG_DWORD /f  
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TimeBrokerSvc" /v "Start" /d "3" /t REG_DWORD /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VaultSvc" /v "Start" /t REG_DWORD /d "3" /f 
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CertPropSvc" /v "Start" /t REG_DWORD /d "3" /f
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
   cls

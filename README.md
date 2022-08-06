@@ -38,14 +38,13 @@ Even though all my regedit tweaks are harmless, i do not want any chance of dama
 **Warning: For the app to run, you NEED to have a connection to the internet.**
 
 ### ✨ Features <a name = "features"></a>
-- Debloater
+- Debloater (Remove unwanted programs)
 - RAM Optimization
-- VRAM Creation
+- Better VRAM Creation
 - Cache + Log Cleaning
 - Power Plan Tweak
 - Regedits
 - DNS+MTU Tweaks (Allow faster internet connections + Lower Ping)
-- Debloater (Remove unwanted programs)
 - Timer Resolution Services (To make your PC run faster)
 - Game Specific Tweaks (only Minecraft, Brawlhalla and VALORANT to the moment)
 - Server Changer (Change your server from Microsoft to Google for faster connection)

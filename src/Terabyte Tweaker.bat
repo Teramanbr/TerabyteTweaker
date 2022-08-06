@@ -110,24 +110,24 @@ echo                               ████████                     
 echo                               ████████                                          por Teraman_br#5060
 echo                  ▄███▄       ▄████████▄       ▄███▄                       ##############################
 echo                ▄███████▄▄▄████████████████▄▄▄███████▄   
-echo                ██████████████████████████████████████                     * Debloater
-echo                 ▀██████████████████████████████████▀                      * Otimização de RAM 
-echo                   ████████████████████████████████                        * Criação de VRAM Melhorada
-echo                  ▄██████████▀▀        ▀▀██████████▄                       * Limpeza de Cache + Log
-echo                 ▄█████████▀        █    ▀██████████▄                      * Tweaks no Plano de Energia
-echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Tweaks no Regedit
-echo           ███████████████       ▄██        ███████████████                * Tweaks naInternet 
-echo           ███████████████      ██████      ███████████████                * Timer Resolution Services
-echo           ███████████████         ██▀      ███████████████                * Tweaks de Jogos
-echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Mudança de Servidor
-echo                 ▀█████████▄     █▀       ▄█████████▀                      * Bugfixes do Sistema
-echo                   ██████████▄▄        ▄▄██████████                        * Tweaks de CPU 
-echo                  ▄████████████████████████████████▄                       * Tweaks de GPU
-echo                 ▄██████████████████████████████████▄                      * Tweaks do Mouse
-echo                ██████████████████████████████████████                     * Otimização de Serviços
-echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Instalação automática
-echo                  ▀███▀       ▀████████▀       ▀███▀                       * E muito mais...
-echo                               ████████                     
+echo                ██████████████████████████████████████                     
+echo                 ▀██████████████████████████████████▀                      * Debloater
+echo                   ████████████████████████████████                        * Otimização de RAM 
+echo                  ▄██████████▀▀        ▀▀██████████▄                       * Criação de VRAM Melhorada
+echo                 ▄█████████▀        █    ▀██████████▄                      * Limpeza de Cache + Log
+echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Tweaks no Plano de Energia
+echo           ███████████████       ▄██        ███████████████                * Tweaks no Regedit
+echo           ███████████████      ██████      ███████████████                * Tweaks naInternet 
+echo           ███████████████         ██▀      ███████████████                * Timer Resolution Services
+echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Tweaks de Jogos
+echo                 ▀█████████▄     █▀       ▄█████████▀                      * Mudança de Servidor
+echo                   ██████████▄▄        ▄▄██████████                        * Bugfixes do Sistema
+echo                  ▄████████████████████████████████▄                       * Tweaks de CPU 
+echo                 ▄██████████████████████████████████▄                      * Tweaks de GPU
+echo                ██████████████████████████████████████                     * Tweaks do Mouse
+echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Otimização de Serviços
+echo                  ▀███▀       ▀████████▀       ▀███▀                       * Instalação automática
+echo                               ████████                                    * E muito mais...
 echo                               ████████                    
 echo                                ▀▀▀▀▀▀                    
 echo.
@@ -224,24 +224,24 @@ echo                               ████████                     
 echo                               ████████                                          by Teraman_br#5060
 echo                  ▄███▄       ▄████████▄       ▄███▄                       ##############################
 echo                ▄███████▄▄▄████████████████▄▄▄███████▄   
-echo                ██████████████████████████████████████                     * Debloater
-echo                 ▀██████████████████████████████████▀                      * RAM Optimization
-echo                   ████████████████████████████████                        * Better VRAM Creation
-echo                  ▄██████████▀▀        ▀▀██████████▄                       * Cache + Log Cleaning
-echo                 ▄█████████▀        █    ▀██████████▄                      * Power Plan Tweak
-echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Regedit Tweaks
-echo           ███████████████       ▄██        ███████████████                * Internet Tweaks
-echo           ███████████████      ██████      ███████████████                * Timer Resolution Services
-echo           ███████████████         ██▀      ███████████████                * Game Specific Tweaks
-echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Server Changer
-echo                 ▀█████████▄     █▀       ▄█████████▀                      * System Bugfixes
-echo                   ██████████▄▄        ▄▄██████████                        * CPU Tweaks
-echo                  ▄████████████████████████████████▄                       * GPU Tweaks
-echo                 ▄██████████████████████████████████▄                      * Mouse Tweaks
-echo                ██████████████████████████████████████                     * Services Optimization
-echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Automatic Installation
-echo                  ▀███▀       ▀████████▀       ▀███▀                       * And much more...
-echo                               ████████                     
+echo                ██████████████████████████████████████                     
+echo                 ▀██████████████████████████████████▀                      * Debloater
+echo                   ████████████████████████████████                        * RAM Optimization
+echo                  ▄██████████▀▀        ▀▀██████████▄                       * Better VRAM Creation
+echo                 ▄█████████▀        █    ▀██████████▄                      * Cache + Log Cleaning
+echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Power Plan Tweak
+echo           ███████████████       ▄██        ███████████████                * Regedit Tweaks
+echo           ███████████████      ██████      ███████████████                * Internet Tweaks
+echo           ███████████████         ██▀      ███████████████                * Timer Resolution Services
+echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Game Specific Tweaks
+echo                 ▀█████████▄     █▀       ▄█████████▀                      * Server Changer
+echo                   ██████████▄▄        ▄▄██████████                        * System Bugfixes
+echo                  ▄████████████████████████████████▄                       * CPU Tweaks
+echo                 ▄██████████████████████████████████▄                      * GPU Tweaks
+echo                ██████████████████████████████████████                     * Mouse Tweaks
+echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Services Optimization
+echo                  ▀███▀       ▀████████▀       ▀███▀                       * Automatic Installation
+echo                               ████████                                    * And much more...
 echo                               ████████                    
 echo                                ▀▀▀▀▀▀                    
 echo.
@@ -1181,42 +1181,41 @@ for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:v
 set /a mem=%mem% + 1024000
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1
 ::Disable FTH
-Reg add "HKLM\Software\Microsoft\FTH" /v "Enabled" /t Reg_DWORD /d "0" /f
+Reg add "HKLM\Software\Microsoft\FTH" /v "Enabled" /t Reg_DWORD /d "0" /f >nul 2>&1
 ::Disable Desktop Composition
-Reg add "HKCU\Software\Microsoft\Windows\DWM" /v "Composition" /t REG_DWORD /d "0" /f
+Reg add "HKCU\Software\Microsoft\Windows\DWM" /v "Composition" /t REG_DWORD /d "0" /f >nul 2>&1
 ::Disable Background apps
-Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f
-Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f
-Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t Reg_DWORD /d "0" /f
+Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f >nul 2>&1
+Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f >nul 2>&1
+Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t Reg_DWORD /d "0" /f >nul 2>&1
 ::Disallow drivers to get paged into virtual memory
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t Reg_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t Reg_DWORD /d "1" /f >nul 2>&1
 ::Disable Page Combining and Memory Compression
-powershell -NoProfile -Command "Disable-MMAgent -PagingCombining -mc"
-Reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePageCombining" /t REG_DWORD /d "1" /f
+Reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePageCombining" /t REG_DWORD /d "1" /f >nul 2>&1
 ::Use Large System Cache to improve microstuttering
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t Reg_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t Reg_DWORD /d "1" /f >nul 2>&1
 ::Free unused ram
-Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f
+Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f >nul 2>&1
 ::Auto restart Powershell on error
-Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "AutoRestartShell" /t REG_DWORD /d "1" /f
+Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "AutoRestartShell" /t REG_DWORD /d "1" /f >nul 2>&1
 ::Disk Optimizations
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "DontVerifyRandomDrivers" /t REG_DWORD /d "1" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "LongPathsEnabled" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "DontVerifyRandomDrivers" /t REG_DWORD /d "1" /f >nul 2>&1
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "LongPathsEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
 ::Disable Prefetch and Superfetch
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t Reg_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t Reg_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t Reg_DWORD /d "0" /f >nul 2>&1
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t Reg_DWORD /d "0" /f >nul 2>&1
 ::Disable Hibernation + Fast Startup
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t REG_DWORD /d "0" /f >nul 2>&1
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
 ::Wait time to kill app during shutdown
-Reg add "HKCU\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t Reg_SZ /d "1000" /f
+Reg add "HKCU\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t Reg_SZ /d "1000" /f >nul 2>&1
 ::Wait to end service at shutdown
-Reg add "HKLM\System\CurrentControlSet\Control" /v "WaitToKillServiceTimeout" /t Reg_SZ /d "1000" /f
+Reg add "HKLM\System\CurrentControlSet\Control" /v "WaitToKillServiceTimeout" /t Reg_SZ /d "1000" /f >nul 2>&1
 ::Wait to kill non-responding app
-Reg add "HKCU\Control Panel\Desktop" /v "HungAppTimeout" /t Reg_SZ /d "1000" /f
+Reg add "HKCU\Control Panel\Desktop" /v "HungAppTimeout" /t Reg_SZ /d "1000" /f >nul 2>&1
 ::fsutil
-if exist "%windir%\System32\fsutil.exe" (
+if exist "%windir%\System32\fsutil.exe" ( 
 	::Raise the limit of paged pool memory
 	fsutil behavior set memoryusage 2
 	::https://www.serverbrain.org/solutions-2003/the-mft-zone-can-be-optimized.html
@@ -1230,7 +1229,8 @@ if exist "%windir%\System32\fsutil.exe" (
 	::Disable NTFS compression
 	fsutil behavior set disablecompression 1
 	::Enable Trim
-	fsutil behavior set disabledeletenotify 0
+	fsutil behavior set disabledeletenotify 0) >nul 2>&1 else goto pass >nul 2>&1
+:pass
 FOR /F "tokens=4 delims= " %%G in ('powershell.exe GET-WinSystemLocale') DO (
 IF [%%G] EQU [1046] (
   cls

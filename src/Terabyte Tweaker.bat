@@ -107,28 +107,28 @@ echo.
 echo.
 echo                                ▄▄▄▄▄▄                                     ##############################
 echo                               ████████                                           Terabyte Tweaker
-echo                               ████████                                          por Teraman_br#5060
+echo                               ████████                                          by Teraman_br#5060
 echo                  ▄███▄       ▄████████▄       ▄███▄                       ##############################
 echo                ▄███████▄▄▄████████████████▄▄▄███████▄   
-echo                ██████████████████████████████████████                     
-echo                 ▀██████████████████████████████████▀                      * Debloater
-echo                   ████████████████████████████████                        * Otimização de RAM 
-echo                  ▄██████████▀▀        ▀▀██████████▄                       * Criação de VRAM Melhorada
-echo                 ▄█████████▀        █    ▀██████████▄                      * Limpeza de Cache + Log
-echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Tweaks no Plano de Energia
-echo           ███████████████       ▄██        ███████████████                * Tweaks no Regedit
-echo           ███████████████      ██████      ███████████████                * Tweaks naInternet 
-echo           ███████████████         ██▀      ███████████████                * Timer Resolution Services
-echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Tweaks de Jogos
-echo                 ▀█████████▄     █▀       ▄█████████▀                      * Mudança de Servidor
-echo                   ██████████▄▄        ▄▄██████████                        * Bugfixes do Sistema
-echo                  ▄████████████████████████████████▄                       * Tweaks de CPU 
-echo                 ▄██████████████████████████████████▄                      * Tweaks de GPU
-echo                ██████████████████████████████████████                     * Tweaks do Mouse
-echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Otimização de Serviços
-echo                  ▀███▀       ▀████████▀       ▀███▀                       * Instalação automática
+echo                ██████████████████████████████████████                     * MultiFerramenta
+echo                 ▀██████████████████████████████████▀                      * Otimização de RAM
+echo                   ████████████████████████████████                        * Melhor Criação de VRAM
+echo                  ▄██████████▀▀        ▀▀██████████▄                       * Limpeza de Cache + Log
+echo                 ▄█████████▀        █    ▀██████████▄                      * Tweaks de Plano de Energia 
+echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Regedits
+echo           ███████████████       ▄██        ███████████████                * Tweaks de Internet
+echo           ███████████████      ██████      ███████████████                * Timer Resolution Services
+echo           ███████████████         ██▀      ███████████████                * Tweaks Específicos para Jogos
+echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Troca de Servidores
+echo                 ▀█████████▄     █▀       ▄█████████▀                      * Conserta problemas do Sistema
+echo                   ██████████▄▄        ▄▄██████████                        * Tweaks de CPU 
+echo                  ▄████████████████████████████████▄                       * Tweaks de GPU 
+echo                 ▄██████████████████████████████████▄                      * Tweaks no Mouse 
+echo                ██████████████████████████████████████                     * Otimização de Serviços
+echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Arquivo Extremamente Pequeno
+echo                  ▀███▀       ▀████████▀       ▀███▀                       * Instalação Automática
+echo                               ████████                                    * Debloater
 echo                               ████████                                    * E muito mais...
-echo                               ████████                    
 echo                                ▀▀▀▀▀▀                    
 echo.
 echo.
@@ -224,25 +224,25 @@ echo                               ████████                     
 echo                               ████████                                          by Teraman_br#5060
 echo                  ▄███▄       ▄████████▄       ▄███▄                       ##############################
 echo                ▄███████▄▄▄████████████████▄▄▄███████▄   
-echo                ██████████████████████████████████████                     
-echo                 ▀██████████████████████████████████▀                      * Debloater
-echo                   ████████████████████████████████                        * RAM Optimization
-echo                  ▄██████████▀▀        ▀▀██████████▄                       * Better VRAM Creation
-echo                 ▄█████████▀        █    ▀██████████▄                      * Cache + Log Cleaning
-echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Power Plan Tweak
-echo           ███████████████       ▄██        ███████████████                * Regedit Tweaks
-echo           ███████████████      ██████      ███████████████                * Internet Tweaks
-echo           ███████████████         ██▀      ███████████████                * Timer Resolution Services
-echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Game Specific Tweaks
-echo                 ▀█████████▄     █▀       ▄█████████▀                      * Server Changer
-echo                   ██████████▄▄        ▄▄██████████                        * System Bugfixes
-echo                  ▄████████████████████████████████▄                       * CPU Tweaks
-echo                 ▄██████████████████████████████████▄                      * GPU Tweaks
-echo                ██████████████████████████████████████                     * Mouse Tweaks
-echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Services Optimization
+echo                ██████████████████████████████████████                     * All in One
+echo                 ▀██████████████████████████████████▀                      * RAM Optimization
+echo                   ████████████████████████████████                        * Better VRAM Creation
+echo                  ▄██████████▀▀        ▀▀██████████▄                       * Cache + Log Cleaning
+echo                 ▄█████████▀        █    ▀██████████▄                      * Power Plan Tweak
+echo            ▄▄▄▄██████████▀        █▀      ▀██████████▄▄▄▄                 * Regedit Tweaks
+echo           ███████████████       ▄██        ███████████████                * Internet Tweaks
+echo           ███████████████      ██████      ███████████████                * Timer Resolution Services
+echo           ███████████████         ██▀      ███████████████                * Game Specific Tweaks
+echo            ▀▀▀▀▀█████████▄       █▀       ▄█████████▀▀▀▀▀                 * Server Changer
+echo                 ▀█████████▄     █▀       ▄█████████▀                      * System Bugfixes
+echo                   ██████████▄▄        ▄▄██████████                        * CPU Tweaks
+echo                  ▄████████████████████████████████▄                       * GPU Tweaks
+echo                 ▄██████████████████████████████████▄                      * Mouse Tweaks
+echo                ██████████████████████████████████████                     * Services Optimization
+echo                ▀███████▀▀▀████████████████▀▀▀███████▀                     * Incredibily Small File
 echo                  ▀███▀       ▀████████▀       ▀███▀                       * Automatic Installation
-echo                               ████████                                    * And much more...
-echo                               ████████                    
+echo                               ████████                                    * Debloater
+echo                               ████████                                    * And many more...
 echo                                ▀▀▀▀▀▀                    
 echo.
 echo.

@@ -845,6 +845,10 @@ goto Loading
 
 
 :EndEN
+powershell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/thanksforusing.bat" -OutFile "C:\TT\thanksforusing.bat"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v "ThanksForUsing" /t REG_SZ /d C:\TT\thanksforusing.bat /f >nul 2>&1
+PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/shutdown.ps1" -OutFile "C:\TT\shutdown.ps1" >nul 2>&1
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\shutdown.ps1'" >nul 2>&1
 cls
 echo.
 echo.
@@ -853,20 +857,14 @@ echo.
 echo.
 echo.
 echo.
-echo.    
-echo.          
-echo.    
-echo.     
-echo.   
-echo. 
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
 echo                      %COL%[33mComputer sucessfuly tweaked! Wait 5 minutes for the computer to restart
 echo                                         or press any button to restart now!
-echo.                   
-echo.                  
-echo.                 
-echo.                      
-echo.      
-echo. 
 echo.
 echo.
 echo.
@@ -875,4 +873,12 @@ echo.
 echo.
 echo.
 echo.
-pause & exit
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+shutdown /r /t 500 -c " "
+pause
+shutdown /r /t 0

@@ -347,7 +347,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDrv" /v "Start" /t Reg_
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDr" /v "Start" /t Reg_DWORD /d "4" /f >nul 2>&1
 ::Disable Preemption
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t Reg_DWORD /d "0" /f >nul 2>&1
-)>nul 2>&1 else (
+) >nul 2>&1 else (
 Reg delete "HKCU\Software\Hone" /v "AllGPUTweaks" /f >nul 2>&1
 ::Enable Hardware Accelerated Scheduling
 reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "1" /f >nul 2>&1
@@ -462,9 +462,9 @@ Reg add "%%c" /v "*RssMaxProcNumber" /t REG_SZ /d "3" /f >nul 2>&1
 ) else (
 Reg delete "%%c" /v "*RssBaseProcNumber" /f >nul 2>&1
 Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
-)
 ) >nul 2>&1
-)
+) >nul 2>&1
+) >nul 2>&1
 
 set/a progress=%progress% +1
 goto Loading
@@ -488,8 +488,6 @@ set "mem="
 
     set "memMB=%mem:~0,-6%"
     set /a "mem=((memMB-memMB/21) + (memMB-memMB/22))/2"
-
-    echo This computer has %mem% MiB RAM
     set /a "pfile=((%mem%) + (%mem% / 2))"
     reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "PagingFiles" /t REG_MULTI_SZ /D "c:\pagefile.sys %pfile% %pfile%" /f >nul 2>&1
     reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "SystemPages" /t REG_DWORD /D "0" /f >nul 2>&1

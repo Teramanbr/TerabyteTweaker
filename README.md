@@ -39,19 +39,16 @@ Even though all my regedit tweaks are harmless, i do not want any chance of dama
 
 ### ✨ Features <a name = "features"></a>
 - Debloater (Remove unnecessary features)
-- RAM Optimization
-- Better VRAM Creation
 - Cache + Log Cleaning
-- Power Plan Tweak
-- Regedit Tweaks
+- RAM, CPU and GPU Optimization Tweaks
 - Internet Tweaks (DNS+MTU / Allow faster internet connections + Lower Ping)
 - Timer Resolution Services
+- Power Plan Tweak
+- Regedit Tweaks
 - Game Specific Tweaks (Minecraft, Brawlhalla and VALORANT)
+- Better VRAM Creation
 - Server Changer (Change your server from Microsoft to Google for faster connection)
 - System Bugfixes
-- CPU Tweaks
-- GPU Tweaks
-- Mouse Tweaks
 - Services Optimization
 - Automatic Installation
 - Incredibily Small File Size
@@ -61,7 +58,7 @@ Even though all my regedit tweaks are harmless, i do not want any chance of dama
 ## 🔨 Installing <a name = "installing"></a>
 
 Running downloaded Batch files triggers a [Microsoft SmartScreen](https://docs.microsoft.com/pt-br/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview) prompt, even if the Batch file is not a security threat.
-Also, [here](https://www.virustotal.com/gui/file/7f4f7c7795bb42ec597b923903d1f309fdbce3add8fc31a03257224e507e9bcb?nocache=1) is the VirusTotal report:
+Also, [here](https://www.virustotal.com/gui/file/4cc978c2cbfcc4add6ce2258474926a5b8657080e393b691776172a5581be54e?nocache=1) is the VirusTotal report:
 ![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/VirusTotal.png?raw=true)
 
 - [Download](https://github.com/Teramanbr/TerabyteTweaker/releases/latest/download/Terabyte.Tweaker.bat) the application.

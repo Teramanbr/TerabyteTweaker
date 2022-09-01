@@ -88,6 +88,7 @@ IF %ERRORLEVEL% EQU 1 (
 cd %systemroot%\system32
 chcp 65001 >nul 2>&1
 cls
+:retry
 echo.
 echo.
 echo                                ▄▄▄▄▄▄                                     ##############################
@@ -115,9 +116,10 @@ echo                  ▀███▀       ▀████████▀      
 echo                               ████████                                    *%COL%[92m Debloater%COL%[33m
 echo                               ████████                                    *%COL%[92m And many more...%COL%[33m
 echo                                ▀▀▀▀▀▀                    
+echo.                                %COL%[92mPress [%COL%[33mY%COL%[92m] to Install the Tweaks or [%COL%[33mN%COL%[92m] to leave.
 echo.
-echo.
-SET /P choice=Do you wish to install the Tweaks? (Y/N):
+SET /P choice=Choose Your Option:
+if not '%choice%'=='' set choice=%choice:~0,1%
 IF /I "%choice%"=="Y" Goto Loading
 IF /I "%choice%"=="y" Goto Loading
 IF /I "%choice%"=="yeah" Goto Loading
@@ -127,6 +129,7 @@ IF /I "%choice%"=="N" exit
 IF /I "%choice%"=="n" exit
 IF /I "%choice%"=="No" exit
 IF /I "%choice%"=="no" exit
+cls && ECHO "%choice%" is not a valid option, try again. && pause && goto retry
 
 
 :Loading

@@ -808,37 +808,31 @@ goto Loading
 
 :14
 chcp 437 >nul 2>&1
-echo chupa rick sanches
 set/a progress=%progress% +1
 goto Loading
 
 :15
 chcp 437 >nul 2>&1
-echo chupa rick sanches
 set/a progress=%progress% +1
 goto Loading
 
 :16
 chcp 437 >nul 2>&1
-echo chupa rick sanches
 set/a progress=%progress% +1
 goto Loading
 
 :17
 chcp 437 >nul 2>&1
-echo chupa rick sanches
 set/a progress=%progress% +1
 goto Loading
 
 :18
 chcp 437 >nul 2>&1
-echo chupa rick sanches
 set/a progress=%progress% +1
 goto Loading
 
 :19
 chcp 437 >nul 2>&1
-echo chupa rick sanches
 set/a progress=%progress% +1
 goto Loading
 

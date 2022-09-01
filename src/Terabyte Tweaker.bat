@@ -6,6 +6,7 @@ set load=
 set/a loadnum=5
 setlocal
 set progress=0
+set debloating=true
 color 6
 
 ::Blank/Color Character
@@ -116,7 +117,7 @@ echo                  ▀███▀       ▀████████▀      
 echo                               ████████                                    *%COL%[92m Debloater%COL%[33m
 echo                               ████████                                    *%COL%[92m And many more...%COL%[33m
 echo                                ▀▀▀▀▀▀                    
-echo.                                %COL%[92mPress [%COL%[33mY%COL%[92m] to Install the Tweaks or [%COL%[33mN%COL%[92m] to leave.
+echo.                             %COL%[92mPress [%COL%[33mY%COL%[92m] to Install the Tweaks, [%COL%[33mN%COL%[92m] to leave or [%COL%[33mC%COL%[92m] to Configure %COL%[33m
 echo.
 SET /P choice=Choose Your Option:
 if not '%choice%'=='' set choice=%choice:~0,1%
@@ -125,11 +126,58 @@ IF /I "%choice%"=="y" Goto Loading
 IF /I "%choice%"=="yeah" Goto Loading
 IF /I "%choice%"=="Yes" Goto Loading
 IF /I "%choice%"=="yes" Goto Loading
+IF /I "%choice%"=="C" Goto config
+IF /I "%choice%"=="c" Goto config
 IF /I "%choice%"=="N" exit
 IF /I "%choice%"=="n" exit
 IF /I "%choice%"=="No" exit
 IF /I "%choice%"=="no" exit
-cls && ECHO "%choice%" is not a valid option, try again. && pause && goto retry
+cls && ECHO This is not a valid option, please try again. && pause && goto retry
+
+:config
+
+
+cls
+echo.
+echo                                                  ##############################
+echo                                                             %COL%[92mSettings%COL%[33m
+echo                                                  ##############################
+echo.
+echo                                                  [1] Activate Debloating: %debloating%
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo. 
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo                                        %COL%[92mPress [%COL%[33mX%COL%[92m] to go back to the menu.%COL%[33m
+echo.
+echo.
+SET /P choice=Select your settings:
+IF /I "%choice%"=="1" ( 
+  if "%debloating%"=="true" (
+    set debloating=false
+    ) else set debloating=true
+) && goto config
+IF /I "%choice%"=="x" Goto start
+IF /I "%choice%"=="X" Goto start
+if not '%choice%'=='' set choice=%choice:~0,1%
+pause
+
 
 
 :Loading

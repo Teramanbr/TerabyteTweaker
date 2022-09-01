@@ -164,7 +164,7 @@ echo.
 echo.
 echo.
 echo.
-echo                                        %COL%[92mPress [%COL%[33mX%COL%[92m] to go back to the menu.%COL%[33m
+echo                                               %COL%[92mPress [%COL%[33mX%COL%[92m] to go back to the menu.%COL%[33m
 echo.
 echo.
 SET /P choice=Select your settings:
@@ -289,6 +289,7 @@ goto Loading
 ::25%
 
 chcp 437 >nul 2>&1
+if "%debloating%"=="false" goto skipdebloat
 echo Debloating...
 PowerShell -command "ps onedrive | Stop-Process -Force" >nul 2>&1
 PowerShell -command "start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"" >nul 2>&1
@@ -327,6 +328,7 @@ PowerShell -command "Get-AppxPackage Microsoft.BioEnrollment | Remove-AppxPackag
 PowerShell -command "Get-AppxPackage ContentDeliveryManager | Remove-AppxPackage" >nul 2>&1
 PowerShell -command "Get-AppxPackage 'Microsoft.Advertising.Xaml' | Remove-AppxPackage" >nul 2>&1
 
+:skipdebloat
 set/a progress=%progress% +1
 goto Loading
 
@@ -430,11 +432,11 @@ goto Loading
 chcp 437 >nul 2>&1
 echo Applying CPU Tweaks...
 ::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
-for /f "tokens=*" %%f in ('wmic cpu get NumberOfCores /value ^| find "="') do set %%f
-for /f "tokens=*" %%f in ('wmic cpu get NumberOfLogicalProcessors /value ^| find "="') do set %%f
+for /f "tokens=*" %%f in ('wmic cpu get NumberOfCores /value ^| find "="') do set %%f >nul 2>&1
+for /f "tokens=*" %%f in ('wmic cpu get NumberOfLogicalProcessors /value ^| find "="') do set %%f >nul 2>&1
 for /f "tokens=3*" %%a in ('Reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\NetworkCards" /k /v /f "Description" /s /e ^| findstr /ri "REG_SZ"') do (
 
-if "%NumberOfCores%"=="2" ( goto endcpu )
+if "%NumberOfCores%"=="2" ( goto endcpu ) 
 
 if %NumberOfCores% gtr 4 (
 	for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
@@ -446,7 +448,7 @@ if %NumberOfCores% gtr 4 (
 		Reg delete "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /f >nul 2>&1
 	)
 	goto endcpu
-)
+) >nul 2>&1
 
 if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
 ::HyperThreading Enabled
@@ -476,7 +478,7 @@ if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
 		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "4" /f >nul 2>&1
 		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "04" /f >nul 2>&1
 	)
-)
+) >nul 2>&1
 :endcpu
 for /f %%c in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /s /f "%%b" /d ^| findstr /C:"HKEY"') do (
 Reg export "%%c" "%SystemDrive%\TT\TTRevert\ognic.reg" /y >nul 2>&1

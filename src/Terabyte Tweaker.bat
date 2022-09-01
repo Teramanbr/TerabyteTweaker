@@ -7,6 +7,10 @@ set/a loadnum=5
 setlocal
 set progress=0
 set debloating=true
+set fixing=true
+set cleaning=true
+set regediting=true
+set power=true
 color 6
 
 ::Blank/Color Character
@@ -139,19 +143,19 @@ cls && ECHO This is not a valid option, please try again. && pause && goto retry
 
 cls
 echo.
-echo                                                  ##############################
-echo                                                             %COL%[92mSettings%COL%[33m
-echo                                                  ##############################
+echo                                                 ##############################
+echo                                                            %COL%[92mSettings%COL%[33m
+echo                                                 ##############################
 echo.
-echo                                                  [1] Activate Debloating: %debloating%
+echo      [1] Activate System Fixer: %fixing%       [2] Activate Cleaner: %cleaning%          [3] Activate Regedits: %regediting%
+echo          Highly Reccomended to keep ON,        Highly Recommended to keep ON,      Reccomended to keep On, although
+echo          Fixes System bugs and Problems        Cleans System cache and logs        not neecessary in most games.
+echo          Automatically.                        Automatically.                      Makes some games faster.
 echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo. 
-echo.
+echo      [4] Activate Debloating: %debloating%         [5] Activate Power Plan: %power%
+echo          Uninstall Factory Bloatware           Not recommended for notebooks,
+echo          from your system.                     tweaks power plan for better
+echo                                                peformance using more energy.
 echo.
 echo.
 echo.
@@ -169,10 +173,35 @@ echo.
 echo.
 SET /P choice=Select your settings:
 IF /I "%choice%"=="1" ( 
+  if "%fixing%"=="true" (
+    set fixing=false
+    ) else set fixing=true
+) && goto config
+
+IF /I "%choice%"=="2" ( 
+  if "%cleaning%"=="true" (
+    set cleaning=false
+    ) else set cleaning=true
+) && goto config
+
+IF /I "%choice%"=="3" ( 
+  if "%regediting%"=="true" (
+    set regediting=false
+    ) else set regediting=true
+) && goto config
+
+IF /I "%choice%"=="4" ( 
   if "%debloating%"=="true" (
     set debloating=false
     ) else set debloating=true
 ) && goto config
+
+IF /I "%choice%"=="5" ( 
+  if "%power%"=="true" (
+    set power=false
+    ) else set power=true
+) && goto config
+
 IF /I "%choice%"=="x" Goto start
 IF /I "%choice%"=="X" Goto start
 if not '%choice%'=='' set choice=%choice:~0,1%
@@ -211,11 +240,13 @@ goto Loading
 ::10%
 
 chcp 437 >nul 2>&1
+if "%fixing%"=="false" goto skipfixing
 echo Fixing system bugs, may take a while... 
 sfc /scannow >nul 2>&1
 echo Almost there... 
 DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
 
+:skipfixing
 set/a progress=%progress% +1
 goto Loading
 
@@ -223,6 +254,7 @@ goto Loading
 ::15%
 
 chcp 437 >nul 2>&1
+if "%cleaning%"=="false" goto skipcleaning
 echo Cleaning Cache and Logs...
 md c:\windows\temp >nul 2>&1
 del c:\windows\logs\cbs\*.log >nul 2>&1
@@ -237,6 +269,7 @@ del C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\SettingSync\*.log /s /q 
 del C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\Explorer\ThumbCacheToDelete\*.tmp /s /q >nul 2>&1
 del C:\Users\%USERNAME%\AppData\Local\Microsoft\"Terminal Server Client"\Cache\*.bin /s /q >nul 2>&1
 
+:skipcleaning
 set/a progress=%progress% +1 
 goto Loading
 
@@ -244,6 +277,7 @@ goto Loading
 ::20%
 
 chcp 437 >nul 2>&1
+if "%regediting%"=="false" goto skipregediting
 echo Applying Regedits...
 ::Remove Windows Ads
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
@@ -282,6 +316,7 @@ PowerShell Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/Teraby
 reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
 del %temp%\~Regedit.reg >nul 2>&1
 
+:skipregediting
 set/a progress=%progress% +1
 goto Loading
 
@@ -336,6 +371,7 @@ goto Loading
 ::30%
 
 chcp 437 >nul 2>&1
+if "%power%"=="false" goto skippower
 echo Applying Power Plan...
 powercfg -restoredefaultschemes
 powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798652558351794196/798666504190296064/Hone_Power_Plan.pow" -OutFile "C:\Hone\Resources\HoneV2.pow"
@@ -351,6 +387,7 @@ powercfg /d 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c >nul 2>&1
 ::Delete Power Saving Plan
 powercfg /d a1841308-3541-4fab-bc81-f71556f20b4a >nul 2>&1
 
+:skippower
 set/a progress=%progress% +1
 goto Loading
 

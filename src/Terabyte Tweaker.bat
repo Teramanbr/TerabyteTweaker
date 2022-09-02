@@ -125,7 +125,7 @@ echo                  ▀███▀       ▀████████▀      
 echo                               ████████                                    *%COL%[92m Debloater%COL%[33m
 echo                               ████████                                    *%COL%[92m And many more...%COL%[33m
 echo                                ▀▀▀▀▀▀                    
-echo.                             %COL%[92mPress [%COL%[33mY%COL%[92m] to Install the Tweaks, [%COL%[33mN%COL%[92m] to leave or [%COL%[33mC%COL%[92m] to Configure %COL%[33m
+echo.                             %COL%[92mPress [%COL%[33mY%COL%[92m] to Install the Tweaks, [%COL%[33mX%COL%[92m] to leave or [%COL%[33mC%COL%[92m] to Configure %COL%[33m
 echo.
 SET /P choice=Choose Your Option:
 if not '%choice%'=='' set choice=%choice:~0,1%
@@ -136,10 +136,8 @@ IF /I "%choice%"=="Yes" Goto Loading
 IF /I "%choice%"=="yes" Goto Loading
 IF /I "%choice%"=="C" Goto config
 IF /I "%choice%"=="c" Goto config
-IF /I "%choice%"=="N" exit
-IF /I "%choice%"=="n" exit
-IF /I "%choice%"=="No" exit
-IF /I "%choice%"=="no" exit
+IF /I "%choice%"=="X" exit
+IF /I "%choice%"=="x" exit
 cls && ECHO This is not a valid option, please try again. && pause && goto retry
 
 :config
@@ -148,9 +146,9 @@ cls && ECHO This is not a valid option, please try again. && pause && goto retry
 cls
 %COL%[92m
 echo.
-echo                                                 ##############################
-echo                                                            %COL%[33mSettings%COL%[92m
-echo                                                 ##############################
+echo                                                ##############################
+echo                                                           %COL%[33mSettings%COL%[92m
+echo                                                ##############################
 echo.
 echo.
 echo.
@@ -233,6 +231,7 @@ IF /I "%choice%"=="9" (
 
 IF /I "%choice%"=="x" Goto start
 IF /I "%choice%"=="X" Goto start
+cls && ECHO This is not a valid option, please try again. && pause && goto config
 if not '%choice%'=='' set choice=%choice:~0,1%
 pause
 

@@ -11,6 +11,10 @@ set fixing=true
 set cleaning=true
 set regediting=true
 set power=true
+set clock=true
+set cpugpu=true
+set ramtweaks=true
+set internetgame=true
 color 6
 
 ::Blank/Color Character
@@ -142,28 +146,29 @@ cls && ECHO This is not a valid option, please try again. && pause && goto retry
 
 
 cls
+%COL%[92m
 echo.
 echo                                                 ##############################
-echo                                                            %COL%[92mSettings%COL%[33m
+echo                                                            %COL%[33mSettings%COL%[92m
 echo                                                 ##############################
 echo.
-echo      [1] Activate System Fixer: %fixing%       [2] Activate Cleaner: %cleaning%          [3] Activate Regedits: %regediting%
-echo          Highly Reccomended to keep ON,        Highly Recommended to keep ON,      Reccomended to keep On, although
-echo          Fixes System bugs and Problems        Cleans System cache and logs        not neecessary in most games.
-echo          Automatically.                        Automatically.                      Makes some games faster.
-echo.
-echo      [4] Activate Debloating: %debloating%         [5] Activate Power Plan: %power%
-echo          Uninstall Factory Bloatware           Not recommended for notebooks,
-echo          from your system.                     tweaks power plan for better
-echo                                                peformance using more energy.
 echo.
 echo.
 echo.
+echo     [%COL%[33m1%COL%[92m] Activate System Fixer: %COL%[33m%fixing%%COL%[92m        [%COL%[33m2%COL%[92m] Activate Cleaner: %COL%[33m%cleaning%%COL%[92m           [%COL%[33m3%COL%[92m] Activate Regedits: %COL%[33m%regediting%%COL%[92m
+echo         Highly Reccomended to keep ON,         Highly Recommended to keep ON,       Reccomended to keep On, although
+echo         Fixes System bugs and Problems         Cleans System cache, logs and        not neecessary in most games.
+echo         Automatically.                         Internet Cache Automatically.        Makes some games faster.
 echo.
-echo.
-echo.
-echo.
-echo.
+echo     [%COL%[33m4%COL%[92m] Activate Debloating: %COL%[33m%debloating%%COL%[92m          [%COL%[33m5%COL%[92m] Activate Power Plan: %COL%[33m%power%%COL%[92m        [%COL%[33m6%COL%[92m] Clock Resolution Services: %COL%[33m%clock%%COL%[92m
+echo         Uninstall Factory Bloatware and        Not recommended for notebooks,       Reccomended to keep On, may
+echo         Services from your system without      tweaks power plan for better         not be 100%% automatic like
+echo         breaking the microsoft store.          peformance using more energy.        the other tweaks.
+echo.     
+echo     [%COL%[33m7%COL%[92m] Activate CPU and GPU Tweaks: %COL%[33m%cpugpu%%COL%[92m  [%COL%[33m8%COL%[92m] Activate RAM Tweaks: %COL%[33m%ramtweaks%%COL%[92m        [%COL%[33m9%COL%[92m] Internet and Game Tweaks: %COL%[33m%internetgame%%COL%[92m
+echo         Highly Reccomended to keep ON,         Highly Reccomended to keep ON,       Highly Reccomended to keep ON,
+echo         Automatically tweaks software for      Makes the ram work in blocks         Better Internet connection and
+echo         best peformance.                       for higher peformance.               Ping, together with FPS.
 echo.
 echo.
 echo.
@@ -200,6 +205,30 @@ IF /I "%choice%"=="5" (
   if "%power%"=="true" (
     set power=false
     ) else set power=true
+) && goto config
+
+IF /I "%choice%"=="6" ( 
+  if "%clock%"=="true" (
+    set clock=false
+    ) else set clock=true
+) && goto config
+
+IF /I "%choice%"=="7" ( 
+  if "%cpugpu%"=="true" (
+    set cpugpu=false
+    ) else set cpugpu=true
+) && goto config
+
+IF /I "%choice%"=="8" ( 
+  if "%ramtweaks%"=="true" (
+    set ramtweaks=false
+    ) else set ramtweaks=true
+) && goto config
+
+IF /I "%choice%"=="9" ( 
+  if "%internetgame%"=="true" (
+    set internetgame=false
+    ) else set internetgame=true
 ) && goto config
 
 IF /I "%choice%"=="x" Goto start
@@ -395,6 +424,7 @@ goto Loading
 ::35%
 
 chcp 437 >nul 2>&1
+if "%clock%"=="false" goto skipclock
 echo Activating Clock Resolution Services...
 cd C:\TT\ 
 powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798314687321735199/923239120367673434/CLOCKRES.exe" -OutFile "C:\TT\CLOCKRES.exe" >nul 2>&1
@@ -409,6 +439,7 @@ cd C:\TT\ >nul 2>&1
 sc config "STR" start= auto >nul 2>&1
 NET START STR >nul 2>&1
 
+:skipclock
 set/a progress=%progress% +1
 goto Loading
 
@@ -416,6 +447,7 @@ goto Loading
 ::40%
 
 chcp 437 >nul 2>&1
+if "%cpugpu%"=="false" goto skipgpu
 echo Applying GPU Tweaks...
 ::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
 Reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "2" /f >nul 2>&1
@@ -460,6 +492,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDr" /v "Start" /t Reg_D
 ::Disable Preemption
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t Reg_DWORD /d "1" /f >nul 2>&1
 
+:skipgpu
 set/a progress=%progress% +1
 goto Loading
 
@@ -467,6 +500,7 @@ goto Loading
 ::45%
 
 chcp 437 >nul 2>&1
+if "%cpugpu%"=="false" goto skipcpu
 echo Applying CPU Tweaks...
 ::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
 for /f "tokens=*" %%f in ('wmic cpu get NumberOfCores /value ^| find "="') do set %%f >nul 2>&1
@@ -556,12 +590,14 @@ Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
 ) >nul 2>&1
 ) >nul 2>&1
 
+:skipcpu
 set/a progress=%progress% +1
 goto Loading
 
 :9
 ::50%
 chcp 437 >nul 2>&1
+if "%memtweaks%"=="false" goto skipmemtweaks
 echo Applying RAM Tweaks...
 set "mem="
     for /f "tokens=2 delims==" %%a in (
@@ -636,12 +672,14 @@ if exist "%windir%\System32\fsutil.exe" (
 	fsutil behavior set disabledeletenotify 0) >nul 2>&1 else goto pass
 :pass
 
+:skipmemtweaks
 set/a progress=%progress% +1
 goto Loading
 
-:11
+:10
 ::55%
 chcp 437 >nul 2>&1
+if "%internetgame%"=="false" goto skipinternet
 echo Internet Cache Cleaning
 ipconfig /release >nul 2>&1
 ipconfig /renew >nul 2>&1
@@ -674,12 +712,14 @@ netsh int tcp set global dca=enabled >nul 2>&1
 netsh int tcp set global netdma=enabled >nul 2>&1
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
 
+:skipinternet
 set/a progress=%progress% +1
 goto Loading
 
-:10
-::55%
+:11
+::60%
 chcp 437 >nul 2>&1
+if "%internetgame%"=="false" goto skipinternet2
 echo Activating MTU Tweaks + Google DNS
 set MTU=1473
 set LASTGOOD=0
@@ -722,11 +762,13 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Paramet
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "ActiveWebProbeHost" /t REG_SZ /d "www.msftconnecttest.com" /f >nul 2>&1
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "EnableActiveProbing" /t REG_DWORD /d "1" /f >nul 2>&1
 
+:skipinternet2
 set/a progress=%progress% +1
 goto Loading
 
 :12
 chcp 437 >nul 2>&1
+if "%debloating%"=="false" goto skipservices
 echo Activating Service Tweaks...
 ::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
 
@@ -774,11 +816,13 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VaultSvc" /v "
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CertPropSvc" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
 
+:skipservices
 set/a progress=%progress% +1
 goto Loading
 
 :13
 chcp 437 >nul 2>&1
+if "%internetgame%"=="false" goto skipgametweaks
 echo Applying Game Specific Tweaks...
 TaskKill /F /IM javaw.exe >nul 2>&1 
 cd %appdata%\.minecraft >nul 2>&1
@@ -893,6 +937,7 @@ for /d %%a in (*) do cd "C:\Program Files (x86)\Steam\userdata\%%~a\config" &&Po
 ::back to windows folder
 cd C:\Windows\System32 >nul 2>&1
 
+:skipgametweaks
 set/a progress=%progress% +1
 goto Loading
 

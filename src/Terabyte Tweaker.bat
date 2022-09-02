@@ -597,7 +597,7 @@ goto Loading
 :9
 ::50%
 chcp 437 >nul 2>&1
-if "%memtweaks%"=="false" goto skipmemtweaks
+if "%ramtweaks%"=="false" goto skipmemtweaks
 echo Applying RAM Tweaks...
 set "mem="
     for /f "tokens=2 delims==" %%a in (

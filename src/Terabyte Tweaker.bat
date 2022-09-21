@@ -551,6 +551,7 @@ if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
 ) >nul 2>&1
 :endcpu
 for /f %%c in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /s /f "%%b" /d ^| findstr /C:"HKEY"') do (
+mkdir "%SystemDrive%\TT\TTRevert\" >nul 2>&1
 Reg export "%%c" "%SystemDrive%\TT\TTRevert\ognic.reg" /y >nul 2>&1
 Reg add "%%c" /v "MIMOPowerSaveMode" /t REG_SZ /d "3" /f >nul 2>&1
 Reg add "%%c" /v "PowerSavingMode" /t REG_SZ /d "0" /f >nul 2>&1

@@ -402,10 +402,10 @@ chcp 437 >nul 2>&1
 if "%power%"=="false" goto skippower
 echo Applying Power Plan...
 powercfg -restoredefaultschemes
-powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798652558351794196/798666504190296064/Hone_Power_Plan.pow" -OutFile "C:\Hone\Resources\HoneV2.pow"
+powershell Invoke-WebRequest "https://cdn.discordapp.com/attachments/798652558351794196/798666504190296064/Hone_Power_Plan.pow" -OutFile "C:\TT\PowerPlan.pow"
 cls
 powercfg /d 44444444-4444-4444-4444-444444444449 >nul 2>&1 
-powercfg -import "C:\Hone\Resources\HoneV2.pow" 44444444-4444-4444-4444-444444444449 >nul 2>&1 
+powercfg -import "C:\TT\PowerPlan.pow" 44444444-4444-4444-4444-444444444449 >nul 2>&1 
 powercfg -SETACTIVE "44444444-4444-4444-4444-444444444449" >nul 2>&1 
 powercfg /changename 44444444-4444-4444-4444-444444444449 "HoneCtrl's Power Plan" "The Ultimate Power Plan to increase FPS, improve latency and reduce input lag. (Added by Terabyte Tweaker)" >nul 2>&1 
 ::Delete Balanced Plan

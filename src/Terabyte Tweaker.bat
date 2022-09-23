@@ -615,8 +615,11 @@ set "mem="
     set "memMB=%mem:~0,-6%"
     set /a "mem=((memMB-memMB/21) + (memMB-memMB/22))/2"
     set /a "pfile=((%mem%) + (%mem% / 2))"
+    if %pfile% GTR 16384 set %pfile%=16384
     reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "PagingFiles" /t REG_MULTI_SZ /D "c:\pagefile.sys %pfile% %pfile%" /f >nul 2>&1
     reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "SystemPages" /t REG_DWORD /D "0" /f >nul 2>&1
+
+    
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set /a mem=%%i
 set /a mem=%mem% + 1024000
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f >nul 2>&1

@@ -551,8 +551,44 @@ if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
 	)
 ) >nul 2>&1
 ) >nul 2>&1
-
 :endcpu
+for /f %%c in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /s /f "%%b" /d ^| findstr /C:"HKEY"') do (
+mkdir "%SystemDrive%\TT\TTRevert\" >nul 2>&1
+Reg export "%%c" "%SystemDrive%\TT\TTRevert\ognic.reg" /y >nul 2>&1
+Reg add "%%c" /v "MIMOPowerSaveMode" /t REG_SZ /d "3" /f >nul 2>&1
+Reg add "%%c" /v "PowerSavingMode" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "EnableGreenEthernet" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*EEE" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*IPSecOffloadV1IPv4" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*IPSecOffloadV2IPv4" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*IPSecOffloadV2" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*RscIPv4" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*RscIPv6" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*PMNSOffload" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*PMARPOffload" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*JumboPacket" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "EnableConnectedPowerGating" /t REG_DWORD /d "0" /f >nul 2>&1
+Reg add "%%c" /v "EnableDynamicPowerGating" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "EnableSavePowerNow" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "*FlowControl" /t REG_SZ /d "0" /f >nul 2>&1
+Rem more powersaving options
+Reg add "%%c" /v "*NicAutoPowerSaver" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "ULPMode" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "EnablePME" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "AlternateSemaphoreDelay" /t REG_SZ /d "0" /f >nul 2>&1
+Reg add "%%c" /v "AutoPowerSaveModeEnabled" /t REG_SZ /d "0" /f >nul 2>&1
+rem RSS
+Reg add "%%c" /v "*NumRssQueues" /t REG_SZ /d "2" /f >nul 2>&1
+if %NumberOfCores% geq 6 (
+Reg add "%%c" /v "*RssBaseProcNumber" /t REG_SZ /d "4" /f >nul 2>&1
+Reg add "%%c" /v "*RssMaxProcNumber" /t REG_SZ /d "5" /f >nul 2>&1
+) else if %NumberOfCores% geq 4 (
+Reg add "%%c" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f >nul 2>&1
+Reg add "%%c" /v "*RssMaxProcNumber" /t REG_SZ /d "3" /f >nul 2>&1
+) else (
+Reg delete "%%c" /v "*RssBaseProcNumber" /f >nul 2>&1
+Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
+) >nul 2>&1
 :skipcpu
 set/a progress=%progress% +1
 goto Loading

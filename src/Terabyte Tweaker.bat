@@ -550,7 +550,6 @@ if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
 		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "04" /f >nul 2>&1
 	)
 ) >nul 2>&1
-) >nul 2>&1
 :endcpu
 for /f %%c in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /s /f "%%b" /d ^| findstr /C:"HKEY"') do (
 mkdir "%SystemDrive%\TT\TTRevert\" >nul 2>&1
@@ -589,6 +588,9 @@ Reg add "%%c" /v "*RssMaxProcNumber" /t REG_SZ /d "3" /f >nul 2>&1
 Reg delete "%%c" /v "*RssBaseProcNumber" /f >nul 2>&1
 Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
 ) >nul 2>&1
+) >nul 2>&1
+) >nul 2>&1
+
 :skipcpu
 set/a progress=%progress% +1
 goto Loading

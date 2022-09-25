@@ -21,13 +21,16 @@ Terabyte Tweaker
 - [About](#about)
 - [Getting Started](#getting_started)
 - [Installing](#installing)
+- [Configurating](#installing)
+- [Uninstalling](#uninstalling)
 - [Contributing](#contributing)
 
 ## ⚠️ About <a name = "about"></a>
 
 Terabyte Tweaker is an program that optimizes your Windows PC, allowing it to run faster and smoother.
 
-I strongly recommend you to use this app in your desktop computer, as it will give you an extra FPS boost to your PC, at the moment, im focused in making Minecraft's FPS higher, and in the tests that i've peformed, my FPS practically tripled, it went from 60 to 180 FPS (can vary from PC to PC).
+I strongly recommend you to use this app in your low end desktop computer, as it will give you an extra FPS boost to your PC, at the moment, im focused in making Minecraft's FPS higher, and in the tests that i've peformed, my FPS practically tripled, it went from 60 to 180 FPS (can vary from PC to PC).
+Most tweaks may not be reccomended in high end computers but feel free to try, if you desire to remove the app afterwards then refer to [Uninstalling](#uninstalling).
 
 ## Getting Started <a name = "getting_started"></a>
 ### 🛑 Prerequisites
@@ -53,19 +56,32 @@ Even though all my regedit tweaks are harmless, i do not want any chance of dama
 - Automatic Installation
 - Incredibily Small File Size
 
+
 ![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/ingles.png?raw=true)
 
-## 🔨 Installing <a name = "installing"></a>
+## ⚙️ Installing <a name = "installing"></a>
 
 Running downloaded Batch files triggers a [Microsoft SmartScreen](https://docs.microsoft.com/pt-br/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview) prompt, even if the Batch file is not a security threat.
-Also, [here](https://www.virustotal.com/gui/file/4cc978c2cbfcc4add6ce2258474926a5b8657080e393b691776172a5581be54e?nocache=1) is the VirusTotal report:
+Also, [here](https://www.virustotal.com/gui/file/ec0bba5208ca4e036b4820f30205e2011cf0b07f9050ef635ecf0a295692e329?nocache=1) is the VirusTotal report:
 ![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/VirusTotal.png?raw=true)
+I would reccomend turning off your antivirus before running the program.
 
 - [Download](https://github.com/Teramanbr/TerabyteTweaker/releases/latest/download/Terabyte.Tweaker.bat) the application.
-- Run it as Administrator.
-- Type: Y or Yes and press enter to install the application.
+- Run the app as Administrator.
+- Press Y and enter to install the application with default settings (Recommended).
 
-## 🗑 Uninstallation
+## 🔨 Configurating <a name = "Configurating"></a>
+
+Terabyte Tweaker includes an configuration option, which makes it possible for you to Disable/Enable certain tweaks if you don't wish to install them
+Here is how to Disable/Enable any of the settings:
+
+- Run the app as Administrator.
+- Press C and enter to see the Settings Menu.
+- Select a number to disable/enable the corresponding setting
+![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/Settings.png?raw=true)
+- Press X to go back to main menu and Y to run the program using only the selected settings.
+
+## 🗑 Uninstalling <a name = "uninstalling"></a>
 
 - Terabyte Tweaker will automatically create a restore point so you can restore your system to its original state, if desired.
 

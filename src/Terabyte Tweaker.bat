@@ -128,7 +128,6 @@ echo                                ▀▀▀▀▀▀
 echo.                             %COL%[92mPress [%COL%[33mY%COL%[92m] to Install the Tweaks, [%COL%[33mX%COL%[92m] to leave or [%COL%[33mC%COL%[92m] to Configure %COL%[33m
 echo.
 SET /P choice=Choose Your Option:
-if not '%choice%'=='' set choice=%choice:~0,1%
 IF /I "%choice%"=="Y" Goto Loading
 IF /I "%choice%"=="y" Goto Loading
 IF /I "%choice%"=="yeah" Goto Loading
@@ -232,7 +231,6 @@ IF /I "%choice%"=="9" (
 IF /I "%choice%"=="x" Goto start
 IF /I "%choice%"=="X" Goto start
 cls && ECHO This is not a valid option, please try again. && pause && goto config
-if not '%choice%'=='' set choice=%choice:~0,1%
 pause
 
 
@@ -275,6 +273,8 @@ echo Almost there...
 DISM /Online /Cleanup-Image /RestoreHealth >nul 2>&1
 
 :skipfixing
+if "%fixing%"=="false" echo Skipping System Fixer...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -298,6 +298,8 @@ del C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\Explorer\ThumbCacheToDel
 del C:\Users\%USERNAME%\AppData\Local\Microsoft\"Terminal Server Client"\Cache\*.bin /s /q >nul 2>&1
 
 :skipcleaning
+if "%cleaning%"=="false" echo Skipping Log+Cache Cleaner...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1 
 goto Loading
 
@@ -345,6 +347,8 @@ reg import C:\Users\%USERNAME%\AppData\Local\Temp\Regedit.reg >nul 2>&1
 del %temp%\~Regedit.reg >nul 2>&1
 
 :skipregediting
+if "%regediting%"=="false" echo Skipping Regedits...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -392,6 +396,8 @@ PowerShell -command "Get-AppxPackage ContentDeliveryManager | Remove-AppxPackage
 PowerShell -command "Get-AppxPackage 'Microsoft.Advertising.Xaml' | Remove-AppxPackage" >nul 2>&1
 
 :skipdebloat
+if "%debloating%"=="false" echo Skipping Debloater...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -416,6 +422,8 @@ powercfg /d 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c >nul 2>&1
 powercfg /d a1841308-3541-4fab-bc81-f71556f20b4a >nul 2>&1
 
 :skippower
+if "%power%"=="false" echo Skipping Power Plan Tweaker...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -439,6 +447,8 @@ sc config "STR" start= auto >nul 2>&1
 NET START STR >nul 2>&1
 
 :skipclock
+if "%clock%"=="false" echo Skipping Clock Resolutions Services...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -493,6 +503,8 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "En
 )
 
 :skipgpu
+if "%cpugpu%"=="false" echo Skipping GPU Tweaks...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -592,6 +604,8 @@ Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
 ) >nul 2>&1
 
 :skipcpu
+if "%cpugpu%"=="false" echo Skipping CPU Tweaks...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -677,6 +691,8 @@ if exist "%windir%\System32\fsutil.exe" (
 :pass
 
 :skipmemtweaks
+if "%ramtweaks%"=="false" echo Skipping Memory Tweaks...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -717,6 +733,8 @@ netsh int tcp set global netdma=enabled >nul 2>&1
 PowerShell Disable-NetAdapterLso -Name "*" >nul 2>&1
 
 :skipinternet
+if "%internetgame%"=="false" echo Skipping Internet Cache Cleaning...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -767,6 +785,8 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Paramet
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet" /v "EnableActiveProbing" /t REG_DWORD /d "1" /f >nul 2>&1
 
 :skipinternet2
+if "%internetgame%"=="false" echo Skipping MTU+DNS Tweaks
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -821,6 +841,8 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv" /v "
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CertPropSvc" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
 
 :skipservices
+if "%debloating%"=="false" echo Skipping Services Optimization...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 
@@ -942,6 +964,8 @@ for /d %%a in (*) do cd "C:\Program Files (x86)\Steam\userdata\%%~a\config" &&Po
 cd C:\Windows\System32 >nul 2>&1
 
 :skipgametweaks
+if "%internetgame%"=="false" echo Skipping Game Specific Tweaks...
+ping 127.0.0.1 -n 3 >nul 2>&1
 set/a progress=%progress% +1
 goto Loading
 

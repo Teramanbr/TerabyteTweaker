@@ -481,7 +481,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "En
 ) >nul 2>&1 else (
 Reg delete "HKCU\Software\Hone" /v "AllGPUTweaks" /f >nul 2>&1
 ::Enable Hardware Accelerated Scheduling
-reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "1" /f >nul 2>&1
+reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "2" /f >nul 2>&1
 ::Disable gdi hardware acceleration
 for /f %%a in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaCompatible" /s ^| findstr "HKEY"') do Reg delete "%%a" /v "KMD_EnableGDIAcceleration" /f >nul 2>&1
 ::Enable GameMode
@@ -519,7 +519,7 @@ for /f "tokens=*" %%f in ('wmic cpu get NumberOfCores /value ^| find "="') do se
 for /f "tokens=*" %%f in ('wmic cpu get NumberOfLogicalProcessors /value ^| find "="') do set %%f >nul 2>&1
 for /f "tokens=3*" %%a in ('Reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\NetworkCards" /k /v /f "Description" /s /e ^| findstr /ri "REG_SZ"') do (
 
-if "%NumberOfCores%"=="2" ( goto endcpu ) 
+if "%NumberOfCores%"=="2" ( goto finalcpu ) 
 
 if %NumberOfCores% gtr 4 (
 	for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
@@ -530,7 +530,7 @@ if %NumberOfCores% gtr 4 (
 		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "5" /f >nul 2>&1
 		Reg delete "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /f >nul 2>&1
 	)
-	goto endcpu
+	goto finalcpu
 ) >nul 2>&1
 
 if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
@@ -562,7 +562,7 @@ if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
 		Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "04" /f >nul 2>&1
 	)
 ) >nul 2>&1
-:endcpu
+:finalcpu
 for /f %%c in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /s /f "%%b" /d ^| findstr /C:"HKEY"') do (
 mkdir "%SystemDrive%\TT\TTRevert\" >nul 2>&1
 Reg export "%%c" "%SystemDrive%\TT\TTRevert\ognic.reg" /y >nul 2>&1
@@ -601,6 +601,8 @@ Reg delete "%%c" /v "*RssBaseProcNumber" /f >nul 2>&1
 Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
 ) >nul 2>&1
 ) >nul 2>&1
+::Attempt of Fixing CPU Tweaks for some notebooks.
+goto skipcpu >nul 2>&1
 ) >nul 2>&1
 
 :skipcpu
@@ -957,7 +959,7 @@ if %errorlevel% == 1 (
   goto nosteam
 )
 powershell.exe Invoke-WebRequest "https://raw.githubusercontent.com/Teramanbr/TerabyteTweaker/main/src/SteamInit.ps1" -OutFile "C:\TT\SteamInit.ps1" >nul 2>&1
-for /d %%a in (*) do cd "C:\Program Files (x86)\Steam\userdata\%%~a\config" &&PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\SteamInit.ps1'" &&cd ..\.. >nul 2>&1
+for /d %%a in (*) do cd "C:\Program Files (x86)\Steam\userdata\%%~a\config\Windows" &&PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\TT\SteamInit.ps1'" &&cd ..\.. >nul 2>&1
 :nosteam
 
 ::back to windows folder

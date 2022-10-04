@@ -35,8 +35,8 @@ Most tweaks may not be reccomended in high end computers but feel free to try, i
 ## Getting Started <a name = "getting_started"></a>
 ### 🛑 Prerequisites
 
-This application works on both Windows 10 and 11, i have not tested it in lower versions, and i do **NOT** recommend using it on them, as it may cause damage to the system when tweaking Regedit.
-Even though all my regedit tweaks are harmless, i do not want any chance of damage to your system, so don't come crying to me if your Windows Vista got problems after using it.
+This application works on both Windows 10 and 11, I have not tested it in lower versions, and i do **NOT** recommend using it on them, as it may cause damage to the system when tweaking Regedit.
+Even though all my regedit tweaks are harmless, I do not want any chance of damage to your system, so don't come crying to me if your Windows Vista got problems after using it.
 
 **Warning: For the app to run, you NEED to have a connection to the internet.**
 
@@ -68,7 +68,7 @@ I would reccomend turning off your antivirus before running the program.
 
 - [Download](https://github.com/Teramanbr/TerabyteTweaker/releases/latest/download/Terabyte.Tweaker.bat) the application.
 - Run the app as Administrator.
-- Press Y and enter to install the application with default settings (Recommended).
+- Press <kbd>Y</kbd> and enter to install the application with default settings (Recommended).
 
 ## 🔨 Configurating <a name = "Configurating"></a>
 
@@ -76,10 +76,10 @@ Terabyte Tweaker includes an configuration option, which makes it possible for y
 Here is how to Disable/Enable any of the settings:
 
 - Run the app as Administrator.
-- Press C and enter to see the Settings Menu.
+- Press <kbd>C</kbd> and enter to see the Settings Menu.
 - Select a number to disable/enable the corresponding setting
 ![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/Settings.png?raw=true)
-- Press X to go back to main menu and Y to run the program using only the selected settings.
+- Press <kbd>X</kbd> to go back to main menu and <kbd>Y</kbd> to run the program using only the selected settings.
 
 ## 🗑 Uninstalling <a name = "uninstalling"></a>
 
@@ -88,9 +88,9 @@ Here is how to Disable/Enable any of the settings:
 ### 🤝 Contributing <a name = "contributing"></a>
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check the [issues page](https://github.com/Teramanbr/TerabyteTweaker/issues). 
-If you can't contribute to the app by sending bug reports, forks or feature requests, you can contribute to me instead, by subscribing to my [Youtube channel](https://www.youtube.com/channel/UCIj-jcplOl9RqTfjXQ30JXA?sub_confirmation=1&via=tb).
+If you can't contribute to the app by sending bug reports, forks or feature requests, you can contribute to me instead, by subscribing to my [YouTube channel](https://www.youtube.com/channel/UCIj-jcplOl9RqTfjXQ30JXA?sub_confirmation=1&via=tb).
 
-To contact me directly, send me a message on my discord: Teraman_br#5060
+To contact me directly, send me a message on my discord: [`Teraman_br#5060`](https://discord.com/channels/@me/397437604880187403)
 
 I plan to remake this app in another programming language, but im still studying rust, so it will take a while.
 I tested this app **piece by piece** on my computers and didn't need to use VMs, beacuse none of the features are able to damage your system.

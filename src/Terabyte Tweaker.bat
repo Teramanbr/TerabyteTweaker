@@ -54,43 +54,42 @@ IF %ERRORLEVEL% EQU 1 (
     echo.
         pause & exit
 ) ELSE (
-    net session >nul 2>&1
-    if %errorLevel% == 0 (
-        goto start
-    ) else (
-    color 4
-    echo.
-    echo.
-    echo.
-    echo.
-    echo.
-    echo.
-    echo.
-    echo.    
-    echo.          
-    echo.    
-    echo.     
-    echo.   
-    echo. 
-    echo.
-    echo                                i think SOMEBODY forgot to run the app as administator...
-    echo.                   
-    echo.                  
-    echo.                 
-    echo.                      
-    echo.      
-    echo. 
-    echo.
-    echo.
-    echo.
-    echo.
-    echo.
-    echo.
-    echo.
-    echo.
-        pause & exit
+    dir "%SystemRoot%\System32\config\DRIVERS" 2>nul >nul || goto noadmin
+    goto start
     )
-)
+
+:noadmin
+color 4
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo                                          Please, run the app as an administator.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+pause & exit
 
 
 :start
@@ -601,8 +600,6 @@ Reg delete "%%c" /v "*RssBaseProcNumber" /f >nul 2>&1
 Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
 ) >nul 2>&1
 ) >nul 2>&1
-::Attempt of Fixing CPU Tweaks for some notebooks.
-goto skipcpu >nul 2>&1
 ) >nul 2>&1
 
 :skipcpu

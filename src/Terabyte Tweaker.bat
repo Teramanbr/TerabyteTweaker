@@ -592,12 +592,15 @@ Reg add "%%c" /v "*NumRssQueues" /t REG_SZ /d "2" /f >nul 2>&1
 if %NumberOfCores% geq 6 (
 Reg add "%%c" /v "*RssBaseProcNumber" /t REG_SZ /d "4" /f >nul 2>&1
 Reg add "%%c" /v "*RssMaxProcNumber" /t REG_SZ /d "5" /f >nul 2>&1
+goto skipcpu
 ) else if %NumberOfCores% geq 4 (
 Reg add "%%c" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f >nul 2>&1
 Reg add "%%c" /v "*RssMaxProcNumber" /t REG_SZ /d "3" /f >nul 2>&1
+goto skipcpu
 ) else (
 Reg delete "%%c" /v "*RssBaseProcNumber" /f >nul 2>&1
 Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
+goto skipcpu
 ) >nul 2>&1
 ) >nul 2>&1
 ) >nul 2>&1

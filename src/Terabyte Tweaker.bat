@@ -458,7 +458,7 @@ chcp 437 >nul 2>&1
 if "%cpugpu%"=="false" goto skipgpu
 echo Applying GPU Tweaks...
 ::This piece of code is half mine, credits to Auraside's HoneCtrl for the other half.
-Reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "2" /f >nul 2>&1
+Reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" >nul 2>&1 && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "2" /f >nul 2>&1
 ::Enable gdi hardware acceleration
 for /f %%a in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaCompatible" /s ^| findstr "HKEY"') do Reg add "%%a" /v "KMD_EnableGDIAcceleration" /t Reg_DWORD /d "1" /f >nul 2>&1
 ::Enable GameMode
@@ -480,7 +480,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "En
 ) >nul 2>&1 else (
 Reg delete "HKCU\Software\Hone" /v "AllGPUTweaks" /f >nul 2>&1
 ::Enable Hardware Accelerated Scheduling
-reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "2" /f >nul 2>&1
+reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" >nul 2>&1 && Reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t Reg_DWORD /d "2" /f >nul 2>&1
 ::Disable gdi hardware acceleration
 for /f %%a in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaCompatible" /s ^| findstr "HKEY"') do Reg delete "%%a" /v "KMD_EnableGDIAcceleration" /f >nul 2>&1
 ::Enable GameMode
@@ -602,7 +602,9 @@ Reg delete "%%c" /v "*RssBaseProcNumber" /f >nul 2>&1
 Reg delete "%%c" /v "*RssMaxProcNumber" /f >nul 2>&1
 goto skipcpu
 ) >nul 2>&1
+goto skipcpu
 ) >nul 2>&1
+goto skipcpu
 ) >nul 2>&1
 
 :skipcpu

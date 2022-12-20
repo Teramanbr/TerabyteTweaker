@@ -1,7 +1,8 @@
 @echo off
 @title Terabyte Tweaker
 SetLocal EnableDelayedExpansion
-mkdir C:\TT\ >nul 2>&1
+mkdir C:\TT\ >nul 2>&1 & mkdir C:\TT\CoreInfo\ >nul 2>&1
+mkdir "%SystemDrive%\TT\TTRevert\" >nul 2>&1
 set load=
 set/a loadnum=5
 setlocal
@@ -142,9 +143,8 @@ cls && ECHO This is not a valid option, please try again. && pause && goto retry
 
 
 cls
-%COL%[92m
 echo.
-echo                                                ##############################
+echo                                                %COL%[92m##############################
 echo                                                           %COL%[33mSettings%COL%[92m
 echo                                                ##############################
 echo.
@@ -563,7 +563,6 @@ if %NumberOfLogicalProcessors% gtr %NumberOfCores% (
 ) >nul 2>&1
 :finalcpu
 for /f %%c in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /s /f "%%b" /d ^| findstr /C:"HKEY"') do (
-mkdir "%SystemDrive%\TT\TTRevert\" >nul 2>&1
 Reg export "%%c" "%SystemDrive%\TT\TTRevert\ognic.reg" /y >nul 2>&1
 Reg add "%%c" /v "MIMOPowerSaveMode" /t REG_SZ /d "3" /f >nul 2>&1
 Reg add "%%c" /v "PowerSavingMode" /t REG_SZ /d "0" /f >nul 2>&1

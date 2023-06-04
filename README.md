@@ -24,6 +24,7 @@ Terabyte Tweaker
 - [Configurating](#installing)
 - [Uninstalling](#uninstalling)
 - [Contributing](#contributing)
+- [Warning](#warning)
 
 ## ⚠️ About <a name = "about"></a>
 
@@ -94,3 +95,11 @@ To contact me directly, send me a message on my discord: [`Teraman_br#5060`](htt
 
 I plan to remake this app in another programming language, but im still studying rust, so it will take a while.
 I tested this app **piece by piece** on my computers and didn't need to use VMs, beacuse none of the features are able to damage your system.
+
+### 📢 Warning! <a name = "warning"></a>
+
+Terabyte Tweaker is COMPLETELY FREE. If someone claims you need to pay them, they are trying to scam you.
+Here are some examples of a scammer trying to sell Terabyte Tweaker (He copied the whole code):
+![image](https://github.com/Teramanbr/TerabyteTweaker/assets/71410827/ad205532-62ab-4b62-804a-a41b50374310)
+![image](https://github.com/Teramanbr/TerabyteTweaker/assets/71410827/7c3d56dd-4bd6-443a-95e6-9f048ce5d171)
+

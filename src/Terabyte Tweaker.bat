@@ -31,20 +31,14 @@ IF %ERRORLEVEL% EQU 1 (
     echo.
     echo.
     echo.
-    echo.    
-    echo.          
-    echo.    
-    echo.     
-    echo.   
-    echo. 
+    echo.
+    echo.
+    echo.
+    echo.
+    echo.
+    echo.
     echo.
     echo                            You appear to have no internet connection, try again later.
-    echo.                   
-    echo.                  
-    echo.                 
-    echo.                      
-    echo.      
-    echo. 
     echo.
     echo.
     echo.
@@ -53,7 +47,15 @@ IF %ERRORLEVEL% EQU 1 (
     echo.
     echo.
     echo.
-        pause & exit
+    echo.
+    echo.
+    echo.
+    echo.
+    echo.
+    echo If you believe this is an error and you do have internet, press enter to continue.
+    pause >nul 2>&1
+    dir "%SystemRoot%\System32\config\DRIVERS" 2>nul >nul || goto noadmin
+    goto start
 ) ELSE (
     dir "%SystemRoot%\System32\config\DRIVERS" 2>nul >nul || goto noadmin
     goto start

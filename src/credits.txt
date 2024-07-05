@@ -1,0 +1,1 @@
+Credits to Lucas Hale, developer of TimerResolution and to Hone, which inspired most of my tweaks.

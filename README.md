@@ -1,9 +1,9 @@
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/github/v/tag/Teramanbr/TerabyteTweaker?label=Version%3A" />
+  <img alt="Version" src="https://img.shields.io/github/v/tag/Kawwabi/TerabyteTweaker?label=Version%3A" />
   <a href="#" target="_blank">
-    <img alt="License: Apache-2.0" src="https://img.shields.io/github/license/Teramanbr/TerabyteTweaker" />
+    <img alt="License: Apache-2.0" src="https://img.shields.io/github/license/Kawwabi/TerabyteTweaker" />
   </a>
-  <a><img alt="Downloads:" src="https://img.shields.io/github/downloads/Teramanbr/TerabyteTweaker/total.svg" />
+  <a><img alt="Downloads:" src="https://img.shields.io/github/downloads/Kawwabi/TerabyteTweaker/total.svg" />
   </a>
   <a><img alt="Is Mantained?" src="https://img.shields.io/badge/Mantained:-Maybe-yellow.svg" />
   </a>
@@ -13,7 +13,7 @@ Terabyte Tweaker
 </h1>
 
 <p align="center">
- <img src="https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/favicon.png?raw=true" width="200">
+ <img src="https://github.com/Kawwabi/TerabyteTweaker/blob/main/images/favicon.png?raw=true" width="200">
 </p>
 
 ## 📋 Table of Contents
@@ -64,10 +64,10 @@ Even though all my regedit tweaks are harmless, I do not want any chance of dama
 
 Running downloaded Batch files triggers a [Microsoft SmartScreen](https://docs.microsoft.com/pt-br/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview) prompt, even if the Batch file is not a security threat.
 Also, [here](https://www.virustotal.com/gui/file/ec0bba5208ca4e036b4820f30205e2011cf0b07f9050ef635ecf0a295692e329?nocache=1) is the VirusTotal report:
-![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/VirusTotal.png?raw=true)
+![](https://github.com/Kawwabi/TerabyteTweaker/blob/main/images/VirusTotal.png?raw=true)
 I would reccomend turning off your antivirus before running the program.
 
-- [Download](https://github.com/Teramanbr/TerabyteTweaker/releases/latest/download/Terabyte.Tweaker.bat) the application.
+- [Download](https://github.com/Kawwabi/TerabyteTweaker/releases/latest/download/Terabyte.Tweaker.bat) the application.
 - Run the app as Administrator.
 - Press <kbd>Y</kbd> and enter to install the application with default settings (Recommended).
 
@@ -79,7 +79,7 @@ Here is how to Disable/Enable any of the settings:
 - Run the app as Administrator.
 - Press <kbd>C</kbd> and enter to see the Settings Menu.
 - Select a number to disable/enable the corresponding setting
-![](https://github.com/Teramanbr/TerabyteTweaker/blob/main/images/Settings.png?raw=true)
+![](https://github.com/Kawwabi/TerabyteTweaker/blob/main/images/Settings.png?raw=true)
 - Press <kbd>X</kbd> to go back to main menu and <kbd>Y</kbd> to run the program using only the selected settings.
 
 ## 🗑 Uninstalling <a name = "uninstalling"></a>
@@ -88,7 +88,7 @@ Here is how to Disable/Enable any of the settings:
 
 ### 🤝 Contributing <a name = "contributing"></a>
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check the [issues page](https://github.com/Teramanbr/TerabyteTweaker/issues). 
+Contributions, issues and feature requests are welcome!<br />Feel free to check the [issues page](https://github.com/Kawwabi/TerabyteTweaker/issues). 
 If you can't contribute to the app by sending bug reports, forks or feature requests, you can contribute to me instead, by subscribing to my [YouTube channel](https://www.youtube.com/channel/UCIj-jcplOl9RqTfjXQ30JXA?sub_confirmation=1&via=tb).
 
 To contact me directly, send me a message on my discord: [`Kawwabi`](https://discord.com/channels/@me/397437604880187403)
@@ -100,6 +100,6 @@ I tested this app **piece by piece** on my computers and didn't need to use VMs,
 
 Terabyte Tweaker is COMPLETELY FREE. If someone claims you need to pay them, they are trying to scam you.
 Here are some examples of a scammer trying to sell Terabyte Tweaker (He copied the whole code):
-![image](https://github.com/Teramanbr/TerabyteTweaker/assets/71410827/ad205532-62ab-4b62-804a-a41b50374310)
-![image](https://github.com/Teramanbr/TerabyteTweaker/assets/71410827/7c3d56dd-4bd6-443a-95e6-9f048ce5d171)
+![image](https://github.com/Kawwabi/TerabyteTweaker/assets/71410827/ad205532-62ab-4b62-804a-a41b50374310)
+![image](https://github.com/Kawwabi/TerabyteTweaker/assets/71410827/7c3d56dd-4bd6-443a-95e6-9f048ce5d171)
 

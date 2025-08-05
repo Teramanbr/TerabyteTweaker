@@ -5,7 +5,7 @@
   </a>
   <a><img alt="Downloads:" src="https://img.shields.io/github/downloads/Teramanbr/TerabyteTweaker/total.svg" />
   </a>
-  <a><img alt="Is Mantained?" src="https://img.shields.io/badge/Mantained:-yes-green.svg" />
+  <a><img alt="Is Mantained?" src="https://img.shields.io/badge/Mantained:-Maybe-yellow.svg" />
   </a>
 </p>
 <h1 align="center">
@@ -91,7 +91,7 @@ Here is how to Disable/Enable any of the settings:
 Contributions, issues and feature requests are welcome!<br />Feel free to check the [issues page](https://github.com/Teramanbr/TerabyteTweaker/issues). 
 If you can't contribute to the app by sending bug reports, forks or feature requests, you can contribute to me instead, by subscribing to my [YouTube channel](https://www.youtube.com/channel/UCIj-jcplOl9RqTfjXQ30JXA?sub_confirmation=1&via=tb).
 
-To contact me directly, send me a message on my discord: [`Teraman_br#5060`](https://discord.com/channels/@me/397437604880187403)
+To contact me directly, send me a message on my discord: [`Kawwabi`](https://discord.com/channels/@me/397437604880187403)
 
 I plan to remake this app in another programming language, but im still studying rust, so it will take a while.
 I tested this app **piece by piece** on my computers and didn't need to use VMs, beacuse none of the features are able to damage your system.
